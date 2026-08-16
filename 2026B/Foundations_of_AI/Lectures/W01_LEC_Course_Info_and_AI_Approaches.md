@@ -15,7 +15,7 @@
 - You can't consume all content — advanced topics are optional, not required for assignments
 
 **Teaching Team**
-- **Dr Nhat Quang Tran** — Course Coordinator, Lecturer & Tutorial Lecturer. PhD Computer Science (Curtin University). 10+ years teaching programming, AI, ML. Research: agricultural price prediction, bioinformatics, AI impacts & ethics. (quang.tran26@rmit.edu.vn, Saigon South campus)
+- **Dr Nhat-Quang Tran** — Course Coordinator, Lecturer & Tutorial Lecturer. PhD Computer Science (Curtin University). 10+ years teaching programming, AI, ML. Research: agricultural price prediction, bioinformatics, AI impacts & ethics. (quang.tran26@rmit.edu.vn, Saigon South campus)
 - **Dr Kapil Dev** — Tutorial Lecturer. PhD (Lancaster University, Microsoft Research Scholarship). 15+ years intl. teaching/research/industry (UK, India, Singapore). Research: computer graphics, computer vision, HCI, deep learning. (kapil.dev@rmit.edu.vn, Hanoi campus)
 - **Ms Anh Van Le** — Tutorial Lecturer. (anh.levan@rmit.edu.vn, Saigon South campus)
 
