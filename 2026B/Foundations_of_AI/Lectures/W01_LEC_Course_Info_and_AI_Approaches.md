@@ -88,9 +88,9 @@ Two dimensions define the four classic approaches to AI:
 
 ### Act Humanly — The Turing Test
 - Proposed by Alan Turing (1950)
-- A computer passes if a human judge, questioning via text, cannot distinguish its responses from a human's
+- A computer passes the test if a human cannot tell whether the responses come from a computer or a human
 - **Example:** Eugene Goostman, a chatbot mimicking a 13-year-old, fooled 33% of judges in a 2014 Turing Test by using humor/quirks to dodge questions rather than demonstrating real understanding
-- **Takeaway:** The Turing test can be "gamed" with tricks rather than genuine intelligence — later slides test this informally with Google Gemini and Microsoft Copilot (May 2024)
+- **Takeaway:** The Turing test can be "gamed" with tricks rather than genuine intelligence
 
 ### Think Humanly
 Three ways to study human thought, to model it computationally:
@@ -101,17 +101,15 @@ Three ways to study human thought, to model it computationally:
 **Bonus theme — Introspection & personal growth:**
 - Introspection isn't only useful for AI development; it's essential for self-awareness and emotional regulation
 - Illustrated with a Japanese folktale: *"Do not act or speak when angry."*
-  - A samurai spares a debtor fisherman after being reminded not to act in anger.
-  - Later, the samurai almost kills his wife and mother in a jealous rage, but recalls the fisherman's advice just in time, avoiding tragedy.
-  - Moral: recognizing an angry thought early (introspection) lets you stop it before it becomes words or actions — like catching a fire while it's still small.
+  - Recognizing an angry thought early (introspection) lets you stop it before it becomes words or actions — like catching a fire while it's still small.
 
 ### Think Rationally
 The "right thinking" approach — solving problems through logic:
-- **Logicism (strict logic):** translates problems into formal logical notation; requires strict true/false certainty.
-  Example: `IF Obstacle_Exists THEN Brake`
-- **Fuzzy Logic & Probability Theory:** allows rigorous reasoning under uncertainty.
+- **Logicism (strict logic):** translates problems into formal logical notation; requires strict true/false certainty.<br>
+  *Example:* `IF Obstacle_Exists THEN Brake`
+- **Fuzzy Logic & Probability Theory:** allows rigorous reasoning under uncertainty.<br>
   Examples:
-  `IF Obstacle_Fairly_Close THEN Brake70%`
+  `IF Obstacle_Fairly_Close THEN Brake70%`<br>
   `IF Probability_Of_Hitting > 10% THEN Brake20%`
 - *Note:* Deep Learning and LLMs are fundamentally built on Probability Theory.
 
@@ -121,26 +119,9 @@ The "right thinking" approach — solving problems through logic:
   1. More general than "Thinking Rationally" — logical reasoning isn't the only path to a good outcome (e.g., reflexively jerking your hand from a hot stove beats slow logical deduction).
   2. Can avoid the flaws of human thought/behavior seen in "Humanly" approaches.
 
----
 
-## 4. Check-Your-Understanding Quiz (with answers referenced in lecture)
-1. How many assignments does this course have? → *(answered in tutorial)*
-2. When is the 1st assignment due? → *(answered in tutorial)*
-3. The Turing Test follows which approach? → **Act Humanly**
-
----
-
-## 5. Learning Science Note (bonus content)
+## 4. Learning Science Note (bonus content)
 - Handwriting vs. typing note-taking:
   - Mueller & Oppenheimer (2014), *"The pen is mightier than the keyboard"* — longhand note-taking improves learning outcomes over laptop note-taking.
   - Van der Weel & Van der Meer (2024) — EEG study found handwriting produces significantly more widespread brain connectivity than typing, aiding memory formation and encoding of new information.
 - Takeaway: the more focused you are, the better you understand & retain information. Recommended habits: take notes, ask questions, practice repeatedly.
-
----
-
-## Next Lecture
-**Topic:** How was AI born & raised? (History of AI — Past and Present)
-
-**This week's tutorial covers:**
-1. Machine Learning vs. Deep Learning vs. LLM
-2. Types of AI
