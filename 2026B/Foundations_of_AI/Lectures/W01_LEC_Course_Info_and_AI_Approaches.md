@@ -1,8 +1,6 @@
 # COSC2968/COSC3053 – Foundations of Artificial Intelligence
 ## Week 1: Course Info & AI Approaches
 
----
-
 ## 1. About the Course
 
 **Course Mission**
