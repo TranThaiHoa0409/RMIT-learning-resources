@@ -3,7 +3,7 @@
 
 **This week's question:** How was AI born & raised?
 
-**Recap quiz from Week 1:** The four approaches to AI development are **Thinking Humanly, Acting Humanly, Thinking Rationally, Acting Rationally**.
+**Recap from Week 1:** The four approaches to AI development are **Thinking Humanly, Acting Humanly, Thinking Rationally, Acting Rationally**.
 
 ---
 
@@ -42,9 +42,12 @@ Timeline of "waves" and "winters" (Main ref: Wikipedia, Russell 2020):
 - **Hungry Root** — startup using AI to cut food waste
 - AI approaches to reducing food waste more broadly
 - **Flood forecasting** and **sustainable flight routing** using AI
+- **AI-enhanced bushfire detection (Tasmania)** — Forico, Tasmania's largest private forest manager, deployed AI-powered cameras (developed by Pano AI) across 173,000 hectares of managed land for early bushfire detection
+- **Preventing train derailments (US)** — Norfolk Southern installed automated inspection portals with high-speed cameras + AI software along tracks, analyzing real-time data to detect defects on moving trains for immediate corrective action
+- **AI-driven typhoon forecasting (Taiwan)** — Taiwan's Central Weather Administration (CWA) partnered with NVIDIA to deploy AI models (e.g., CorrDiff); during Typhoon Koinu, these models forecast the storm's trajectory 5 days in advance
 
 ### AI in Banking
-- Various AI applications in banking/finance (fraud detection, automation, etc. — per Jelvix video)
+- Various AI applications in banking/finance (fraud detection, automation, etc.)
 
 ### Real or "Fake"? — Generative AI & Deepfakes
 - StyleGAN (Karras, Laine & Aila, 2019) — AI-generated photorealistic faces indistinguishable from real people; try it yourself at **whichfaceisreal.com**
@@ -60,9 +63,3 @@ Timeline of "waves" and "winters" (Main ref: Wikipedia, Russell 2020):
 
 ### AI in Machine Control
 - **Controlling Assistive Robots with Learned Latent Actions** (Stanford, 2019) — controlling a robotic grasp action along 1 degree of freedom via learned latent representations
-
----
-
-## Next Week's Questions
-- How far can AI go?
-- What is Data Science?
