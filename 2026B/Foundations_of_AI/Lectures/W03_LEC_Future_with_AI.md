@@ -63,8 +63,3 @@
 | **Image** | 2D or 3D visual data | `.jpeg`, `.png`, `.tiff` | Image classification, image retrieval, object recognition, segmentation |
 
 - Example datasets referenced: CIFAR-10, MNIST (images), CheXpert (chest X-rays), Waymo Dataset (autonomous-driving object tracking/LiDAR)
-
----
-
-## Next Week's Topic
-**Introduction to Machine Learning**

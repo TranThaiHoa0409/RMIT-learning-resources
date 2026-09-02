@@ -3,7 +3,7 @@
 
 **This week's question:** How was AI born & raised?
 
-**Recap from Week 1:** The four approaches to AI development are **Thinking Humanly, Acting Humanly, Thinking Rationally, Acting Rationally**.
+**Recap quiz from Week 1:** The four approaches to AI development are **Thinking Humanly, Acting Humanly, Thinking Rationally, Acting Rationally**.
 
 ---
 
@@ -47,7 +47,7 @@ Timeline of "waves" and "winters" (Main ref: Wikipedia, Russell 2020):
 - **AI-driven typhoon forecasting (Taiwan)** — Taiwan's Central Weather Administration (CWA) partnered with NVIDIA to deploy AI models (e.g., CorrDiff); during Typhoon Koinu, these models forecast the storm's trajectory 5 days in advance
 
 ### AI in Banking
-- Various AI applications in banking/finance (fraud detection, automation, etc.)
+- Various AI applications in banking/finance (fraud detection, automation, etc. — per Jelvix video)
 
 ### Real or "Fake"? — Generative AI & Deepfakes
 - StyleGAN (Karras, Laine & Aila, 2019) — AI-generated photorealistic faces indistinguishable from real people; try it yourself at **whichfaceisreal.com**
@@ -63,3 +63,9 @@ Timeline of "waves" and "winters" (Main ref: Wikipedia, Russell 2020):
 
 ### AI in Machine Control
 - **Controlling Assistive Robots with Learned Latent Actions** (Stanford, 2019) — controlling a robotic grasp action along 1 degree of freedom via learned latent representations
+
+---
+
+## Next Week's Questions
+- How far can AI go?
+- What is Data Science?

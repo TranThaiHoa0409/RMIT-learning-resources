@@ -73,12 +73,103 @@ The "right thinking" approach — solving problems through logic:
 ---
 
 ## Week 2 — AI: Past and Present
-*(paste sections here)*
+
+**This week's question:** How was AI born & raised?
+
+**Recap from Week 1:** The four approaches to AI development are **Thinking Humanly, Acting Humanly, Thinking Rationally, Acting Rationally**.
+
+### 1. A Brief History of AI
+
+Timeline of "waves" and "winters" (Main ref: Wikipedia, Russell 2020):
+
+| Period | Era | Description | Key milestones |
+|---|---|---|---|
+| **1956** | Dartmouth Workshop | Formal inception of AI as an academic discipline | — |
+| **1950s–60s** | 1st Wave — Great Expectations | Focused on tasks seen as indicative of human intelligence (games, maths) | Lisp (McCarthy, 1958), Checkers program (Samuel, 1959), Perceptron machines (Rosenblatt, 1957–62) |
+| **1970s** | 1st Winter — A Dose of Reality | AI faced critiques & funding cuts | Problems: limited computing power, intractable problems, Moravec's paradox |
+| **1970s–80s** | 2nd Wave — Expert Systems | Programs answering domain-specific questions using logical rules from expert knowledge | DENDRAL (Buchanan et al., 1969), MYCIN (Shortliffe et al., 1972), XCON (McDermott, 1978) |
+| **1980s–90s** | 2nd Winter — Brittle Systems | Expert systems proved difficult to build/maintain for complex domains | — |
+| **Since 1990s** | 3rd Wave — Deep Learning | More data, faster compute, and better learning techniques revived neural networks | Deep Blue (IBM, 1997), Watson (IBM, 2011), AlphaGo (Google, 2015), ChatGPT (OpenAI, 2022) |
+
+> ⚠️ Note (per Hòa's correction): Dartmouth 1956 is the **inception point**, not part of Wave 1 — framework is **1 inception → 3 waves → 2 winters**.
+
+### 2. State-of-the-Art AI Applications
+
+**AI in Language & Communication**
+- Gemini 3.5 Live Translate (Google, June 2026) — near real-time speech-to-speech translation across 70+ languages
+- Microsoft 365 Interpreter Agent — real-time speech translation in Teams
+- Transcribe Glass — wearable live transcription device
+
+**AI in Computer Vision**
+- Google Lens (2017) — visual search/recognition from camera input
+- Google Translate — camera-based real-time text translation
+- Be My Eyes — AI-assisted visual support for blind/low-vision users
+- See & Spray (Blue River Technology) — AI agricultural robot for precision weed spraying
+- Food quality inspection (Solomon AI + 3D Vision), food safety tracking (Sodexo India), AI food scanners estimating nutrition (NBC News)
+
+**AI for a Better World**
+- Hungry Root — AI to cut food waste
+- Flood forecasting & sustainable flight routing
+- AI-enhanced bushfire detection (Tasmania) — Forico + Pano AI cameras across 173,000 hectares
+- Preventing train derailments (US) — Norfolk Southern automated inspection portals
+- AI-driven typhoon forecasting (Taiwan) — CWA + NVIDIA (CorrDiff), forecast Typhoon Koinu's trajectory 5 days ahead
+
+**AI in Banking**
+- Fraud detection, automation, etc.
+
+**Real or "Fake"? — Generative AI & Deepfakes**
+- StyleGAN (2019) & BigGAN (2018) — photorealistic AI-generated faces/images (try: whichfaceisreal.com)
+- Discussion prompt: Can AI "understand" image content, or just generate convincing pixels?
+- Deepfake example: fabricated "Obama" video (BBC News)
+
+**AI in Music**
+- Blind listening test: human-composed (John Williams, Hans Zimmer) vs. AI-composed (AIVA)
+
+**AI in Machine Control**
+- Controlling Assistive Robots with Learned Latent Actions (Stanford, 2019)
 
 ---
 
 ## Week 3 — In the Future with AI & Data Science
-*(paste sections here)*
+
+### 1. Human vs AI & How Far Can AI Go? (condensed)
+- **Landmark AI milestones:**
+  - Chess: Deep Blue (IBM) beat Garry Kasparov, 1997
+  - Jeopardy!: IBM Watson beat the two top champions, 2011
+  - Atari: DeepMind's Deep Q-learning mastered games from raw pixels via reinforcement learning
+  - Go: AlphaGo beat Ke Jie (2017); AlphaGo Zero learned purely via self-play (no human data), beat AlphaGo 100–0
+  - StarCraft II: AlphaStar beat pro player MaNa 5–0 (2019)
+  - MuZero: masters games without even being told the rules
+  - Debate: Project Debater vs. Harish Natarajan (2019) — rare case of a human win
+  - Also: surgical robotics, AI assistants/companions (Google Project Astra, Woebot, etc.) — raises "AI companions: cure or danger?"
+  - AI accelerating science: NLP model predicted materials years before discovery (Tshitoyan et al., 2019); AlphaTensor improved on Strassen's matrix-multiplication algorithm; AlphaEvolve (DeepMind)
+- **How far can AI go? (philosophical reflection):**
+  - Does "AI" have firm boundaries? What is intelligence/"artificial" vs. "natural"? "What am I?" (Buddhist Skandhas, Descartes' *"I think, therefore I am"*)
+  - Predicting AI's far future may require philosophy ("wisdom"), not just technology
+  - Key quotes: **Hawking** — AI could be the best or worst thing to happen to humanity; **Hinton** — hard to stop bad actors from misusing AI
+  - Leads into **Module 2: Ethics & Laws for AI**
+
+### 2. Introduction to Data Science
+
+#### What is Data Science?
+- "An interdisciplinary academic field that aims at extracting knowledge and insights from data." — Wikipedia
+- "Combines math and statistics, specialized programming, artificial intelligence (AI) and machine learning to uncover insights hidden in an organization's data." — IBM
+- Conceptually: **Data + Machine Learning**
+
+#### What is Data?
+- "A collection of discrete or continuous values that convey information, or sequences of symbols that may be further interpreted formally." — Wikipedia
+- Comes in many forms: tabular, text, audio, visual (images/video)
+
+#### Common Data Types
+
+| Type | Description | Typical Extensions | Common Tasks |
+|---|---|---|---|
+| **Tabular** | Organized into rows & columns (e.g., real-estate listings dataset shown: property type, price, area, district, etc.) | `.csv`, `.xlsx` | Feature/sample-based analysis |
+| **Textual** | Collections of writing: emails, social posts, website content; large collections = "text corpus" | `.txt` | Information Retrieval (IR), Natural Language Processing (NLP), Information Extraction (IE) |
+| **Audio** | Represents sound: speech, voice, songs | `.wav`, `.flac`, `.mp3` | Speech recognition, voice recognition, environmental sound recognition, text-to-speech |
+| **Image** | 2D or 3D visual data | `.jpeg`, `.png`, `.tiff` | Image classification, image retrieval, object recognition, segmentation |
+
+- Example datasets referenced: CIFAR-10, MNIST (images), CheXpert (chest X-rays), Waymo Dataset (autonomous-driving object tracking/LiDAR)
 
 ---
 
