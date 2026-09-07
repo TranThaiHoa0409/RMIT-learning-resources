@@ -76,8 +76,6 @@ The "right thinking" approach — solving problems through logic:
 
 **This week's question:** How was AI born & raised?
 
-**Recap from Week 1:** The four approaches to AI development are **Thinking Humanly, Acting Humanly, Thinking Rationally, Acting Rationally**.
-
 ### 1. A Brief History of AI
 
 Timeline of "waves" and "winters" (Main ref: Wikipedia, Russell 2020):
@@ -90,8 +88,6 @@ Timeline of "waves" and "winters" (Main ref: Wikipedia, Russell 2020):
 | **1970s–80s** | 2nd Wave — Expert Systems | Programs answering domain-specific questions using logical rules from expert knowledge | DENDRAL (Buchanan et al., 1969), MYCIN (Shortliffe et al., 1972), XCON (McDermott, 1978) |
 | **1980s–90s** | 2nd Winter — Brittle Systems | Expert systems proved difficult to build/maintain for complex domains | — |
 | **Since 1990s** | 3rd Wave — Deep Learning | More data, faster compute, and better learning techniques revived neural networks | Deep Blue (IBM, 1997), Watson (IBM, 2011), AlphaGo (Google, 2015), ChatGPT (OpenAI, 2022) |
-
-> ⚠️ Note (per Hòa's correction): Dartmouth 1956 is the **inception point**, not part of Wave 1 — framework is **1 inception → 3 waves → 2 winters**.
 
 ### 2. State-of-the-Art AI Applications
 
@@ -110,12 +106,11 @@ Timeline of "waves" and "winters" (Main ref: Wikipedia, Russell 2020):
 **AI for a Better World**
 - Hungry Root — AI to cut food waste
 - Flood forecasting & sustainable flight routing
-- AI-enhanced bushfire detection (Tasmania) — Forico + Pano AI cameras across 173,000 hectares
+- AI-enhanced bushfire detection
 - Preventing train derailments (US) — Norfolk Southern automated inspection portals
 - AI-driven typhoon forecasting (Taiwan) — CWA + NVIDIA (CorrDiff), forecast Typhoon Koinu's trajectory 5 days ahead
 
-**AI in Banking**
-- Fraud detection, automation, etc.
+**AI in Banking**: Fraud detection, automation, etc.
 
 **Real or "Fake"? — Generative AI & Deepfakes**
 - StyleGAN (2019) & BigGAN (2018) — photorealistic AI-generated faces/images (try: whichfaceisreal.com)
@@ -147,7 +142,6 @@ Timeline of "waves" and "winters" (Main ref: Wikipedia, Russell 2020):
   - Does "AI" have firm boundaries? What is intelligence/"artificial" vs. "natural"? "What am I?" (Buddhist Skandhas, Descartes' *"I think, therefore I am"*)
   - Predicting AI's far future may require philosophy ("wisdom"), not just technology
   - Key quotes: **Hawking** — AI could be the best or worst thing to happen to humanity; **Hinton** — hard to stop bad actors from misusing AI
-  - Leads into **Module 2: Ethics & Laws for AI**
 
 ### 2. Introduction to Data Science
 
@@ -174,7 +168,74 @@ Timeline of "waves" and "winters" (Main ref: Wikipedia, Russell 2020):
 ---
 
 ## Week 4 — Introduction to Machine Learning
-*(paste sections here)*
+
+### 1. Definitions of Machine Learning
+
+**Relationship to AI:** ML is a subfield of AI (alongside logic-based AI, search, etc.). Deep Learning (DL) is a subfield of ML that relies on Artificial Neural Networks, inspired by the human brain. Reinforcement Learning is another related branch.
+
+**Classic definitions:**
+- **Samuel (1959):** "Machine learning is a field of study that gives computers the ability to learn from experience without being explicitly programmed."
+- **Mitchell (1998):** "A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E."
+
+**Applying E/T/P — worked examples:** 
+- *Spam filter:* E = watching the user label emails as spam/not spam
+- *AI coding assistant:* T = the task the system performs (e.g., analyzing codebases / generating code suggestions)
+- *AI-designed plant-based meat:* P = objective health ratings (Health Star Rating) and/or subjective sensory panel scores
+
+**Key ML vocabulary** : Training data (training set), Sample/data point/instance, Feature/attribute, Performance measure
+
+**Popular performance measures:**
+- *Regression:* RMSE, MAE, R² score
+- *Classification:* Accuracy, F1-score
+
+### 2. Types of Machine Learning (by level of human supervision)
+
+**Supervised Learning** — uses **labeled data**
+- Classification (e.g., spam filtering, image classification), Regression (e.g., housing price prediction, weather forecasting)
+- Key algorithms: k-NN, Linear Regression, Logistic Regression, SVM, Decision Trees & Random Forests, Neural Networks
+
+**Unsupervised Learning** — uses **unlabeled data**
+- Clustering (K-Means, DBSCAN, HCA) — e.g., news article clustering, social network analysis, market segmentation
+- Anomaly detection (One-Class SVM, Isolation Forest)
+- Dimensionality reduction (PCA, LLE, t-SNE) — reduces dimensions while preserving essential structure
+- Association rule learning (Apriori, Eclat) — "if-then" patterns (e.g., bread → butter)
+
+**Reinforcement Learning** — agents learn via **rewards**. Examples: robots learning to walk, AlphaGo Zero.
+
+**Supervised vs. unsupervised — quick quiz examples:**
+- Spam filter with labeled emails → supervised
+- Grouping news articles about the same story → unsupervised (clustering)
+- Grouping customers into market segments → unsupervised (clustering)
+- Classifying diabetic/non-diabetic from labeled data → supervised
+- Grouping people into personality types with no predefined labels → unsupervised
+
+<br>
+
+> 💡 **Review tip — 4 basic ML types :**
+> - **Classification:** predicts discrete labels/classes (e.g., spam vs. not spam)
+> - **Regression:** predicts a continuous numeric value (e.g., house prices)
+> - **Clustering:** groups unlabeled data by similarity (unsupervised)
+> - **Reinforcement Learning:** agent learns via trial-and-error rewards/penalties
+
+### 3. Neural Networks: What's Inside the Box?
+
+**History:**
+- ANNs first introduced in 1943 (McCulloch & Pitts, "A Logical Calculus of Ideas Immanent in Nervous Activity")
+- 1958: Frank Rosenblatt's **Perceptron** — first trainable neural network; its inability to solve non-linear problems (e.g., XOR) contributed to the **1st AI Winter** (late 1960s)
+- ANNs are the foundation of the current (Deep Learning) wave of AI
+
+**Biological inspiration:** artificial neurons loosely modeled on biological neurons — inputs, weighted connections, activation/output signal.
+
+**Structure:** A feed-forward network with many hidden layers = **Deep Neural Network** → "Deep Learning." An ANN is a general function approximator.
+
+**The Math Behind a Neuron (advanced/optional):**
+`y = φ( x₁w₁ + x₂w₂ + x₃w₃ + b )`
+- Weighted sum (`x·w + b`) = **linear function** (straight lines/planes/hyperplanes)
+- **φ (activation function)** = non-linear function enabling curves/curved surfaces, not just straight lines
+
+**Popular activation functions:** Sigmoid, tanh, ReLU
+
+**Hands-on resource:** playground.tensorflow.org
 
 ---
 
