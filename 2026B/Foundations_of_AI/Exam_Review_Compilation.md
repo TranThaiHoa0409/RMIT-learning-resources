@@ -240,12 +240,168 @@ Timeline of "waves" and "winters" (Main ref: Wikipedia, Russell 2020):
 ---
 
 ## Week 5 — Ethics & Laws for AI
-*(paste sections here)*
+
+### 1. Why Do Ethics & Law Matter in AI?
+
+**Cautionary real-world cases (condensed):**
+- **"AI psychosis":** A Dutch IT consultant (2024) lost his marriage and over €100,000 after believing an AI chatbot was a sentient business partner/romantic interest.
+- **Human Line Project (2025):** documented 15 suicides, 90 hospitalizations, 6 arrests, over $1M spent — all tied to AI-related delusional episodes.
+- Stanford research: chatbots tend to be highly **sycophantic**, especially risky for people vulnerable to delusional thinking.
+- **Generative-AI CSAM reports to NCMEC** rose sharply: ~4,700 (2023) → ~67,000 (2024) → ~1.5 million (2025).
+- MIT study (Kosmyna et al., 2025): LLM-assisted essay writers performed worse than a "brain-only" group after 4 months — "**cognitive debt**."
+
+**Expert warnings:**
+- **Stephen Hawking:** AI "will either be the best thing that's ever happened to us, or... the worst thing... it very well may be the last thing."
+- **Geoffrey Hinton:** "It is hard to see how you can prevent the bad actors from using it for bad things."
+- Reference case: Microsoft's **Tay chatbot** (rapidly learned to produce offensive content).
+
+**Deepfake fraud cases:**
+- **2024, Hong Kong:** finance employee tricked into transferring **$25 million** via a video call where every participant (incl. the "CFO") was a deepfake.
+- **2026, Singapore:** a business professional lost **$4.9 million** to a scam using deepfakes of Singapore PM Lawrence Wong and other officials.
+- "**Deepfake-as-a-service**" platforms (e.g., "Haotian") — GAN-based real-time face-swapping, marketed as easy ("one-button"), able to defeat liveness checks.
+
+### 2. Ethics: Principles & Practical Usage
+
+**Three Main Approaches in Ethics**
+
+| Approach | Core Idea | Notes |
+|---|---|---|
+| **Virtue Ethics** | Emphasizes moral character/virtues (generosity, loving-kindness, courage, compassion) | Fits pre-industrial/simpler societies |
+| **Deontology** | Action is right if it follows accepted **rules** (school rules, company regs, laws) | Preserves societal stability. Ex: is running a red light right or wrong? |
+| **Consequentialism** | Action is right if its **result** is good | Same red-light example: right if it saves a life, wrong if it causes an accident. Open problem: how do we judge "good"? |
+
+**The Golden Rule**
+- Near-universal ethical principle across human traditions.
+- Endorsed by **143 leaders** of the world's major faiths (1993 "Declaration Toward a Global Ethic").
+- Core idea: *treat others as you would want to be treated; do not do to others what you would not want done to you.*
+
+**"Bad for others is bad; good for others is good" — simplified practical framework**
+- Running a red light to let an ambulance pass → **good** (helps others)
+- Vietnamese Criminal Code (Art. 132): failing to help someone in mortal danger when capable → punishable — legal duty tied to "harm to others"
+- Price-gouging on medical masks during COVID-19 → **bad**
+- General pattern: Killing, stealing, infidelity, lying, drunkenness → bad; saving lives, helping those in need, faithfulness, hard work, honesty → good
+
+**When outcomes are both good and bad**
+- Compare by **breadth** (how many affected) and **depth** (how severely affected).
+- **Trolley Problem:** save 5 by (1) switching a lever → kills 1 instead of 5, or (2) pushing 1 person off a bridge → same numeric tradeoff but more morally uncomfortable (direct physical harm).
+- Closing reflection: ethics frameworks focus on impact "for others" — but what about impact on **oneself**?
+
+> 💡 **Exam tip:** Be ready to classify a scenario under Virtue Ethics / Deontology / Consequentialism, and to apply the Golden Rule + "good/bad for others" framework to a novel case.
 
 ---
 
 ## Week 8 — Ethics & Laws for AI (cont.) / Policy Making
-*(paste sections here)*
+
+### 1. Recap — Golden Rule
+
+- **Golden Rule (summary):** *Good for others is good for yourself* (and vice versa).
+- Parallels across domains:
+  - **Newton's 3rd Law:** "To every action there is always opposed an equal reaction."
+  - **Karma / reciprocity idiom** across cultures — EN: *You reap what you sow*; VN: *Gieo nhân nào, gặt quả nấy* (also DE/FR/ES/ZH/TH/LO equivalents).
+- **Supporting evidence:** Dr. Eric S. Kim (Harvard) — study of ~12,998 U.S. adults found volunteering ≥100 hrs/year (vs. 0) was linked to lower mortality risk, better physical functioning, improved psychosocial outcomes (Kim et al., 2020, *American Journal of Preventive Medicine*).
+
+### 2. Laws in Data Science & AI
+
+**Regional/sector laws:**
+- **US:** sector-specific privacy laws — HIPAA (1996), COPPA (1998), FACTA (2003); plus negligence laws.
+- **EU — GDPR:** data analytics must be fair; permission required to process data; individuals can access/correct their data; accountability principle.
+- **OECD Fair Information Practices (1980):** Guidelines on Protection of Privacy & Transborder Flows of Personal Data, adopted by 38 countries; **8 principles**.
+
+**AI Governance Frameworks — two models:**
+
+| Region | Approach | Instrument |
+|---|---|---|
+| EU | Rules-based regulatory | Artificial Intelligence Act |
+| US | Innovation-driven | Executive Order No. 14110 |
+
+- **EU AI Act** — world's first comprehensive AI legal framework; risk-tiered:
+  - **Unacceptable Risk (Banned):** manipulates individuals without awareness, or exploits vulnerable groups (children, persons with disabilities).
+  - **High Risk (Strictly Regulated):** context-based (recruitment, grading, critical infrastructure); must prove safety/transparency/bias-mitigation compliance before market entry.
+  - **Penalty:** up to **7% of global annual turnover or €35 million**, whichever is higher.
+- **US Executive Order 14110** — signed by Biden (2023), **rescinded by Trump (2025)**. Relies on existing laws + standards (NIST). National-security framing: frontier developers must report training/red-teaming to Dept. of Commerce. Compliance voluntary in general, **mandatory for federal vendors**.
+- **Vietnam AI Law (No. 134/2025/QH15)** — effective 2026, **first legal AI framework in Southeast Asia**; similar risk-tiered structure to EU:
+  - **High Risk:** significant harm to life, health, public interest, national security.
+  - **Medium Risk:** can mislead/influence users unaware they're interacting with AI.
+  - **Low Risk:** everything else.
+  - Ethical framework: ensure safety; respect human rights/fairness/non-discrimination; promote well-being & sustainable development; encourage social responsibility in AI R&D.
+
+### 3. IRAC Method & Real Cases
+
+**IRAC (legal analysis framework):** **I**ssue → **R**ule → **A**pplication → **C**onclusion.
+
+**Case Study — Target "Pregnancy Prediction" (US, 2012)**
+- Target's analytics team built a pregnancy-prediction model from purchase patterns (unscented lotion, cotton balls, certain vitamins).
+- Accurate enough to identify a teenage girl's pregnancy **before her own father knew** (he complained after she received baby/crib coupons).
+- Core question: **Was personal data infringed?**
+
+**Case Study — Tesla Autopilot Fatal Crash (2016)**
+- Joshua Brown died when his Tesla Model S (Autopilot on) crashed into a tractor-trailer turning left on a Florida highway.
+- Cause: Autopilot failed to distinguish the trailer's white side against a bright sky — didn't brake, went under the trailer.
+- NHTSA opened a federal investigation; Tesla's position: Autopilot is a Level-2 "assist feature" — driver remains responsible.
+- Core question: **Whose fault — Tesla or the driver?**
+
+**Explainable AI (XAI)**
+- DARPA vision: ML systems should explain their rationale via human-computer interfaces that make model internals understandable.
+- Tools: Microsoft InterpretML, Grad-CAM (PyTorch explainability).
+- Response to the "black box" problem.
+
+### 4. Key Takeaways (exam-relevant)
+1. Golden Rule ≈ reciprocity ethics, cross-culturally universal, backed by empirical well-being research.
+2. AI/data laws differ by region: **US** = sector-specific privacy laws; **EU** = GDPR + risk-tiered AI Act; **Vietnam** = new risk-tiered AI Law (134/2025/QH15), modeled partly on the EU approach.
+3. Two governance philosophies: **EU = rules-based**, **US = innovation-driven/voluntary-but-market-enforced**.
+4. **IRAC** = standard method for AI-related legal/ethical case analysis.
+5. Target & Tesla cases illustrate the tension between data-driven personalization/automation and privacy/accountability.
+6. **XAI** addresses the "black box" problem — making AI decisions interpretable.
+
+---
+
+## Week 11 — AI for Work & Life
+
+### 1. Multimedia + AI
+- **Image:** upscaling (upscale.media, imgupscaler.com); object removal via brush (cleanup.pictures, Adobe Firefly) or prompt (chatgpt.com, gemini.google.com/app); color-changing (aiease.ai/app/ai-recolor); generation (gemini.google.com "Nano Banana", chatgpt.com, piclumen.com, canva.com/ai-image-generator; also Adobe Photoshop's built-in generator)
+- **Music:** suno.com, udio.com, elevenlabs.io, aiva.ai
+- **Video:** ai.byteplus.com/lumina, Adobe Firefly, Gemini video generation, CapCut
+
+### 2. Build Deep Learning Models (No-Code)
+- **Teachable Machine** (teachablemachine.withgoogle.com) — no-code DL training in the browser.
+- Core idea: training a classifier = collecting **labeled examples per class**; works the same way whether input is **image** (e.g., "Me" vs. "Bottle" vs. "Phone") or **audio/voice command** (e.g., "Open door" vs. "Open windows") — the tool handles feature extraction & training automatically.
+
+### 3. Task Automation
+- **No-code tools:** zapier.com, n8n.io, diaflow.io
+- Core concept: a **"Zap"** connects a **trigger** (e.g., new Facebook comment) → optional **AI step** (classify/generate data) → **action** (e.g., log to Google Sheet).
+- **Chatbot directive structure** (Zapier demo): **Objective** (role + allowed scope) + **Style** (tone) + **Other Rules** (language, topic restriction) — mirrors the **PARTS** prompt framework from Week 3.
+
+### 4. Other AI Tools
+
+**RAG Chatbots**
+- **RAG (Retrieval-Augmented Generation):** answers using a **specific knowledge base** (own PDFs/websites) instead of only general training knowledge.
+- Use cases: sales/marketing chatbots, tailored "personal experts." Tools: chatbase.co, voiceflow.com
+- Build workflow: create agent → add **Sources** (website + files) → write **system prompt** (persona, tone, language, and a hard rule: *only use provided sources, don't invent info*) → **deploy** via embeddable chat-bubble widget.
+- Testing: probe with in-scope questions (should answer from sources) and out-of-scope questions (should correctly decline).
+
+**Google AI Studio** (aistudio.google.com) — build simple apps/websites from natural-language prompts ("prompt-to-app"); iterate via follow-up edit prompts.
+
+**NotebookLM** (notebooklm.google.com) — research & "chat" with your own uploaded documents; a document-centric RAG use case.
+
+**Running AI Models Locally**
+
+| Pros | Cons |
+|---|---|
+| Security (less data-breach risk), Cost efficiency (no API/cloud fees), Offline access | Setup complexity (self-host), Maintenance cost (slower updates, IT support) |
+
+Tools: Ollama, LMStudio, AnythingLLM, GPT4All
+
+**AI Coding Tools** — Claude Code, Google Antigravity, Cursor, GitHub Copilot (write/understand/debug code faster)
+
+**AI Agents**
+> ⚠️ **Exam-relevant warning:** AI agents may expose systems to **severe security vulnerabilities** and cause **cognitive decay** by outsourcing critical human thinking.
+- Definition: autonomous platforms executing **complex, multi-step tasks** across local data/resources with **minimal human intervention**.
+- Examples: OpenClaw, Hermes Agent, Claude Cowork
+
+### 5. Course Wrap-Up (what the course covered)
+- **Knowledge:** AI approaches; history & future of AI; core AI concepts; ethics approaches.
+- **Tech skills:** ML projects (no-code & coding); writing ML reports.
+- **Soft skills:** problem-solving; teamwork & presentation; applying ethical principles.
 
 ---
 
