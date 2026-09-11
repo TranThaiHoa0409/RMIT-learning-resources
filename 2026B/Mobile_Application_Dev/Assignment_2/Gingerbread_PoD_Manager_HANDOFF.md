@@ -140,7 +140,7 @@ Tổng file trong repo: 153 file (135 file text + 18 file nhị phân). File han
 - Business logic đặt trong use case, không trong Worker/Service (giữ unit-testable).
 - Chỉ có **1** class `@Database` (`AppDatabase`) cho toàn app.
 
-### 3.2 Phụ thuộc chéo giữa feature (hiện tại, đã kiểm bằng grep)
+### 3.2 Phụ thuộc chéo giữa feature
 
 | Feature | Import từ feature khác |
 |---|---|
@@ -152,25 +152,24 @@ Tổng file trong repo: 153 file (135 file text + 18 file nhị phân). File han
 
 Ghi chú: `core/database/AppDatabase.kt` + `core/di/DatabaseModule.kt` import entity/DAO của `feature_pod` và `feature_sync` (để đăng ký vào database duy nhất) — đây là quy ước có chủ đích ghi trong docstring `AppDatabase`.
 
-### 3.3 Cây package (số dòng Kotlin, gồm cả file trong package)
+### 3.3 Cây package
 
 ```
-com.example.gingerbread_podmanager/          (main: 8,161 dòng; test + androidTest: 1,064 dòng; tổng 9,225)
+com.example.gingerbread_podmanager/
 ├── GingerbreadApp.kt           @HiltAndroidApp + Configuration.Provider (HiltWorkerFactory)
 ├── MainActivity.kt             splash, periodic sync, NetworkStateReceiver, intent từ notification
-├── navigation/NavGraph.kt      (330)  role gate + ShipperFlow + ManagerFlow + bottom nav
-├── di/                          (96)  ManifestModule.kt, SessionModule.kt
-├── core/                       (556)
-│   ├── common/.gitkeep, util/.gitkeep   (rỗng)
+├── navigation/NavGraph.kt      role gate + ShipperFlow + ManagerFlow + bottom nav
+├── di/                         ManifestModule.kt, SessionModule.kt
+├── core/                       
 │   ├── database/AppDatabase.kt, dao/DeliveryDao.kt, entity/DeliveryEntity.kt
 │   ├── di/DatabaseModule.kt, LocationModule.kt
 │   ├── domain/model/DeliveryStatus.kt, UserRole.kt
 │   └── theme/Color.kt, Theme.kt, Type.kt
-├── feature_manifest/  UC-01    (3,690)
-├── feature_tracking/  UC-02      (721)
-├── feature_pod/       UC-03    (1,507)
-├── feature_sync/      UC-04      (893)
-└── feature_auth/      Sprint 3   (243)
+├── feature_manifest/  
+├── feature_tracking/  
+├── feature_pod/       
+├── feature_sync/      
+└── feature_auth/      
 ```
 
 ### 3.4 Hilt modules
@@ -203,7 +202,7 @@ DAO:
 - `SignatureDao` / `PhotoDao`: `observeForDelivery(deliveryId)` **`ORDER BY capturedAtEpochMillis DESC`** (phần tử đầu = mới nhất — `ExportDeliveryCertificateUseCase` dựa vào điều này), `@Insert(REPLACE) insert`.
 - `SyncQueueDao`: `getByDeliveryId`, `getByStatus`, `getAll`, `@Insert(REPLACE) upsert` (bảng lá, không có con nên REPLACE không gây cascade).
 
-Enum dùng chung: `DeliveryStatus { PENDING, IN_TRANSIT, DELIVERED, FAILED }` (chỉ 1 bản ở `core/domain/model/`, không có `COMPLETED`). `SyncStatus { QUEUED, SYNCING, FAILED, DONE }`.
+Enum dùng chung: `DeliveryStatus { PENDING, IN_TRANSIT, DELIVERED, FAILED }`. `SyncStatus { QUEUED, SYNCING, FAILED, DONE }`.
 
 ### 4.2 DataStore Preferences
 
@@ -221,22 +220,22 @@ Enum dùng chung: `DeliveryStatus { PENDING, IN_TRANSIT, DELIVERED, FAILED }` (c
 
 ### 4.4 Dữ liệu mock của Manifest (`ManifestRepositoryImpl.createInitialMockStops()`)
 
-10 stop hardcode; mỗi stop có 2 package item (`item-01` … `item-20`), số điện thoại, special instructions.
+Manifest hiện sử dụng dữ liệu mock được hardcode để phục vụ việc demo và testing.
 
-| id | Order | Tracking | Người nhận | Địa chỉ | ETA |
-|---|---|---|---|---|---|
-| stop-01 | ORD-2026-0801 | PH-8201 | Nguyen Van Binh (Site Lead) | Landmark 81 Tower, Binh Thanh | 09:30 AM |
-| stop-02 | ORD-2026-0802 | PH-9042 | Tran Minh Quang (Bridge Project Mgr) | Thu Thiem 2 Bridge Site, Thu Duc | 11:00 AM |
-| stop-03 | ORD-2026-0803 | PH-5118 | Le Thi My Dung (Station Supervisor) | Ben Thanh Central Metro Station, D1 | 01:30 PM |
-| stop-04 | ORD-2026-0804 | PH-3294 | Pham Quoc Huy (Depot Logistician) | Phu My Hung Logistics Depot, D7 | 03:15 PM |
-| stop-05 | ORD-2026-0805 | PH-7750 | Doan Thanh Son (Laboratory Engineer) | High-Tech Park Innovation Center, Thu Duc | 04:45 PM |
-| stop-06 | ORD-2026-0806 | PH-6613 | Vo Thi Kim Ngan (Facilities Manager) | Vietcombank Tower, D1 | 05:15 PM |
-| stop-07 | ORD-2026-0807 | PH-4487 | Bui Trong Nghia (Terminal Operations Lead) | Cat Lai Port Container Terminal, Thu Duc | 05:50 PM |
-| stop-08 | ORD-2026-0808 | PH-2075 | Dang Hoai Thuong (Cargo Facility Engineer) | Tan Son Nhat Airport Cargo Terminal, Tan Binh | 06:20 PM |
-| stop-09 | ORD-2026-0809 | PH-8836 | Ngo Thi Bich Van (Urban Development Officer) | Sala Urban Area Administration Center, Thu Duc | 06:55 PM |
-| stop-10 | ORD-2026-0810 | PH-1259 | Ly Cong Duc (Plant Maintenance Chief) | Saigon Hi-Tech Park Water Treatment Plant, Thu Duc | 07:30 PM |
-
-ETA là chuỗi tĩnh, không tính từ GPS. Stop 06–10 được thêm ở Sprint 3 (08/09).
+- Mỗi `DeliveryStop` có các thông tin chính:
+  - `id`: mã stop.
+  - `orderNumber`: mã đơn hàng (dạng ORD-XXXX-XXXX)
+  - `trackingNumber`: mã tracking (dạng PH-XXXX) dùng cho OCR reconciliation.
+  - `recipientName`, `recipientPhone`: thông tin người nhận.
+  - `deliveryAddress`: địa chỉ giao hàng.
+  - `latitude`, `longitude`: tọa độ GPS.
+  - `stopOrder`: thứ tự giao hàng.
+  - `estimatedArrival`: thời gian dự kiến đến (chuỗi tĩnh, không tính từ GPS).
+  - `specialInstructions`: hướng dẫn đặc biệt cho tài xế.
+  - `status`: trạng thái giao hàng, mặc định là `PENDING`.
+  - `isVerifiedWithOcr`: trạng thái xác thực bằng OCR, mặc định là `false`.
+- Mỗi stop chứa một danh sách `PackageItem`, với mỗi item gồm: `id` , `name` , `quantity` , `weightKg` , `description`
+- Dữ liệu mock được dùng để khởi tạo `_stopsFlow` và đồng thời seed các thông tin cơ bản của delivery vào Room database.
 
 Ngoài ra còn 1 bản ghi placeholder: `id = "sample-delivery-001"`, `recipientName = "Sample Recipient"`, `address = "123 Sample St"`, `status = PENDING` — được `PodCaptureViewModel.ensureDeliveryExists()` tạo khi mở tab PoD trực tiếp.
 
@@ -256,11 +255,10 @@ Ngoài ra còn 1 bản ghi placeholder: `id = "sample-delivery-001"`, `recipient
    - `Ready(SHIPPER)` → `ShipperFlow`.
    - `Ready(MANAGER)` → `ManagerFlow`.
 
-### 5.1 Login / phân quyền (`feature_auth`, Sprint 3 — ngoài 4 UC gốc)
+### 5.1 Login / phân quyền (`feature_auth`)
 
-- **3 yêu cầu Hòa chốt trước khi code:** (1) có Logout để đổi role; (2) chỉ 2 nút chọn role, không có ô nhập, không phải auth thật; (3) tap notification tracking chỉ có tác dụng khi đang là Shipper.
 - `LoginScreen`: bọc trong `Surface(color = background)` (vì không nằm trong `Scaffold` — thiếu thì nền trắng). Tiêu đề "Gingerbread PoD Manager" + "Choose how you're using this device". 2 nút `Continue as Shipper` (`Button`) và `Continue as Manager` (`FilledTonalButton`), bo `RoundedCornerShape(20.dp)`, icon 32dp, chữ `headlineSmall`.
-- Chiều cao nút: `LocalConfiguration.current.screenHeightDp.dp * ROLE_BUTTON_SCREEN_HEIGHT_FRACTION`, tính **1 lần** rồi gán cho cả 2 nút. Hiện `ROLE_BUTTON_SCREEN_HEIGHT_FRACTION = 0.15f` (commit `9f572b7` "button size", 11/09; trước đó 0.25f — comment trong code vẫn nhắc "25%").
+- Chiều cao nút: `LocalConfiguration.current.screenHeightDp.dp * ROLE_BUTTON_SCREEN_HEIGHT_FRACTION`, tính **1 lần** rồi gán cho cả 2 nút. Hiện `ROLE_BUTTON_SCREEN_HEIGHT_FRACTION = 0.15f`.
 - `SessionViewModel.selectRole(role)` → `SessionRepository.setRole` (DataStore). `logout()` → `clearRole()` → quay về Login.
 - `ShipperFlow`: `Scaffold` + `CenterAlignedTopAppBar("Gingerbread PoD", actions = Logout)` + bottom nav 3 tab (Manifest / Tracking / PoD) + `NavHost` (start = `manifest`).
 - `ManagerFlow`: `Scaffold` + `CenterAlignedTopAppBar("Dispatcher Dashboard", actions = Logout)` + `DispatcherDashboardScreen`, không bottom nav.
