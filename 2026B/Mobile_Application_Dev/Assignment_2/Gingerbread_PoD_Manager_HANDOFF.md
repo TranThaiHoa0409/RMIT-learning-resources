@@ -459,29 +459,27 @@ Hai commit cuối (`9f572b7`, `5bc1619`) **không được ghi trong bất kỳ 
 
 ## 7. Quyết định đã chốt (không tự ý đổi lại)
 
-| # | Quyết định | Nguồn |
-|---|---|---|
-| 1 | Signature/Photo **1–nhiều** với Delivery (giữ lịch sử ký/chụp lại) | Sprint 1 |
-| 2 | `DeliveryStatus` chỉ 4 giá trị, không có `COMPLETED`; `DELIVERED` là trạng thái kích hoạt sync | Sprint 1 |
-| 3 | `imageFilePath` lưu **absolute path** | Sprint 1 |
-| 4 | Sync queue **1–1** với Delivery (sync cả delivery, không sync từng ảnh) | Sprint 1 |
-| 5 | Business logic nằm trong use case, Worker/Service chỉ là glue | Sprint 1 |
-| 6 | Khoá version chỉ nhóm toolchain (AGP/Kotlin/KSP/Hilt/ComposeBom/Room/MapsCompose); leaf dependency được đổi nhưng phải báo nhóm | Sprint 1–2 |
-| 7 | Shared entity/DAO đặt ở `core/`, feature chỉ phụ thuộc domain interface của nhau | Sprint 2 |
-| 8 | Merge order linh hoạt nếu phụ thuộc đã abstract qua interface | Sprint 2 |
-| 9 | Audit PR bằng `.diff` thật (thêm `.diff` vào URL PR; repo private nên Hòa copy text dán vào chat) + build + test sau MỖI lần merge | Sprint 2 |
-| 10 | Giữ mock Manifest + `StubDeliveryUploader`, ghi vào Readme thay vì làm backend trong những ngày cuối | Sprint 3 |
-| 11 | Tracking chỉ cần sống qua activity lifecycle, **không** cần sống qua OS kill process | Sprint 3 |
-| 12 | Không implement Directions API cho Tracking (polyline đường thẳng; nút Directions ở Manifest mở Google Maps app) | Sprint 3 |
-| 13 | Không thêm dòng "Delivered!" trên Tracking sau Complete (Tracking không biết trạng thái từng đơn) | Sprint 3 |
-| 14 | Không bắt buộc Stop Delivery Route trước khi Complete delivery | Sprint 3 |
-| 15 | Dashboard hiện **IN_TRANSIT + DELIVERED** (IN_TRANSIT trước); Export PDF chỉ cho DELIVERED; PENDING/FAILED ẩn | Sprint 3 (10/09) |
-| 16 | Giữ cơ chế placeholder `sample-delivery-001` (bỏ đi thì tab PoD mở trực tiếp sẽ lỗi FK), seed với status PENDING + banner cảnh báo | Sprint 3 |
-| 17 | `SIGNATURE_CANVAS_TEST_TAG = "signatureCanvas"` (bản `main`) | Sprint 3 (09/09) |
-| 18 | Role lưu bằng **DataStore**, không `rememberSaveable` (không sống qua kill app), không Room | Sprint 3 (10/09) |
-| 19 | Login không có ô nhập liệu; demo trên 1 máy, không đồng bộ đa thiết bị | Sprint 3 |
-| 20 | Readme nộp bài không ghi key thật khi đẩy repo; handoff này dùng placeholder | Sprint 3 + yêu cầu 11/09 |
-| 21 | Conventional Commits `type(scope): subject` + body gạch đầu dòng theo file | Suốt dự án |
+### Quyết định đã chốt
+
+1. Signature/Photo **1–nhiều** với Delivery (giữ lịch sử ký/chụp lại)
+2. `DeliveryStatus` chỉ 4 giá trị, không có `COMPLETED`; `DELIVERED` là trạng thái kích hoạt sync
+3. `imageFilePath` lưu **absolute path**
+4. Sync queue **1–1** với Delivery (sync cả delivery, không sync từng ảnh)
+5. Business logic nằm trong use case, Worker/Service chỉ là glue
+6. Khoá version chỉ nhóm toolchain (AGP/Kotlin/KSP/Hilt/ComposeBom/Room/MapsCompose); leaf dependency được đổi nhưng phải báo nhóm
+7. Shared entity/DAO đặt ở `core/`, feature chỉ phụ thuộc domain interface của nhau
+8. Merge order linh hoạt nếu phụ thuộc đã abstract qua interface
+9. Giữ mock Manifest + `StubDeliveryUploader`, ghi vào Readme thay vì làm backend trong những ngày cuối
+10. Tracking chỉ cần sống qua activity lifecycle, **không** cần sống qua OS kill process
+11. Không implement Directions API cho Tracking (polyline đường thẳng; nút Directions ở Manifest mở Google Maps app)
+12. Không thêm dòng "Delivered!" trên Tracking sau Complete (Tracking không biết trạng thái từng đơn)
+13. Không bắt buộc Stop Delivery Route trước khi Complete delivery
+14. Dashboard hiện **IN_TRANSIT + DELIVERED** (IN_TRANSIT trước); Export PDF chỉ cho DELIVERED; PENDING/FAILED ẩn
+15. Giữ cơ chế placeholder `sample-delivery-001` (bỏ đi thì tab PoD mở trực tiếp sẽ lỗi FK), seed với status PENDING + banner cảnh báo
+16. `SIGNATURE_CANVAS_TEST_TAG = "signatureCanvas"` (bản `main`)
+17. Role lưu bằng **DataStore**, không `rememberSaveable` (không sống qua kill app), không Room
+18. Login không có ô nhập liệu; demo trên 1 máy, không đồng bộ đa thiết bị
+19. Conventional Commits `type(scope): subject` + body gạch đầu dòng theo file
 
 ---
 
@@ -674,7 +672,7 @@ Nếu thiếu file nhị phân (ví dụ chép tay repo từ nguồn khác):
 
 ---
 
-## 14. Cây repo tổng thể (153 file)
+## 14. Cây repo tổng thể
 
 Toàn bộ file trong zip, trừ phần source Kotlin (chi tiết ở §15). Cột bên phải tóm tắt nội dung chính của từng file; file nhị phân ghi kèm dung lượng.
 
@@ -1276,7 +1274,3 @@ app/src/androidTest/java/com/example/gingerbread_podmanager/   (Compose UI test:
                       fun: setUp(), signatureCapture_drawThenSave_persistsSignatureAndResetsCanvas(),
                            signatureCapture_clearButton_removesDrawnStrokeWithoutSaving()
 ```
-
----
-
-*Hết file handoff. Nội dung diễn giải lấy từ source code trong zip và 16 tài liệu của Project; chỗ nào tài liệu không ghi được đánh dấu ❓.*
