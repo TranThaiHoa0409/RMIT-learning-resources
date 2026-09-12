@@ -607,13 +607,13 @@ MAPS_API_KEY=<YOUR_MAPS_API_KEY>
 
 ### 12.4 Mở & build
 
-1. Android Studio phiên bản hỗ trợ **AGP 9.2.1** (❓ tài liệu không ghi chính xác phiên bản Android Studio đã dùng).
+1. Android Studio phiên bản hỗ trợ **AGP 9.2.1**.
 2. Open thư mục repo → Gradle Sync. Gradle 9.7.1; JDK 21 toolchain được tải tự động qua foojay (`gradle-daemon-jvm.properties`).
-3. `./gradlew :app:assembleDebug` → mong đợi BUILD SUCCESSFUL (có vài warning deprecation, §9 mục 11).
+3. `./gradlew :app:assembleDebug` → mong đợi BUILD SUCCESSFUL.
 
-Nếu thiếu file nhị phân (ví dụ chép tay repo từ nguồn khác):
+Nếu thiếu file nhị phân:
 - `gradle/wrapper/gradle-wrapper.jar`: chạy `gradle wrapper --gradle-version 9.7.1` (cần Gradle cài sẵn) rồi khôi phục `gradle-wrapper.properties`, `gradlew`, `gradlew.bat` như bản gốc; hoặc copy jar từ một project Android Studio bất kỳ (phiên bản Gradle thực tế do `gradle-wrapper.properties` quyết định).
-- Icon `mipmap-*dpi/*.webp`: ⚠️ bắt buộc để build (manifest + adaptive icon tham chiếu). Tạo lại: chuột phải `res` → New → Image Asset → Launcher Icons, tên `ic_launcher`, Foreground = ảnh logo (pin + xe tải — ❓ ảnh gốc Hòa giữ), Background = Color `#92400E`. Image Asset Studio sẽ ghi đè `mipmap-anydpi-v26/ic_launcher*.xml` và `values/ic_launcher_background.xml` → khôi phục như bản gốc (bản gốc có dòng `<monochrome>`). Giữ nguyên `res/drawable/ic_launcher_foreground.xml` (notification dùng).
+- Icon `mipmap-*dpi/*.webp`: ⚠️ bắt buộc để build (manifest + adaptive icon tham chiếu). Tạo lại: chuột phải `res` → New → Image Asset → Launcher Icons, tên `ic_launcher`, Foreground = ảnh logo, Background = Color `#92400E`. Image Asset Studio sẽ ghi đè `mipmap-anydpi-v26/ic_launcher*.xml` và `values/ic_launcher_background.xml` → khôi phục như bản gốc (bản gốc có dòng `<monochrome>`). Giữ nguyên `res/drawable/ic_launcher_foreground.xml` (notification dùng).
 
 ### 12.5 Kiểm tra
 
@@ -694,8 +694,8 @@ assignment-2-group-gingerbread-mad-main/
         │       └── xml/
         │           ├── backup_rules.xml          template
         │           └── data_extraction_rules.xml template
-        ├── test/java/com/example/gingerbread_podmanager/          → §14 (5 file, 36 unit test)
-        └── androidTest/java/com/example/gingerbread_podmanager/   → §14 (1 file, 2 Compose UI test)
+        ├── test/java/com/example/gingerbread_podmanager/          → 5 file, 36 unit test
+        └── androidTest/java/com/example/gingerbread_podmanager/   → 1 file, 2 Compose UI test
 ```
 
 ---
@@ -705,92 +705,92 @@ assignment-2-group-gingerbread-mad-main/
 Quy ước: `val:` = property public/override · `fun:` = hàm public · `private:` = hàm private trong class · `@Composable:` = composable public · `private @Composable:` = composable nội bộ file · `top-level:` = hằng/biến cấp file · `[@…]` = annotation Hilt/Room chính. Data class ghi kèm danh sách field. Không liệt kê hàm cục bộ bên trong hàm/composable.
 
 ```
-app/src/main/java/com/example/gingerbread_podmanager/   (main: 8,161 dòng Kotlin)
-├── core/   (556 dòng)
+app/src/main/java/com/example/gingerbread_podmanager/
+├── core/
 │   ├── common/
 │   │   └── .gitkeep   (rỗng)
 │   ├── database/
 │   │   ├── dao/
-│   │   │   └── DeliveryDao.kt   (25 dòng)
+│   │   │   └── DeliveryDao.kt
 │   │   │           interface DeliveryDao  [@Dao]
 │   │   │             fun: getById(), upsert(), getByStatus(), observeAll(), getAll()
 │   │   ├── entity/
-│   │   │   └── DeliveryEntity.kt   (13 dòng)
+│   │   │   └── DeliveryEntity.kt
 │   │   │           data class DeliveryEntity(id, recipientName, address, status, createdAtEpochMillis)  [@Entity]
-│   │   └── AppDatabase.kt   (45 dòng)
+│   │   └── AppDatabase.kt
 │   │           abstract class AppDatabase
 │   │             fun: deliveryDao(), signatureDao(), photoDao(), syncQueueDao()
 │   │             companion object
 │   │               const: DATABASE_NAME
 │   ├── di/
-│   │   ├── DatabaseModule.kt   (46 dòng)
+│   │   ├── DatabaseModule.kt
 │   │   │       object DatabaseModule  [@Module]
 │   │   │         fun: provideAppDatabase(), provideDeliveryDao(), provideSignatureDao(), providePhotoDao(),
 │   │   │              provideSyncQueueDao()
-│   │   └── LocationModule.kt   (23 dòng)
+│   │   └── LocationModule.kt
 │   │           object LocationModule  [@Module]
 │   │             fun: provideFusedLocationProviderClient()
 │   ├── domain/
 │   │   └── model/
-│   │       ├── DeliveryStatus.kt   (15 dòng)
+│   │       ├── DeliveryStatus.kt
 │   │       │       enum class DeliveryStatus { PENDING, IN_TRANSIT, DELIVERED, FAILED }
-│   │       └── UserRole.kt   (15 dòng)
+│   │       └── UserRole.kt
 │   │               enum class UserRole { SHIPPER, MANAGER }
 │   ├── theme/
-│   │   ├── Color.kt   (218 dòng)
+│   │   ├── Color.kt
 │   │   │       70 top-level val màu Material 3 (bộ <role>Light + <role>Dark)
-│   │   ├── Theme.kt   (110 dòng)
+│   │   ├── Theme.kt
 │   │   │       @Composable: Gingerbread_PoDManagerTheme()
 │   │   │       top-level: LightColorScheme, DarkColorScheme
-│   │   └── Type.kt   (46 dòng)
+│   │   └── Type.kt
 │   │           top-level: fontProvider, interFont, displayFontFamily, outfitFont, bodyFontFamily, baseline, AppTypography
 │   └── util/
 │       └── .gitkeep   (rỗng)
-├── di/   (96 dòng)
-│   ├── ManifestModule.kt   (61 dòng)
+├── di/
+│   ├── ManifestModule.kt
 │   │       abstract class ManifestBindingModule  [@Module]
 │   │         fun: bindManifestRepository()
 │   │       object ManifestUseCaseModule  [@Module]
 │   │         fun: provideGetManifestUseCase(), provideGetStopDetailUseCase(), provideVerifyTrackingNumberUseCase(),
 │   │              provideUpdateStopStatusUseCase(), provideVerifyStopOcrUseCase()
-│   └── SessionModule.kt   (35 dòng)
+│   └── SessionModule.kt
 │           object SessionDataStoreModule  [@Module]
 │             fun: provideSessionDataStore()
 │           abstract class SessionBindingModule  [@Module]
 │             fun: bindSessionRepository()
 │           top-level: Context.sessionDataStore
-├── feature_auth/   (243 dòng, Sprint 3 · Login/role)
+├── feature_auth/   (Sprint 3 · Login/role)
 │   ├── data/
 │   │   └── repository/
-│   │       └── SessionRepositoryImpl.kt   (34 dòng)
+│   │       └── SessionRepositoryImpl.kt
 │   │               class SessionRepositoryImpl
 │   │                 val: userRole
 │   │                 fun: setRole(), clearRole()
 │   │               top-level: KEY_USER_ROLE
 │   ├── domain/
 │   │   └── repository/
-│   │       └── SessionRepository.kt   (25 dòng)
+│   │       └── SessionRepository.kt
 │   │               interface SessionRepository
 │   │                 val: userRole
 │   │                 fun: setRole(), clearRole()
 │   └── presentation/
-│       ├── LoginScreen.kt   (133 dòng)
+│       ├── LoginScreen.kt
 │       │       @Composable: LoginScreen()
 │       │       top-level: ROLE_BUTTON_SCREEN_HEIGHT_FRACTION, ROLE_BUTTON_ICON_SIZE, ROLE_BUTTON_SHAPE
-│       └── SessionViewModel.kt   (51 dòng)
+│       └── SessionViewModel.kt
 │               sealed interface SessionUiState
 │                 └ Loading · Ready
 │               class SessionViewModel  [@HiltViewModel]
 │                 val: uiState
 │                 fun: selectRole(), logout()
-├── feature_manifest/   (3,690 dòng, UC-01 · Member A)
+├── feature_manifest/   (UC-01 · Member A)
 │   ├── data/
 │   │   ├── ocr/
-│   │   │   └── OcrScanner.kt   (74 dòng)
+│   │   │   └── OcrScanner.kt
 │   │   │           class OcrScanner  [@Singleton]
 │   │   │             fun: scanBitmap(), scanImageProxy()
 │   │   └── repository/
-│   │       └── ManifestRepositoryImpl.kt   (448 dòng)
+│   │       └── ManifestRepositoryImpl.kt
 │   │               class ManifestRepositoryImpl  [@Singleton]
 │   │                 fun: getDeliveryStops(), getDeliveryStopById(), updateStopStatus(), markStopOcrVerified()
 │   │                 private: seedInitialStopsIntoDatabase(), observeRoomDeliveryStatusUpdates()
@@ -798,284 +798,284 @@ app/src/main/java/com/example/gingerbread_podmanager/   (main: 8,161 dòng Kotli
 │   │                   private: createInitialMockStops()
 │   ├── domain/
 │   │   ├── model/
-│   │   │   ├── DeliveryStop.kt   (25 dòng)
+│   │   │   ├── DeliveryStop.kt
 │   │   │   │       data class DeliveryStop(id, orderNumber, trackingNumber, recipientName, recipientPhone, deliveryAddress,
 │   │   │   │         latitude, longitude, stopOrder, estimatedArrival, specialInstructions, items, status, isVerifiedWithOcr)
-│   │   │   ├── OcrVerificationResult.kt   (44 dòng)
+│   │   │   ├── OcrVerificationResult.kt
 │   │   │   │       sealed class OcrVerificationResult
 │   │   │   │         ├ Match(matchedTrackingNumber, rawRecognizedText, matchedStop)
 │   │   │   │         ├ WrongStopMatch(matchedTrackingNumber, rawRecognizedText, actualStop, expectedStop)
 │   │   │   │         ├ Mismatch(expectedTrackingNumber, foundCandidates, rawRecognizedText)
 │   │   │   │         ├ NotFoundInManifest(scannedTrackingNumber, foundCandidates, rawRecognizedText)
 │   │   │   │         └ NoTextFound(message)
-│   │   │   └── PackageItem.kt   (13 dòng)
+│   │   │   └── PackageItem.kt
 │   │   │           data class PackageItem(id, name, quantity, weightKg, description)
 │   │   ├── repository/
-│   │   │   └── ManifestRepository.kt   (16 dòng)
+│   │   │   └── ManifestRepository.kt
 │   │   │           interface ManifestRepository
 │   │   │             fun: getDeliveryStops(), getDeliveryStopById(), updateStopStatus(), markStopOcrVerified()
 │   │   └── usecase/
-│   │       ├── GetManifestUseCase.kt   (16 dòng)
+│   │       ├── GetManifestUseCase.kt
 │   │       │       class GetManifestUseCase
 │   │       │         fun: invoke()
-│   │       ├── GetStopDetailUseCase.kt   (16 dòng)
+│   │       ├── GetStopDetailUseCase.kt
 │   │       │       class GetStopDetailUseCase
 │   │       │         fun: invoke()
-│   │       ├── UpdateStopStatusUseCase.kt   (15 dòng)
+│   │       ├── UpdateStopStatusUseCase.kt
 │   │       │       class UpdateStopStatusUseCase
 │   │       │         fun: invoke()
-│   │       ├── VerifyStopOcrUseCase.kt   (14 dòng)
+│   │       ├── VerifyStopOcrUseCase.kt
 │   │       │       class VerifyStopOcrUseCase
 │   │       │         fun: invoke()
-│   │       └── VerifyTrackingNumberUseCase.kt   (151 dòng)
+│   │       └── VerifyTrackingNumberUseCase.kt
 │   │               class VerifyTrackingNumberUseCase
 │   │                 fun: invoke()
 │   │                 private: normalizeCode()
 │   └── presentation/
 │       ├── components/
-│       │   ├── DeliveryPinMarker.kt   (109 dòng)
+│       │   ├── DeliveryPinMarker.kt
 │       │   │       @Composable: DeliveryPinMarker()
-│       │   ├── ManifestSearchBar.kt   (338 dòng)
+│       │   ├── ManifestSearchBar.kt
 │       │   │       @Composable: ManifestSearchBar()
 │       │   │       private @Composable: SearchSuggestionItem()
-│       │   ├── OcrScannerDialog.kt   (670 dòng)
+│       │   ├── OcrScannerDialog.kt
 │       │   │       @Composable: OcrScannerDialog()
 │       │   │       private @Composable: CameraLivePreview()
 │       │   │       private fun: createMockLabelBitmap()
-│       │   ├── StopDetailSheet.kt   (495 dòng)
+│       │   ├── StopDetailSheet.kt
 │       │   │       @Composable: StopDetailSheet()
-│       │   ├── StopListItem.kt   (251 dòng)
+│       │   ├── StopListItem.kt
 │       │   │       @Composable: StopListItem()
-│       │   └── StopStatusChip.kt   (60 dòng)
+│       │   └── StopStatusChip.kt
 │       │           @Composable: StopStatusChip()
 │       ├── model/
-│       │   └── DeliveryStopClusterItem.kt   (24 dòng)
+│       │   └── DeliveryStopClusterItem.kt
 │       │           data class DeliveryStopClusterItem(stop)
 │       │             val: position, title, snippet, zIndex
-│       ├── ManifestScreen.kt   (593 dòng)
+│       ├── ManifestScreen.kt
 │       │       @Composable: ManifestScreen()
 │       │       private @Composable: SelectedStopQuickCard()
-│       ├── ManifestUiState.kt   (40 dòng)
+│       ├── ManifestUiState.kt
 │       │       data class ManifestUiState(stops, selectedStop, isLoading, errorMessage, isDetailSheetVisible,
 │       │         isOcrScannerVisible, isOcrProcessing, ocrResult, isListView, searchQuery)
 │       │         val: filteredStops, completedCount, totalCount
-│       └── ManifestViewModel.kt   (278 dòng)
+│       └── ManifestViewModel.kt
 │               class ManifestViewModel  [@HiltViewModel]
 │                 val: uiState
 │                 fun: selectStop(), openStopDetail(), closeStopDetail(), openOcrScanner(), openQuickScan(), closeOcrScanner(),
 │                      switchToStop(), processOcrBitmap(), processOcrImageProxy(), confirmManualVerification(),
 │                      updateStopStatus(), toggleViewMode(), onSearchQueryChange(), clearErrorMessage()
 │                 private: loadManifest()
-├── feature_pod/   (1,507 dòng, UC-03 · Member C)
+├── feature_pod/   (UC-03 · Member C)
 │   ├── data/
 │   │   ├── local/
 │   │   │   ├── dao/
-│   │   │   │   ├── PhotoDao.kt   (18 dòng)
+│   │   │   │   ├── PhotoDao.kt
 │   │   │   │   │       interface PhotoDao  [@Dao]
 │   │   │   │   │         fun: observeForDelivery(), insert()
-│   │   │   │   └── SignatureDao.kt   (18 dòng)
+│   │   │   │   └── SignatureDao.kt
 │   │   │   │           interface SignatureDao  [@Dao]
 │   │   │   │             fun: observeForDelivery(), insert()
 │   │   │   ├── entity/
-│   │   │   │   ├── PhotoEntity.kt   (29 dòng)
+│   │   │   │   ├── PhotoEntity.kt
 │   │   │   │   │       data class PhotoEntity(id, deliveryId, imageFilePath, capturedAtEpochMillis, latitude, longitude)
-│   │   │   │   └── SignatureEntity.kt   (29 dòng)
+│   │   │   │   └── SignatureEntity.kt
 │   │   │   │           data class SignatureEntity(id, deliveryId, imageFilePath, capturedAtEpochMillis, latitude, longitude)
 │   │   │   ├── location/
-│   │   │   │   ├── FusedLocationProvider.kt   (50 dòng)
+│   │   │   │   ├── FusedLocationProvider.kt
 │   │   │   │   │       class FusedLocationProvider
 │   │   │   │   │         fun: getLastKnownLocation()
 │   │   │   │   │         private: hasLocationPermission()
-│   │   │   │   └── TrackingAwareLocationProvider.kt   (21 dòng)
+│   │   │   │   └── TrackingAwareLocationProvider.kt
 │   │   │   │           class TrackingAwareLocationProvider
 │   │   │   │             fun: getLastKnownLocation()
 │   │   │   └── storage/
-│   │   │       ├── FilePhotoStore.kt   (26 dòng)
+│   │   │       ├── FilePhotoStore.kt
 │   │   │       │       class FilePhotoStore
 │   │   │       │         fun: createOutputFilePath()
-│   │   │       └── FileSignatureImageStore.kt   (28 dòng)
+│   │   │       └── FileSignatureImageStore.kt
 │   │   │               class FileSignatureImageStore
 │   │   │                 fun: savePng()
 │   │   ├── mapper/
-│   │   │   └── PodMappers.kt   (71 dòng)
+│   │   │   └── PodMappers.kt
 │   │   │           fun: DeliveryEntity.toDomain(), Delivery.toEntity(), SignatureEntity.toDomain(), Signature.toEntity(),
 │   │   │                PhotoEntity.toDomain(), Photo.toEntity()
 │   │   └── repository/
-│   │       └── PodRepositoryImpl.kt   (46 dòng)
+│   │       └── PodRepositoryImpl.kt
 │   │               class PodRepositoryImpl
 │   │                 fun: getDelivery(), getDeliveriesByStatus(), saveDelivery(), observeSignatures(), observePhotos(),
 │   │                      saveSignature(), savePhoto()
 │   ├── di/
-│   │   └── PodModule.kt   (38 dòng)
+│   │   └── PodModule.kt
 │   │           abstract class PodModule  [@Module]
 │   │             fun: bindPodRepository(), bindLocationProvider(), bindSignatureImageStore(), bindPhotoFileStore()
 │   ├── domain/
 │   │   ├── model/
-│   │   │   ├── Delivery.kt   (16 dòng)
+│   │   │   ├── Delivery.kt
 │   │   │   │       data class Delivery(id, recipientName, address, status, createdAtEpochMillis)
-│   │   │   ├── GeoPoint.kt   (11 dòng)
+│   │   │   ├── GeoPoint.kt
 │   │   │   │       data class GeoPoint(latitude, longitude)
-│   │   │   ├── Photo.kt   (12 dòng)
+│   │   │   ├── Photo.kt
 │   │   │   │       data class Photo(id, deliveryId, imageFilePath, capturedAtEpochMillis, location)
-│   │   │   └── Signature.kt   (14 dòng)
+│   │   │   └── Signature.kt
 │   │   │           data class Signature(id, deliveryId, imageFilePath, capturedAtEpochMillis, location)
 │   │   ├── repository/
-│   │   │   ├── LocationProvider.kt   (13 dòng)
+│   │   │   ├── LocationProvider.kt
 │   │   │   │       interface LocationProvider
 │   │   │   │         fun: getLastKnownLocation()
-│   │   │   ├── PhotoFileStore.kt   (13 dòng)
+│   │   │   ├── PhotoFileStore.kt
 │   │   │   │       interface PhotoFileStore
 │   │   │   │         fun: createOutputFilePath()
-│   │   │   ├── PodRepository.kt   (29 dòng)
+│   │   │   ├── PodRepository.kt
 │   │   │   │       interface PodRepository
 │   │   │   │         fun: getDelivery(), getDeliveriesByStatus(), saveDelivery(), observeSignatures(), observePhotos(),
 │   │   │   │              saveSignature(), savePhoto()
-│   │   │   └── SignatureImageStore.kt   (14 dòng)
+│   │   │   └── SignatureImageStore.kt
 │   │   │           interface SignatureImageStore
 │   │   │             fun: savePng()
 │   │   └── usecase/
-│   │       ├── CompleteDeliveryUseCase.kt   (43 dòng)
+│   │       ├── CompleteDeliveryUseCase.kt
 │   │       │       class CompleteDeliveryUseCase
 │   │       │         fun: invoke()
 │   │       │         sealed class Result
 │   │       │           └ Success · Failure
-│   │       ├── SavePhotoUseCase.kt   (32 dòng)
+│   │       ├── SavePhotoUseCase.kt
 │   │       │       class SavePhotoUseCase
 │   │       │         fun: invoke()
-│   │       └── SaveSignatureUseCase.kt   (32 dòng)
+│   │       └── SaveSignatureUseCase.kt
 │   │               class SaveSignatureUseCase
 │   │                 fun: invoke()
 │   └── presentation/
 │       ├── photo/
-│       │   ├── CameraPreview.kt   (59 dòng)
+│       │   ├── CameraPreview.kt
 │       │   │       @Composable: CameraPreview()
-│       │   ├── PhotoCaptureScreen.kt   (111 dòng)
+│       │   ├── PhotoCaptureScreen.kt
 │       │   │       @Composable: PhotoCaptureScreen()
 │       │   │       top-level: PREVIEW_HEIGHT_DP
-│       │   └── PhotoCaptureViewModel.kt   (92 dòng)
+│       │   └── PhotoCaptureViewModel.kt
 │       │           data class PhotoCaptureUiState(isCapturing, lastSavedPhoto, error)
 │       │           class PhotoCaptureViewModel  [@HiltViewModel]
 │       │             val: uiState
 │       │             fun: capturePhoto(), dismissError()
 │       │             private: onPhotoWritten()
 │       ├── signature/
-│       │   ├── SignatureCanvas.kt   (67 dòng)
+│       │   ├── SignatureCanvas.kt
 │       │   │       @Composable: SignatureCanvas()
-│       │   ├── SignatureCanvasState.kt   (39 dòng)
+│       │   ├── SignatureCanvasState.kt
 │       │   │       class SignatureCanvasState
 │       │   │         val: strokes, hasStrokes
 │       │   │         fun: beginStroke(), appendToCurrentStroke(), clear()
-│       │   ├── SignatureCaptureScreen.kt   (136 dòng)
+│       │   ├── SignatureCaptureScreen.kt
 │       │   │       @Composable: SignatureCaptureScreen()
 │       │   │       top-level: SIGNATURE_STROKE_WIDTH_DP, SIGNATURE_CANVAS_TEST_TAG, SIGNATURE_CANVAS_SHAPE
-│       │   ├── SignatureCaptureViewModel.kt   (66 dòng)
+│       │   ├── SignatureCaptureViewModel.kt
 │       │   │       data class SignatureCaptureUiState(isSaving, lastSavedSignature, error)
 │       │   │       class SignatureCaptureViewModel  [@HiltViewModel]
 │       │   │         val: uiState
 │       │   │         fun: saveSignature(), consumeSavedSignature(), dismissError()
-│       │   ├── SignaturePathUtil.kt   (35 dòng)
+│       │   ├── SignaturePathUtil.kt
 │       │   │       fun: buildSmoothPath()
-│       │   └── SignatureRasterizer.kt   (48 dòng)
+│       │   └── SignatureRasterizer.kt
 │       │           fun: SignatureCanvasState.rasterizeToBitmap(), Bitmap.toPngBytes()
-│       ├── PodCaptureScreen.kt   (168 dòng)
+│       ├── PodCaptureScreen.kt
 │       │       @Composable: PodCaptureScreen()
 │       │       top-level: SAMPLE_DELIVERY_ID
-│       └── PodCaptureViewModel.kt   (83 dòng)
+│       └── PodCaptureViewModel.kt
 │               data class PodCaptureUiState(isCompleting, isCompleted, completionError)
 │               class PodCaptureViewModel  [@HiltViewModel]
 │                 val: uiState
 │                 fun: ensureDeliveryExists(), completeDelivery(), dismissCompletionError()
-├── feature_sync/   (893 dòng, UC-04 · Member D (Hòa))
+├── feature_sync/   (UC-04 · Member D (Hòa))
 │   ├── data/
 │   │   ├── local/
 │   │   │   ├── dao/
-│   │   │   │   └── SyncQueueDao.kt   (22 dòng)
+│   │   │   │   └── SyncQueueDao.kt
 │   │   │   │           interface SyncQueueDao  [@Dao]
 │   │   │   │             fun: getByDeliveryId(), getByStatus(), getAll(), upsert()
 │   │   │   └── entity/
-│   │   │       └── SyncQueueEntity.kt   (33 dòng)
+│   │   │       └── SyncQueueEntity.kt
 │   │   │               data class SyncQueueEntity(id, deliveryId, status, retryCount, lastAttemptEpochMillis)
 │   │   ├── mapper/
-│   │   │   └── SyncMappers.kt   (28 dòng)
+│   │   │   └── SyncMappers.kt
 │   │   │           fun: SyncQueueEntity.toDomain(), SyncQueueItem.toEntity()
 │   │   ├── pdf/
-│   │   │   └── AndroidPdfGenerator.kt   (180 dòng)
+│   │   │   └── AndroidPdfGenerator.kt
 │   │   │           class AndroidPdfGenerator
 │   │   │             fun: generateDeliveryCertificate()
 │   │   │             private: aspectFitRect(), loadRotatedBitmap(), saveToMediaStoreDownloads(), saveToLegacyDownloadsDir()
 │   │   ├── receiver/
-│   │   │   └── NetworkStateReceiver.kt   (26 dòng)
+│   │   │   └── NetworkStateReceiver.kt
 │   │   │           class NetworkStateReceiver
 │   │   │             fun: onReceive()
 │   │   ├── repository/
-│   │   │   └── SyncRepositoryImpl.kt   (26 dòng)
+│   │   │   └── SyncRepositoryImpl.kt
 │   │   │           class SyncRepositoryImpl
 │   │   │             fun: getQueueItem(), getItemsByStatus(), getAllItems(), saveItem()
 │   │   ├── upload/
-│   │   │   └── StubDeliveryUploader.kt   (17 dòng)
+│   │   │   └── StubDeliveryUploader.kt
 │   │   │           class StubDeliveryUploader
 │   │   │             fun: upload()
 │   │   └── worker/
-│   │       └── SyncWorker.kt   (36 dòng)
+│   │       └── SyncWorker.kt
 │   │               class SyncWorker  [@HiltWorker]
 │   │                 fun: doWork()
 │   ├── di/
-│   │   └── SyncModule.kt   (29 dòng)
+│   │   └── SyncModule.kt
 │   │           abstract class SyncModule  [@Module]
 │   │             fun: bindSyncRepository(), bindDeliveryUploader(), bindPdfGenerator()
 │   ├── domain/
 │   │   ├── model/
-│   │   │   ├── SyncQueueItem.kt   (14 dòng)
+│   │   │   ├── SyncQueueItem.kt
 │   │   │   │       data class SyncQueueItem(id, deliveryId, status, retryCount, lastAttemptEpochMillis)
-│   │   │   └── SyncStatus.kt   (11 dòng)
+│   │   │   └── SyncStatus.kt
 │   │   │           enum class SyncStatus { QUEUED, SYNCING, FAILED, DONE }
 │   │   ├── repository/
-│   │   │   ├── DeliveryUploader.kt   (11 dòng)
+│   │   │   ├── DeliveryUploader.kt
 │   │   │   │       interface DeliveryUploader
 │   │   │   │         fun: upload()
-│   │   │   ├── PdfGenerator.kt   (22 dòng)
+│   │   │   ├── PdfGenerator.kt
 │   │   │   │       interface PdfGenerator
 │   │   │   │         fun: generateDeliveryCertificate()
-│   │   │   └── SyncRepository.kt   (15 dòng)
+│   │   │   └── SyncRepository.kt
 │   │   │           interface SyncRepository
 │   │   │             fun: getQueueItem(), getItemsByStatus(), getAllItems(), saveItem()
 │   │   └── usecase/
-│   │       ├── EnqueuePendingDeliveriesUseCase.kt   (34 dòng)
+│   │       ├── EnqueuePendingDeliveriesUseCase.kt
 │   │       │       class EnqueuePendingDeliveriesUseCase
 │   │       │         fun: invoke()
-│   │       ├── ExportDeliveryCertificateUseCase.kt   (39 dòng)
+│   │       ├── ExportDeliveryCertificateUseCase.kt
 │   │       │       class ExportDeliveryCertificateUseCase
 │   │       │         fun: invoke()
 │   │       │         sealed class Result
 │   │       │           └ Success · Failure
-│   │       └── ProcessSyncQueueUseCase.kt   (39 dòng)
+│   │       └── ProcessSyncQueueUseCase.kt
 │   │               class ProcessSyncQueueUseCase
 │   │                 fun: invoke()
 │   └── presentation/
-│       ├── DispatcherDashboardScreen.kt   (200 dòng)
+│       ├── DispatcherDashboardScreen.kt
 │       │       @Composable: DispatcherDashboardScreen()
 │       │       private @Composable: DriverStatusCard(), DeliveryRow()
 │       │       top-level: IN_TRANSIT_LABEL_COLOR
-│       └── DispatcherDashboardViewModel.kt   (111 dòng)
+│       └── DispatcherDashboardViewModel.kt
 │               data class DashboardDeliveryRow(delivery, syncStatus)
 │               data class DashboardUiState(isLoading, isSyncing, rows, lastExportedPdfPath, error)
 │               class DispatcherDashboardViewModel  [@HiltViewModel]
 │                 val: uiState, isDriverTracking, driverCurrentLocation
 │                 fun: refresh(), syncNow(), exportCertificate(), dismissError()
-├── feature_tracking/   (721 dòng, UC-02 · Member B)
+├── feature_tracking/   (UC-02 · Member B)
 │   ├── data/
 │   │   ├── notification/
-│   │   │   └── TrackingNotificationHelper.kt   (55 dòng)
+│   │   │   └── TrackingNotificationHelper.kt
 │   │   │           object TrackingNotificationHelper
 │   │   │             const: CHANNEL_ID, NOTIFICATION_ID, EXTRA_OPEN_TRACKING
 │   │   │             fun: ensureChannel(), buildNotification()
 │   │   ├── repository/
-│   │   │   └── LocationTrackingRepositoryImpl.kt   (100 dòng)
+│   │   │   └── LocationTrackingRepositoryImpl.kt
 │   │   │           class LocationTrackingRepositoryImpl  [@Singleton]
 │   │   │             val: isTracking, currentLocation, destinationLabel, destinationLocation
 │   │   │             fun: startTracking(), stopTracking(), updateDestination()
 │   │   └── service/
-│   │       └── DeliveryTrackingService.kt   (101 dòng)
+│   │       └── DeliveryTrackingService.kt
 │   │               class DeliveryTrackingService  [@AndroidEntryPoint]
 │   │                 val: fusedLocationClient, currentLocation
 │   │                 fun: onCreate(), onStartCommand(), onBind(), onDestroy()
@@ -1085,32 +1085,32 @@ app/src/main/java/com/example/gingerbread_podmanager/   (main: 8,161 dòng Kotli
 │   │                 companion object
 │   │                   const: EXTRA_DESTINATION_LABEL, LOCATION_INTERVAL_MS
 │   ├── di/
-│   │   └── TrackingModule.kt   (21 dòng)
+│   │   └── TrackingModule.kt
 │   │           abstract class TrackingModule  [@Module]
 │   │             fun: bindLocationTrackingRepository()
 │   ├── domain/
 │   │   ├── model/
-│   │   │   ├── DestinationPoint.kt   (7 dòng)
+│   │   │   ├── DestinationPoint.kt
 │   │   │   │       data class DestinationPoint(latitude, longitude)
-│   │   │   └── TrackedLocation.kt   (8 dòng)
+│   │   │   └── TrackedLocation.kt
 │   │   │           data class TrackedLocation(latitude, longitude, timestampEpochMillis)
 │   │   └── repository/
-│   │       └── LocationTrackingRepository.kt   (31 dòng)
+│   │       └── LocationTrackingRepository.kt
 │   │               interface LocationTrackingRepository
 │   │                 val: isTracking, currentLocation, destinationLabel, destinationLocation
 │   │                 fun: startTracking(), stopTracking(), updateDestination()
 │   └── presentation/
-│       ├── TrackingScreen.kt   (309 dòng)
+│       ├── TrackingScreen.kt
 │       │       @Composable: TrackingScreen()
 │       │       private @Composable: TrackingStatusCard()
 │       │       private fun: formatElapsed(), formatLocation()
 │       │       top-level: PLACEHOLDER_DESTINATION, DEFAULT_CAMERA_TARGET, FOLLOW_ZOOM
-│       └── TrackingViewModel.kt   (89 dòng)
+│       └── TrackingViewModel.kt
 │               class TrackingViewModel  [@HiltViewModel]
 │                 val: isTracking, currentLocation, destinationLabel, destinationLocation, elapsedSeconds
 │                 fun: startDeliveryRoute(), stopDeliveryRoute(), updateDestination()
-├── navigation/   (330 dòng)
-│   └── NavGraph.kt   (330 dòng)
+├── navigation/
+│   └── NavGraph.kt
 │           sealed class Screen
 │             data object Manifest
 │             data object Tracking
@@ -1124,10 +1124,10 @@ app/src/main/java/com/example/gingerbread_podmanager/   (main: 8,161 dòng Kotli
 │           @Composable: AppNavGraph()
 │           private @Composable: ShipperFlow(), ManagerFlow(), LogoutAction(), ShipperBottomNavigationBar()
 │           top-level: PLACEHOLDER_DELIVERY_ID
-├── GingerbreadApp.kt   (27 dòng)
+├── GingerbreadApp.kt
 │       class GingerbreadApp  [@HiltAndroidApp]
 │         val: workerFactory, workManagerConfiguration
-└── MainActivity.kt   (98 dòng)
+└── MainActivity.kt
         class MainActivity  [@AndroidEntryPoint]
           fun: onCreate(), onNewIntent(), onStart(), onStop()
           private: handleIntent(), enqueuePeriodicSync()
@@ -1137,7 +1137,7 @@ app/src/test/java/com/example/gingerbread_podmanager/   (unit test JVM: 36 test)
 ├── feature_manifest/
 │   ├── domain/
 │   │   └── usecase/
-│   │       └── VerifyTrackingNumberUseCaseTest.kt   (189 dòng)
+│   │       └── VerifyTrackingNumberUseCaseTest.kt
 │   │               class VerifyTrackingNumberUseCaseTest
 │   │                 fun:
 │   │                   - setUp()
@@ -1153,7 +1153,7 @@ app/src/test/java/com/example/gingerbread_podmanager/   (unit test JVM: 36 test)
 │   │                   - `invoke without expected tracking number returns NotFoundInManifest when not found`
 │   │                 private: createSampleStop()
 │   └── presentation/
-│       └── ManifestViewModelTest.kt   (167 dòng)
+│       └── ManifestViewModelTest.kt
 │               class ManifestViewModelTest
 │                 fun:
 │                   - setUp()
@@ -1169,7 +1169,7 @@ app/src/test/java/com/example/gingerbread_podmanager/   (unit test JVM: 36 test)
 ├── feature_pod/
 │   └── domain/
 │       └── usecase/
-│           └── CompleteDeliveryUseCaseTest.kt   (131 dòng)
+│           └── CompleteDeliveryUseCaseTest.kt
 │                   class FakePodRepository
 │                     fun: getDelivery(), getDeliveriesByStatus(), saveDelivery(), observeSignatures(), observePhotos(),
 │                          saveSignature(), savePhoto()
@@ -1184,7 +1184,7 @@ app/src/test/java/com/example/gingerbread_podmanager/   (unit test JVM: 36 test)
 └── feature_sync/
     ├── domain/
     │   └── usecase/
-    │       └── ProcessSyncQueueUseCaseTest.kt   (102 dòng)
+    │       └── ProcessSyncQueueUseCaseTest.kt
     │               class FakeSyncRepository
     │                 fun: getQueueItem(), getItemsByStatus(), getAllItems(), saveItem()
     │               class FakeDeliveryUploader
@@ -1198,7 +1198,7 @@ app/src/test/java/com/example/gingerbread_podmanager/   (unit test JVM: 36 test)
     │                   - `DONE items are not reprocessed`
     │                   - `multiple queued items are processed independently`
     └── presentation/
-        └── DispatcherDashboardViewModelTest.kt   (305 dòng)
+        └── DispatcherDashboardViewModelTest.kt
                 class FakePodRepository
                   fun: getDelivery(), getDeliveriesByStatus(), saveDelivery(), observeSignatures(), observePhotos(),
                        saveSignature(), savePhoto()
@@ -1229,7 +1229,7 @@ app/src/androidTest/java/com/example/gingerbread_podmanager/   (Compose UI test:
 └── feature_pod/
     └── presentation/
         └── signature/
-            └── SignatureCaptureScreenTest.kt   (170 dòng)
+            └── SignatureCaptureScreenTest.kt
                     class FakePodRepository
                       fun: getDelivery(), getDeliveriesByStatus(), saveDelivery(), observeSignatures(), observePhotos(),
                            saveSignature(), savePhoto()
