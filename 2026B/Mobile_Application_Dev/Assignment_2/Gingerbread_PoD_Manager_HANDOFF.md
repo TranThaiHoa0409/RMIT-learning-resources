@@ -15,10 +15,9 @@ Tổng file trong repo: 153 file (135 file text + 18 file nhị phân). File han
 - **§9 Những điểm QUAN TRỌNG cần lưu ý**: các cảnh báo, rủi ro, chỗ dễ gây lỗi nếu không biết, gồm cả phần chưa xác minh.
 - **§10 Test**: danh sách file test, loại test, số lượng, phạm vi; lệnh chạy test.
 - **§11 Giới hạn đã biết & việc chưa làm**: những gì cố ý không làm hoặc chưa làm, và ý tưởng tương lai chưa quyết định.
-- **§12 Trạng thái nộp bài**: checklist các thành phần cần nộp (README, APK, video, code, tag, zip) và mức xác nhận được.
-- **§13**: hướng dẫn dựng lại project từ source (repo GitHub hoặc zip) + bước kiểm tra.
-- **§14**: cây repo tổng thể (file cấu hình, resource, nhị phân).
-- **§15**: cây source Kotlin chi tiết — mỗi file liệt kê class, fun, @Composable, field của data class.
+- **§12**: hướng dẫn dựng lại project từ source (repo GitHub hoặc zip) + bước kiểm tra.
+- **§13**: cây repo tổng thể (file cấu hình, resource, nhị phân).
+- **§14**: cây source Kotlin chi tiết — mỗi file liệt kê class, fun, @Composable, field của data class.
 
 ---
 
@@ -309,7 +308,7 @@ Ngoài ra còn 1 bản ghi placeholder: `id = "sample-delivery-001"`, `recipient
 - `TrackingStatusCard`: "Tracking"/"Idle", "Heading to: …", "Elapsed: mm:ss", "Lat: …, Lng: …" hoặc "Waiting for GPS fix...".
 - Bản đồ: marker vị trí hiện tại + marker đích (màu cam) + `Polyline` **đường thẳng** 2 điểm (không dùng Directions API — quyết định bỏ qua).
 - Camera: lần có GPS đầu tiên sau khi bắt đầu/đổi đích → `newLatLngBounds(current, destination, 120)` 1 lần (`hasShownRouteOverview`, `remember(effectiveDestinationLatLng)`); các lần sau → follow `newLatLngZoom(current, FOLLOW_ZOOM = 17f)`, animate 600ms.
-- Đầu màn hình có `Text("Active Navigation & Delivery Mode")` (xem ❓ §9 mục 10).
+- Đầu màn hình có `Text("Active Navigation & Delivery Mode")`.
 
 **`TrackingViewModel`:** mirror `isTracking`, `currentLocation`, `destinationLabel`, `destinationLocation` từ repository (`stateIn WhileSubscribed(5_000)`). Bộ đếm `elapsedSeconds` nằm ở ViewModel (ticker `delay(1_000)` chạy khi `isTracking = true`, reset 0 khi dừng) → sống qua chuyển tab; là stopwatch thuần, không liên quan GPS.
 
@@ -483,7 +482,7 @@ Hai commit cuối (`9f572b7`, `5bc1619`) **không được ghi trong bất kỳ 
 
 ---
 
-## 8. Bug đã sửa & root cause (bài học quan trọng)
+## 8. Bug đã sửa & root cause
 
 | # | Triệu chứng | Root cause | Fix |
 |---|---|---|---|
@@ -504,7 +503,7 @@ Hai commit cuối (`9f572b7`, `5bc1619`) **không được ghi trong bất kỳ 
 | 15 | Tiêu đề Dashboard lặp 2 lần | TopAppBar của ManagerFlow + Text trong screen | Bỏ Text trong screen |
 | 16 | Mất state tab khi quay lại (Sprint 2) | `saveState` bất đối xứng ở bottom nav | `saveState = true` luôn, chỉ `restoreState` quyết định |
 | 17 | Build lỗi `incompatible metadata version` (Sprint 1) | Đổi version lẻ tẻ giữa các lần sửa | Đổi đồng bộ cả nhóm version, Invalidate Caches |
-| 18 | Import `hiltViewModel` sai package (Sprint 1) | Báo cáo Sprint 1 ghi package `androidx.hilt.lifecycle.viewmodel.compose` "không tồn tại" | Đổi sang `androidx.hilt.navigation.compose`. Sprint 2 xác nhận package kia hợp lệ với `hiltNavigationCompose = 1.4.0` (§9 mục 12) |
+| 18 | Import `hiltViewModel` sai package (Sprint 1) | Báo cáo Sprint 1 ghi package `androidx.hilt.lifecycle.viewmodel.compose` "không tồn tại" | Đổi sang `androidx.hilt.navigation.compose`. Sprint 2 xác nhận package kia hợp lệ với `hiltNavigationCompose = 1.4.0` (§9 mục 10) |
 | 19 | Lint error API level | `saveToMediaStoreDownloads()` dùng API 29 | `@RequiresApi(Build.VERSION_CODES.Q)` — ⚠️ dễ sót khi đọc diff |
 | 20 | `FakePodRepository` thiếu method mới (Sprint 1) | Interface thêm hàm nhưng fake test chưa cập nhật | Implement trong fake — **lặp lại y hệt ở §9 mục 1** |
 
@@ -512,7 +511,7 @@ Hai commit cuối (`9f572b7`, `5bc1619`) **không được ghi trong bất kỳ 
 
 ## 9. ⚠️ Những điểm QUAN TRỌNG cần lưu ý
 
-1. ⚠️ **Unit test hiện KHÔNG compile (repo gốc).** Commit `5bc1619` thêm method abstract `updateDestination(destinationLabel: String, destinationLocation: DestinationPoint?)` vào `LocationTrackingRepository`, nhưng `FakeLocationTrackingRepository` trong `app/src/test/.../feature_sync/presentation/DispatcherDashboardViewModelTest.kt` không override → `./gradlew :app:testDebugUnitTest` fail compile. `assembleDebug` không bị ảnh hưởng. **Cách sửa** — thêm vào `FakeLocationTrackingRepository`, ngay sau `stopTracking()`:
+1. ⚠️ **Unit test hiện KHÔNG compile.** Có method abstract `updateDestination` trong `LocationTrackingRepository`, nhưng `FakeLocationTrackingRepository` trong `DispatcherDashboardViewModelTest.kt` không override → `./gradlew :app:testDebugUnitTest` fail compile. `assembleDebug` không bị ảnh hưởng. **Cách sửa** — thêm vào `FakeLocationTrackingRepository`, ngay sau `stopTracking()`:
 
    ```kotlin
        override fun updateDestination(destinationLabel: String, destinationLocation: DestinationPoint?) {
@@ -521,45 +520,31 @@ Hai commit cuối (`9f572b7`, `5bc1619`) **không được ghi trong bất kỳ 
        }
    ```
 
-   Đã kiểm bằng `kotlinc 2.2.10` khi lập handoff (biên dịch riêng class fake + interface thật, stub `kotlinx.coroutines.flow`): bản gốc báo lỗi `class 'FakeLocationTrackingRepository' is not abstract and does not implement abstract member`; bản đã thêm override biên dịch thành công. ❓ Chưa chạy toàn bộ test suite (môi trường lập handoff không có Android SDK) — sau khi sửa cần chạy `./gradlew :app:testDebugUnitTest` để xác nhận 36/36. Chưa áp lên repo GitHub.
+2. ⚠️ **Room không có Migration và cũng không có `fallbackToDestructiveMigration()`.**  Hệ quả: đổi bất kỳ entity nào mà không bump `version` + thêm `Migration` → app crash khi mở DB trên máy đã cài bản cũ. Cách tạm khi dev: xoá app data / gỡ app.
 
-2. ⚠️ **Room không có Migration và cũng không có `fallbackToDestructiveMigration()`.** `README.txt` ghi "destructive fallback only" là **không đúng với code** (`DatabaseModule` chỉ gọi `Room.databaseBuilder(...).build()`). Hệ quả: đổi bất kỳ entity nào mà không bump `version` + thêm `Migration` → app crash khi mở DB trên máy đã cài bản cũ. Cách tạm khi dev: xoá app data / gỡ app.
-
-3. ⚠️ **Không đổi `DeliveryDao.upsert` về `@Insert(REPLACE)`** (xem §8 bug #1).
+3. ⚠️ **Không đổi `DeliveryDao.upsert` về `@Insert(REPLACE)`**.
 
 4. ⚠️ **Hằng số placeholder bị khai báo 2 nơi:** `PLACEHOLDER_DELIVERY_ID` (`NavGraph.kt`) và `SAMPLE_DELIVERY_ID` (`PodCaptureScreen.kt`) đều = `"sample-delivery-001"`, không share constant. Đổi 1 chỗ phải đổi chỗ kia.
 
-5. ⚠️ **Nhóm version khoá** (§2.1): không nâng AGP/Kotlin/KSP/Hilt/ComposeBom/Room/MapsCompose lẻ tẻ; AGP bị giới hạn bởi phiên bản Android Studio.
+5. ⚠️ **Nhóm version khoá**: không nâng AGP/Kotlin/KSP/Hilt/ComposeBom/Room/MapsCompose lẻ tẻ; AGP bị giới hạn bởi phiên bản Android Studio.
 
-6. ⚠️ **Maps API key restrict theo package + SHA-1 debug** (Sprint 0). Máy mới có debug keystore khác → SHA-1 khác → bản đồ trắng cho tới khi thêm SHA-1 đó vào key trên Google Cloud Console (project `gingerbread-podmanager-2026b`). ❓ Không có tài liệu ghi SHA-1 của keystore release đã được thêm hay chưa.
+6. ⚠️ **Maps API key restrict theo package + SHA-1 debug**. Máy mới có debug keystore khác → SHA-1 khác → bản đồ trắng cho tới khi thêm SHA-1 đó vào key trên Google Cloud Console (project `gingerbread-podmanager-2026b`).
 
-7. ⚠️ **`restoreState` của bottom nav cố ý loại Manifest và Tracking** — đừng "sửa cho đồng nhất", sẽ làm tái hiện bug #8.
+7. ⚠️ **`restoreState` của bottom nav cố ý loại Manifest và Tracking** — đừng "sửa cho đồng nhất".
 
-8. ❓ **Notification có thể giữ tên stop cũ:** `updateDestination()` chỉ đổi StateFlow trong repository, không gửi lại intent cho `DeliveryTrackingService`, nên text "Heading to: …" trên notification vẫn là stop lúc bấm Start. Quan sát từ code, chưa kiểm chứng trên máy.
+8. ❓ **Notification có thể giữ tên stop cũ:** `updateDestination()` chỉ đổi StateFlow trong repository, không gửi lại intent cho `DeliveryTrackingService`, nên text "Heading to: …" trên notification vẫn là stop lúc bấm Start.
 
-9. ❓ **Dashboard có thể hiển thị dữ liệu cũ sau khi đổi role:** `DispatcherDashboardViewModel` được lấy bằng `hiltViewModel()` ngoài NavHost → scope theo Activity; `refresh()` chỉ chạy trong `init` và sau `syncNow()`, không có `LaunchedEffect` refresh khi màn hình hiện lại. Nếu đã vào Manager trước đó trong cùng phiên Activity, rồi Logout → Shipper giao hàng → Logout → Manager, danh sách có thể chưa cập nhật cho tới khi bấm Sync now. Quan sát từ code, chưa kiểm chứng.
+9. **Dashboard có thể hiển thị dữ liệu cũ sau khi đổi role:** `DispatcherDashboardViewModel` được lấy bằng `hiltViewModel()` ngoài NavHost → scope theo Activity; `refresh()` chỉ chạy trong `init` và sau `syncNow()`, không có `LaunchedEffect` refresh khi màn hình hiện lại. Nếu đã vào Manager trước đó trong cùng phiên Activity, rồi Logout → Shipper giao hàng → Logout → Manager, danh sách có thể chưa cập nhật cho tới khi bấm Sync now. Quan sát từ code, chưa kiểm chứng.
 
-10. ❓ **Header Tracking:** debug notes ghi đã xoá header "UC-02: Active Navigation & Delivery Mode" (commit `2c777e0`), nhưng code hiện tại vẫn có `Text("Active Navigation & Delivery Mode")` + `Spacer` ở đầu `TrackingScreen` (không có tiền tố "UC-02:"). Không rõ là giữ có chủ đích hay quay lại qua merge (như bug #5).
+10. `hiltViewModel` dùng 2 package khác nhau: `androidx.hilt.lifecycle.viewmodel.compose` (`ManifestScreen`, `PodCaptureScreen`, `TrackingScreen`) và `androidx.hilt.navigation.compose` (các file còn lại). Cả hai hợp lệ với `hilt-navigation-compose 1.4.0`, không phải lỗi.
 
-11. `LoginScreen.kt`: comment vẫn nói "25%" nhưng `ROLE_BUTTON_SCREEN_HEIGHT_FRACTION = 0.15f`.
+11. Deprecation còn tồn (không ảnh hưởng chức năng): `CONNECTIVITY_ACTION`, `hiltViewModel` cũ, `rememberMarkerState`, `LocalLifecycleOwner`, `quadraticBezierTo`.
 
-12. `hiltViewModel` dùng 2 package khác nhau: `androidx.hilt.lifecycle.viewmodel.compose` (`ManifestScreen`, `PodCaptureScreen`, `TrackingScreen`) và `androidx.hilt.navigation.compose` (các file còn lại). Cả hai hợp lệ với `hilt-navigation-compose 1.4.0`, không phải lỗi.
+12. `InitializationProvider` bị gỡ toàn bộ trong manifest — nếu thêm thư viện dựa vào App Startup cần xem lại.
 
-13. Deprecation còn tồn (không ảnh hưởng chức năng): `CONNECTIVITY_ACTION`, `hiltViewModel` cũ, `rememberMarkerState`, `LocalLifecycleOwner`, `quadraticBezierTo`.
+13. Docstring `StubDeliveryUploader` nhắc "UC-01's Retrofit client" — thực tế repo không có Retrofit.
 
-14. `InitializationProvider` bị gỡ toàn bộ trong manifest (§2.3) — nếu thêm thư viện dựa vào App Startup cần xem lại.
-
-15. Docstring `StubDeliveryUploader` nhắc "UC-01's Retrofit client" — thực tế repo không có Retrofit.
-
-16. `README.txt` (mục TECH STACK) liệt kê Turbine, MockK nhưng không test nào dùng; mục UNIMPLEMENTED còn dòng "destructive fallback only" sai (mục 2).
-
-17. `gingerbread_PoD.apk` được commit vào repo dù `.gitignore` có `*.apk` (đã force-add). Kiểm tra file APK: có APK Signing Block v2+, manifest không có `debuggable` → là **bản release đã ký** (không phải debug key). ❓ Keystore không có trong repo/tài liệu — muốn phát hành bản cùng chữ ký phải hỏi Hòa.
-
-18. Trong zip, `gradlew` không có quyền thực thi (còn `gradlew.bat` lại có) — do cách GitHub export zip; trên macOS/Linux cần `chmod +x gradlew`. Toàn bộ file text dùng line ending LF, mã hoá UTF-8.
-
-19. `app/.gitignore` loại thêm thư mục `Assignment Info Docs/` (tài liệu đề bài của thành viên, không có trong repo).
-
-20. Tài liệu có nhắc `Demo_Video_Script.md` nhưng file này **không có** trong Project. Các tag `v0.2`/`v0.3`/`v0.4`/`v1.0-submission` ❓ không xác nhận được (không có `.git`).
+14. `README.txt` (mục TECH STACK) liệt kê Turbine, MockK nhưng không test nào dùng; mục UNIMPLEMENTED còn dòng "destructive fallback only" sai.
 
 ---
 
@@ -567,14 +552,14 @@ Hai commit cuối (`9f572b7`, `5bc1619`) **không được ghi trong bất kỳ 
 
 | File | Loại | Số test | Phạm vi |
 |---|---|---|---|
-| `feature_manifest/domain/usecase/VerifyTrackingNumberUseCaseTest.kt` | JVM | 10 | Match (exact/noisy/lowercase/order no.), Mismatch, NoTextFound, WrongStopMatch (tracking/order), manifest match không expected, NotFoundInManifest |
-| `feature_manifest/presentation/ManifestViewModelTest.kt` | JVM | 8 | load 10 stop, select, search, update status, manual verify, open scanner, switchToStop, quick scan |
-| `feature_pod/domain/usecase/CompleteDeliveryUseCaseTest.kt` | JVM | 4 | not found, thiếu chữ ký, thiếu ảnh, thành công |
-| `feature_sync/domain/usecase/ProcessSyncQueueUseCaseTest.kt` | JVM | 5 | DONE, FAILED + retry, retry thành công, DONE không xử lý lại, nhiều item |
-| `feature_sync/presentation/DispatcherDashboardViewModelTest.kt` ⚠️ | JVM | 9 | IN_TRANSIT + DELIVERED, ẩn PENDING/FAILED, sync status null, driver tracking, location, syncNow, export ok/lỗi, dismissError |
-| `androidTest/.../SignatureCaptureScreenTest.kt` | Compose UI (thiết bị/emulator) | 2 | `signatureCapture_drawThenSave_persistsSignatureAndResetsCanvas`, `signatureCapture_clearButton_removesDrawnStrokeWithoutSaving` |
+| `VerifyTrackingNumberUseCaseTest.kt` | JVM | 10 | Match (exact/noisy/lowercase/order no.), Mismatch, NoTextFound, WrongStopMatch (tracking/order), manifest match không expected, NotFoundInManifest |
+| `ManifestViewModelTest.kt` | JVM | 8 | load 10 stop, select, search, update status, manual verify, open scanner, switchToStop, quick scan |
+| `CompleteDeliveryUseCaseTest.kt` | JVM | 4 | not found, thiếu chữ ký, thiếu ảnh, thành công |
+| `ProcessSyncQueueUseCaseTest.kt` | JVM | 5 | DONE, FAILED + retry, retry thành công, DONE không xử lý lại, nhiều item |
+| `DispatcherDashboardViewModelTest.kt` ⚠️ | JVM | 9 | IN_TRANSIT + DELIVERED, ẩn PENDING/FAILED, sync status null, driver tracking, location, syncNow, export ok/lỗi, dismissError |
+| `SignatureCaptureScreenTest.kt` | Compose UI (thiết bị/emulator) | 2 | `signatureCapture_drawThenSave_persistsSignatureAndResetsCanvas`, `signatureCapture_clearButton_removesDrawnStrokeWithoutSaving` |
 
-Tổng: **36 unit test + 2 UI test** (unit test chỉ chạy được sau khi sửa §9 mục 1). Fake in-memory, không dùng mocking library. Không có test cho `feature_auth` (chấp nhận rủi ro). UI test không cover Photo (CameraX khó automate).
+Tổng: **36 unit test + 2 UI test**. Fake in-memory, không dùng mocking library. Không có test cho `feature_auth`. UI test không cover Photo (CameraX khó automate).
 
 Lệnh: `./gradlew :app:testDebugUnitTest`, `./gradlew :app:connectedDebugAndroidTest`.
 
@@ -586,7 +571,7 @@ Lệnh: `./gradlew :app:testDebugUnitTest`, `./gradlew :app:connectedDebugAndroi
 |---|---|---|
 | 1 | Order list UC-01 thật (Retrofit) | Không làm — mock 10 stop |
 | 2 | Uploader thật | Stub luôn thành công |
-| 3 | Room Migration | Chưa có (và không có fallback — §9 mục 2) |
+| 3 | Room Migration | Chưa có (và không có fallback) |
 | 4 | Directions API cho Tracking | Chủ động bỏ |
 | 5 | Tracking sống qua OS kill | Ngoài scope; `elapsedSeconds` luôn về 0 khi Activity bị huỷ thật |
 | 6 | Test cho `feature_auth` | Chưa có |
@@ -594,35 +579,17 @@ Lệnh: `./gradlew :app:testDebugUnitTest`, `./gradlew :app:connectedDebugAndroi
 | 8 | Dọn deprecation | Chưa |
 | 9 | Dashboard hiển thị ảnh chữ ký/ảnh trực tiếp | Không có — dispatcher xem qua PDF |
 
-**Ý tưởng tương lai (chưa quyết định, `claude_Future_Consideration_MockAPI_DynamicManifest.md`):** chuyển Manifest sang Mock API (kiểu mockapi.io) để thêm stop không cần build lại APK + đồng bộ đa máy. Cần: Retrofit/OkHttp + DTO + mapper + loading/error state; cache Room cho offline (lại cần mở rộng `DeliveryEntity` — hiện thiếu toạ độ, tracking number, items — và Migration); dữ liệu phải giữ định dạng `PH-XXXX`, `ORD-YYYY-NNNN` để không phá OCR reconciliation; rủi ro uptime/rate limit dịch vụ miễn phí. Kết luận tạm (10/09): giữ mock cho lần nộp, cân nhắc sau.
+**Ý tưởng tương lai:** chuyển Manifest sang Mock API để thêm stop không cần build lại APK + đồng bộ đa máy. Cần: Retrofit/OkHttp + DTO + mapper + loading/error state; cache Room cho offline (lại cần mở rộng `DeliveryEntity` — hiện thiếu toạ độ, tracking number, items — và Migration); dữ liệu phải giữ định dạng `PH-XXXX`, `ORD-YYYY-NNNN` để không phá OCR reconciliation; rủi ro uptime/rate limit dịch vụ miễn phí.
 
 ---
 
-## 12. Trạng thái nộp bài (theo những gì kiểm chứng được)
+## 12. Hướng dẫn dựng lại project
 
-| Mục | Trạng thái |
-|---|---|
-| `README.txt` (Student ID, tên, tính năng, tech, unimplemented, how to run, video) | ✅ Có trong repo (thư mục gốc). Lưu ý 2 chỗ không khớp code (§9 mục 2, 16) |
-| APK | ✅ `gingerbread_PoD.apk` trong repo, release đã ký (§9 mục 17) |
-| Link video demo | ✅ `https://youtu.be/9v506T4fR0c` (❓ thời lượng/nội dung USP không kiểm chứng được) |
-| Code cuối trên `main` | ✅ Zip là export nhánh `main` và chứa code của PR #21–#23 |
-| Tag `v1.0-submission` | ❓ |
-| File `.zip` nộp Canvas | ❓ |
-| Lịch sử commit của cả 4 thành viên | ✅ Có commit riêng của A, B, C, D (theo `Commit_Log.md` của Project; tóm tắt ở §6) |
+### 12.1 Lấy source
 
----
+**Repo GitHub** (ưu tiên — giữ lịch sử commit + file nhị phân gốc): `git clone` repo private `RMIT-Vietnam-Teaching/assignment-2-group-gingerbread-mad`, nhánh `main` (cần quyền truy cập org RMIT).
 
-## 13. Hướng dẫn dựng lại project
-
-### 13.1 Bước 1 — Lấy source
-
-Chọn 1 trong 2 nguồn:
-- **Repo GitHub** (ưu tiên — giữ lịch sử commit + file nhị phân gốc): `git clone` repo private `RMIT-Vietnam-Teaching/assignment-2-group-gingerbread-mad`, nhánh `main` (cần quyền truy cập org RMIT).
-- **File zip** `assignment-2-group-gingerbread-mad-main.zip` (export nhánh `main`, không có `.git`): giải nén → đối chiếu với cây §14/§15 (153 file). Trên macOS/Linux chạy `chmod +x gradlew` (§9 mục 18).
-
-Nếu dùng zip mà cần git: `git init` → commit toàn bộ. Lịch sử gốc không tái tạo được. Giữ nguyên `.gitignore`.
-
-### 13.2 Bước 2 — `local.properties`
+### 12.2 `local.properties`
 
 Tạo ở thư mục gốc repo (Android Studio thường tự thêm `sdk.dir`):
 
@@ -631,26 +598,26 @@ sdk.dir=<đường dẫn Android SDK trên máy>
 MAPS_API_KEY=<YOUR_MAPS_API_KEY>
 ```
 
-- Key thật: xin người quản lý Google Cloud project `gingerbread-podmanager-2026b` qua kênh riêng, không commit.
-- ⚠️ Key đang restrict theo package `com.example.gingerbread_podmanager` + SHA-1 → lấy SHA-1 debug của máy mới (ví dụ `keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android`) và thêm vào key, nếu không bản đồ sẽ trắng (app vẫn chạy).
+- Key thật: xin người quản lý Google Cloud project `gingerbread-podmanager-2026b` qua kênh riêng.
+- ⚠️ Key đang restrict theo package `com.example.gingerbread_podmanager` + SHA-1 → lấy SHA-1 debug của máy mới và thêm vào key, nếu không bản đồ sẽ trắng.
 
-### 13.3 Bước 3 — Sửa lỗi compile unit test
+### 12.3 Sửa lỗi compile unit test
 
 Áp đoạn code ở §9 mục 1 vào `FakeLocationTrackingRepository` trong `DispatcherDashboardViewModelTest.kt`.
 
-### 13.4 Bước 4 — Mở & build
+### 12.4 Mở & build
 
 1. Android Studio phiên bản hỗ trợ **AGP 9.2.1** (❓ tài liệu không ghi chính xác phiên bản Android Studio đã dùng).
 2. Open thư mục repo → Gradle Sync. Gradle 9.7.1; JDK 21 toolchain được tải tự động qua foojay (`gradle-daemon-jvm.properties`).
-3. `./gradlew :app:assembleDebug` → mong đợi BUILD SUCCESSFUL (có vài warning deprecation, §9 mục 13).
+3. `./gradlew :app:assembleDebug` → mong đợi BUILD SUCCESSFUL (có vài warning deprecation, §9 mục 11).
 
 Nếu thiếu file nhị phân (ví dụ chép tay repo từ nguồn khác):
 - `gradle/wrapper/gradle-wrapper.jar`: chạy `gradle wrapper --gradle-version 9.7.1` (cần Gradle cài sẵn) rồi khôi phục `gradle-wrapper.properties`, `gradlew`, `gradlew.bat` như bản gốc; hoặc copy jar từ một project Android Studio bất kỳ (phiên bản Gradle thực tế do `gradle-wrapper.properties` quyết định).
 - Icon `mipmap-*dpi/*.webp`: ⚠️ bắt buộc để build (manifest + adaptive icon tham chiếu). Tạo lại: chuột phải `res` → New → Image Asset → Launcher Icons, tên `ic_launcher`, Foreground = ảnh logo (pin + xe tải — ❓ ảnh gốc Hòa giữ), Background = Color `#92400E`. Image Asset Studio sẽ ghi đè `mipmap-anydpi-v26/ic_launcher*.xml` và `values/ic_launcher_background.xml` → khôi phục như bản gốc (bản gốc có dòng `<monochrome>`). Giữ nguyên `res/drawable/ic_launcher_foreground.xml` (notification dùng).
 
-### 13.5 Bước 5 — Kiểm tra
+### 12.5 Kiểm tra
 
-- `./gradlew :app:testDebugUnitTest` → mong đợi **36 test pass** (sau bước 3).
+- `./gradlew :app:testDebugUnitTest` → mong đợi **36 test pass**.
 - `./gradlew :app:connectedDebugAndroidTest` (cần thiết bị/emulator) → **2 test pass**.
 - Checklist test tay (thiết bị thật, không chỉ emulator):
   - [ ] Login → Shipper; Logout → Manager; kill app từ Recents → role vẫn giữ.
@@ -665,16 +632,16 @@ Nếu thiếu file nhị phân (ví dụ chép tay repo từ nguồn khác):
   - [ ] Manager: Driver En route/Idle; IN_TRANSIT trước DELIVERED; Sync now → DONE; Export PDF → `Download/GingerbreadPoD/delivery_certificate_<id>.pdf` có chữ ký + ảnh đúng chiều, đúng tỉ lệ.
   - [ ] Bật/tắt chế độ máy bay → khi có mạng lại, sync tự chạy.
 
-### 13.6 Bước 6 — APK
+### 12.6 APK
 
 - APK debug: `./gradlew :app:assembleDebug` → `app/build/outputs/apk/debug/app-debug.apk`.
-- APK release đã ký: Build → Generate Signed App Bundle/APK với keystore gốc (❓ §9 mục 17). Bản nộp bài gốc đặt tên `gingerbread_PoD.apk` ở thư mục gốc repo.
+- APK release đã ký: Build → Generate Signed App Bundle/APK với keystore gốc.
 
 ---
 
-## 14. Cây repo tổng thể
+## 13. Cây repo tổng thể
 
-Toàn bộ file trong zip, trừ phần source Kotlin (chi tiết ở §15). Cột bên phải tóm tắt nội dung chính của từng file; file nhị phân ghi kèm dung lượng.
+Toàn bộ file trong zip, trừ phần source Kotlin. Cột bên phải tóm tắt nội dung chính của từng file; file nhị phân ghi kèm dung lượng.
 
 ```
 assignment-2-group-gingerbread-mad-main/
@@ -705,7 +672,7 @@ assignment-2-group-gingerbread-mad-main/
         │   │                          (location), meta-data Maps key, gỡ InitializationProvider (§2.3)
         │   ├── ic_launcher-playstore.png   (26 KB, nhị phân) — không tham gia build
         │   ├── keepRules/rules.keep        keep rules mặc định (chỉ comment)
-        │   ├── java/com/example/gingerbread_podmanager/   → §15
+        │   ├── java/com/example/gingerbread_podmanager/   → §14
         │   └── res/
         │       ├── drawable/
         │       │   ├── ic_launcher_background.xml   vector nền icon mặc định của template (#3DDC84)
@@ -727,13 +694,13 @@ assignment-2-group-gingerbread-mad-main/
         │       └── xml/
         │           ├── backup_rules.xml          template
         │           └── data_extraction_rules.xml template
-        ├── test/java/com/example/gingerbread_podmanager/          → §15 (5 file, 36 unit test)
-        └── androidTest/java/com/example/gingerbread_podmanager/   → §15 (1 file, 2 Compose UI test)
+        ├── test/java/com/example/gingerbread_podmanager/          → §14 (5 file, 36 unit test)
+        └── androidTest/java/com/example/gingerbread_podmanager/   → §14 (1 file, 2 Compose UI test)
 ```
 
 ---
 
-## 15. Cây source Kotlin chi tiết (class · fun · @Composable)
+## 14. Cây source Kotlin chi tiết (class · fun · @Composable)
 
 Quy ước: `val:` = property public/override · `fun:` = hàm public · `private:` = hàm private trong class · `@Composable:` = composable public · `private @Composable:` = composable nội bộ file · `top-level:` = hằng/biến cấp file · `[@…]` = annotation Hilt/Room chính. Data class ghi kèm danh sách field. Không liệt kê hàm cục bộ bên trong hàm/composable.
 
