@@ -302,7 +302,7 @@ Ngoài ra còn 1 bản ghi placeholder: `id = "sample-delivery-001"`, `recipient
 **`TrackingScreen`:**
 - Quyền: `ACCESS_FINE_LOCATION` (+ `POST_NOTIFICATIONS` từ API 33) qua Accompanist. Chưa có quyền → nút "Grant location & notification permission".
 - Đích hiệu lực: ưu tiên nav arg → nếu không có thì lấy `destinationLabel`/`destinationLocation` đang lưu trong repository → fallback label `"Next stop (TBD)"`.
-- 🆕 `LaunchedEffect(destinationLabel, destinationLatLng)`: mỗi khi có nav arg mới (bấm Start Transit ở stop khác) thì gọi `viewModel.updateDestination(...)` **bất kể đang tracking hay không** → repository luôn giữ đúng stop đang active (commit `5bc1619`, PR #23, 11/09).
+- `LaunchedEffect(destinationLabel, destinationLatLng)`: mỗi khi có nav arg mới (bấm Start Transit ở stop khác) thì gọi `viewModel.updateDestination(...)` **bất kể đang tracking hay không** → repository luôn giữ đúng stop đang active.
 - Nút `Start Delivery Route` (khi idle) → `startDeliveryRoute(label, DestinationPoint?)`; `Stop Delivery Route` khi đang tracking.
 - `TrackingStatusCard`: "Tracking"/"Idle", "Heading to: …", "Elapsed: mm:ss", "Lat: …, Lng: …" hoặc "Waiting for GPS fix...".
 - Bản đồ: marker vị trí hiện tại + marker đích (màu cam) + `Polyline` **đường thẳng** 2 điểm (không dùng Directions API — quyết định bỏ qua).
@@ -427,7 +427,7 @@ Quyết định **không** làm Retrofit thật và backend upload.
 8. Hiện lại dòng "Photo saved", restyle nút Sync, bỏ header UC-02, PDF giữ tỉ lệ ảnh
 9. Thêm stop-06 → stop-10
 10. Merge nhánh UC-03 vào `main`; đồng bộ `main` ↔ `develop`. Theo debug notes: 1 thành viên đẩy thẳng lên `main` phần `testTag` cho canvas chữ ký → conflict `SignatureCaptureScreen.kt` (import trùng, const trùng 2 giá trị) → giữ bản `main`: `SIGNATURE_CANVAS_TEST_TAG = "signatureCanvas"`
-11. Tap notification mở tab Tracking (`singleTop` + `onNewIntent`); đổi hành vi zoom. Snapshot `main` 10/09 sau đợt merge này không còn `hasShownRouteOverview` (❓ tài liệu không chỉ rõ commit nào gây mất)
+11. Tap notification mở tab Tracking (`singleTop` + `onNewIntent`); đổi hành vi zoom.
 12. Khôi phục `hasShownRouteOverview` (hồi quy do merge nhánh cũ)
 13. Dashboard hiện thêm IN_TRANSIT; placeholder `sample-delivery-001` IN_TRANSIT → PENDING; banner sample data; cập nhật test
 14. `.clip()` khung chữ ký
@@ -486,7 +486,7 @@ Quyết định **không** làm Retrofit thật và backend upload.
 | 5 | Bug #4 quay lại sau merge 10/09 | Merge nhánh cũ (stale branch) | Khôi phục (`e8c1dbd`) — ⚠️ bài học: diff kỹ file đã từng sửa bug sau mỗi merge |
 | 6 | Elapsed time reset khi đổi tab | Bộ đếm nằm trong composable | Chuyển vào `TrackingViewModel` |
 | 7 | "Heading to" / pin đích / polyline mất khi rời tab Tracking | Nav arg không sống qua đổi tab | `destinationLabel`/`destinationLocation` StateFlow trong repository |
-| 8 | Chuyển sang stop khác khi đang tracking, quay lại tab thấy stop cũ | `startTracking()` chỉ gọi được khi idle nên repository không nhận stop mới; restore nav state cũ đè lên | Code hiện tại: `updateDestination()` + `LaunchedEffect` trên nav arg + bottom nav không `restoreState` cho Tracking (commit `5bc1619` theo message; lý do lấy từ comment trong code) |
+| 8 | Chuyển sang stop khác khi đang tracking, quay lại tab thấy stop cũ | `startTracking()` chỉ gọi được khi idle nên repository không nhận stop mới; restore nav state cũ đè lên | Code hiện tại: `updateDestination()` + `LaunchedEffect` trên nav arg + bottom nav không `restoreState` cho Tracking |
 | 9 | Nút "Export PDF" vỡ chữ dọc; tiêu đề Dashboard bị cắt | `Column` thiếu `weight` đẩy Button co về 0 | `weight(1f, fill = false)` + ellipsis; tách header |
 | 10 | Dòng "Photo saved" bị che | Column không cuộn | `verticalScroll` |
 | 11 | Dòng rác "Sample Recipient" trên Dashboard | Placeholder seed IN_TRANSIT, lộ ra khi Dashboard hiện IN_TRANSIT | Seed PENDING (bản ghi cũ phải xoá app data vì không có Migration) |
@@ -549,7 +549,7 @@ Quyết định **không** làm Retrofit thật và backend upload.
 | `ManifestViewModelTest.kt` | JVM | 8 | load 10 stop, select, search, update status, manual verify, open scanner, switchToStop, quick scan |
 | `CompleteDeliveryUseCaseTest.kt` | JVM | 4 | not found, thiếu chữ ký, thiếu ảnh, thành công |
 | `ProcessSyncQueueUseCaseTest.kt` | JVM | 5 | DONE, FAILED + retry, retry thành công, DONE không xử lý lại, nhiều item |
-| `DispatcherDashboardViewModelTest.kt` ⚠️ | JVM | 9 | IN_TRANSIT + DELIVERED, ẩn PENDING/FAILED, sync status null, driver tracking, location, syncNow, export ok/lỗi, dismissError |
+| `DispatcherDashboardViewModelTest.kt` | JVM | 9 | IN_TRANSIT + DELIVERED, ẩn PENDING/FAILED, sync status null, driver tracking, location, syncNow, export ok/lỗi, dismissError |
 | `SignatureCaptureScreenTest.kt` | Compose UI (thiết bị/emulator) | 2 | `signatureCapture_drawThenSave_persistsSignatureAndResetsCanvas`, `signatureCapture_clearButton_removesDrawnStrokeWithoutSaving` |
 
 Tổng: **36 unit test + 2 UI test**. Fake in-memory, không dùng mocking library. Không có test cho `feature_auth`. UI test không cover Photo (CameraX khó automate).
@@ -578,11 +578,7 @@ Lệnh: `./gradlew :app:testDebugUnitTest`, `./gradlew :app:connectedDebugAndroi
 
 ## 12. Hướng dẫn dựng lại project
 
-### 12.1 Lấy source
-
-**Repo GitHub** (ưu tiên — giữ lịch sử commit + file nhị phân gốc): `git clone` repo private `RMIT-Vietnam-Teaching/assignment-2-group-gingerbread-mad`, nhánh `main` (cần quyền truy cập org RMIT).
-
-### 12.2 `local.properties`
+### 12.1 `local.properties`
 
 Tạo ở thư mục gốc repo (Android Studio thường tự thêm `sdk.dir`):
 
@@ -594,11 +590,11 @@ MAPS_API_KEY=<YOUR_MAPS_API_KEY>
 - Key thật: xin người quản lý Google Cloud project `gingerbread-podmanager-2026b` qua kênh riêng.
 - ⚠️ Key đang restrict theo package `com.example.gingerbread_podmanager` + SHA-1 → lấy SHA-1 debug của máy mới và thêm vào key, nếu không bản đồ sẽ trắng.
 
-### 12.3 Sửa lỗi compile unit test
+### 12.2 Sửa lỗi compile unit test
 
 Áp đoạn code ở §9 mục 1 vào `FakeLocationTrackingRepository` trong `DispatcherDashboardViewModelTest.kt`.
 
-### 12.4 Mở & build
+### 12.3 Mở & build
 
 1. Android Studio phiên bản hỗ trợ **AGP 9.2.1**.
 2. Open thư mục repo → Gradle Sync. Gradle 9.7.1; JDK 21 toolchain được tải tự động qua foojay (`gradle-daemon-jvm.properties`).
@@ -608,7 +604,7 @@ Nếu thiếu file nhị phân:
 - `gradle/wrapper/gradle-wrapper.jar`: chạy `gradle wrapper --gradle-version 9.7.1` (cần Gradle cài sẵn) rồi khôi phục `gradle-wrapper.properties`, `gradlew`, `gradlew.bat` như bản gốc; hoặc copy jar từ một project Android Studio bất kỳ (phiên bản Gradle thực tế do `gradle-wrapper.properties` quyết định).
 - Icon `mipmap-*dpi/*.webp`: ⚠️ bắt buộc để build (manifest + adaptive icon tham chiếu). Tạo lại: chuột phải `res` → New → Image Asset → Launcher Icons, tên `ic_launcher`, Foreground = ảnh logo, Background = Color `#92400E`. Image Asset Studio sẽ ghi đè `mipmap-anydpi-v26/ic_launcher*.xml` và `values/ic_launcher_background.xml` → khôi phục như bản gốc (bản gốc có dòng `<monochrome>`). Giữ nguyên `res/drawable/ic_launcher_foreground.xml` (notification dùng).
 
-### 12.5 Kiểm tra
+### 12.4 Kiểm tra
 
 - `./gradlew :app:testDebugUnitTest` → mong đợi **36 test pass**.
 - `./gradlew :app:connectedDebugAndroidTest` (cần thiết bị/emulator) → **2 test pass**.
@@ -625,7 +621,7 @@ Nếu thiếu file nhị phân:
   - [ ] Manager: Driver En route/Idle; IN_TRANSIT trước DELIVERED; Sync now → DONE; Export PDF → `Download/GingerbreadPoD/delivery_certificate_<id>.pdf` có chữ ký + ảnh đúng chiều, đúng tỉ lệ.
   - [ ] Bật/tắt chế độ máy bay → khi có mạng lại, sync tự chạy.
 
-### 12.6 APK
+### 12.5 APK
 
 - APK debug: `./gradlew :app:assembleDebug` → `app/build/outputs/apk/debug/app-debug.apk`.
 - APK release đã ký: Build → Generate Signed App Bundle/APK với keystore gốc.
