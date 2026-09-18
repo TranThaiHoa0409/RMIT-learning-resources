@@ -358,8 +358,6 @@ def rotateRight(node):
 
 ![Left-heavy case 2: newly added node on the right sub-tree of the left child](images/Week4/43_leftheavy_case2.png)
 
-Reference: https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/AVL.html
-
 - **Case 1:** A single right rotation around root (S) is needed
 
 ![Case 1 rebalancing: single right rotation around root](images/Week4/44_avl_case1_rotation.png)
