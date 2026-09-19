@@ -249,8 +249,6 @@ Is bubble sort **stable**?
 - Analyse the complexity of insertion sort
 - Is insertion sort stable?
 
-![Insertion sort likened to sorting a hand of playing cards](images/Week7/30_insertionsort_cards.png)
-
 *https://medium.com/@rebekahzhou/insertion-sort-merge-sort-91ffa7baccd1*
 
 ## 3. Sequential Search & String Matching
@@ -390,8 +388,6 @@ for each point Pi
 
 Given n items of known weights w<sub>1</sub>, …, w<sub>n</sub> and the values v<sub>1</sub>, …, v<sub>n</sub> and a knapsack of capacity W, find the most valuable subset of the items that fit into the knapsack
 
-![Knapsack illustration with a backpack and items of different weights and values](images/Week7/48_knapsack.png)
-
 ### Knapsack Brute Force Algorithm
 
 1. Consider all subsets of the set of *n* items.
@@ -506,7 +502,3 @@ permute(in_arr, taken_arr, cur_arr, cur_idx)
 - Use an array col[0..7] to store the row indices of 8 columns
 - Each solution must be a permutation of [0, 1, 2, 3, 4, 5, 6, 7]?
 - Generate permutation and check for validity at each step
-
-![Eight queens placed on a chessboard with no two attacking each other](images/Week7/59_8queens.png)
-
-*Image source: https://www.aiai.ed.ac.uk/~gwickler/eightqueens.html*
