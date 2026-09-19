@@ -58,13 +58,7 @@ A **spanning tree** of a connected graph is a connected acyclic subgraph (i.e., 
 
 A **minimum spanning tree** of a weighted connected graph is the spanning tree of the smallest total weight (sum of the weights on all of the tree's edges).
 
-![Original weighted graph before selecting a spanning tree](images/Week10/11_original_graph.png)
-
-![Minimum spanning tree T1 with weight w(T1) = 6](images/Week10/11_mst_t1.png)
-
-![Spanning tree T2 with weight w(T2) = 9](images/Week10/11_mst_t2.png)
-
-![Spanning tree T3 with weight w(T3) = 8](images/Week10/11_mst_t3.png)
+![Original weighted graph before selecting a spanning tree - Minimum spanning tree T1 with weight w(T1) = 6 - Spanning tree T2 with weight w(T2) = 9 - Spanning tree T3 with weight w(T3) = 8](images/Week10/11_original_graph_mst.png)
 
 ### Applications of Minimum Spanning Tree
 
@@ -212,11 +206,7 @@ Time complexity
 
 ### Imagine the following problems
 
-![Factory illustrating job scheduling with order dependencies](images/Week10/38_job_scheduling_factory.png)
-
 **Job scheduling with order dependencies** — What is the order the jobs should be processed to avoid breaking these dependencies?
-
-![RMIT subject prerequisite diagram](images/Week10/38_subject_selection_diagram.png)
 
 **Subject selection** — What are the order the subjects could be taken to ensure we have all the pre-requisites?
 
