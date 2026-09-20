@@ -1,4 +1,4 @@
-# Kotlin vs Java — Sự khác nhau (dựa trên code mẫu `KtFromJava.kt`)
+# Kotlin vs Java — Sự khác nhau
 
 Tài liệu tổng hợp 10 điểm khác biệt chính giữa Kotlin và Java, minh họa bằng code Kotlin thực tế và code Java tương đương để so sánh.
 
