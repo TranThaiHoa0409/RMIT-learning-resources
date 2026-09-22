@@ -14,13 +14,13 @@ Also, Android Studio asks you about Android API version (Minimum SDK) you want t
 
 ![New Project dialog in Android Studio showing Name, Package name, Save location, Language, Minimum SDK and Build configuration language fields](images/Week1/02_new_project_dialog.png)
 
-![Android Platform/API Version Distribution chart showing cumulative distribution percentages for each Android version](images/Week1/02_api_version_distribution.png)
+![Android Platform/API Version Distribution chart showing cumulative distribution percentages for each Android version](images/Week1/03_api_version_distribution.png)
 
 ## 2. Getting Familiar with the Studio
 
 Android Studio will look like this:
 
-![Android Studio main window showing the Explorer window on the left (project files/resources) and the Code window on the right](images/Week1/03_studio_main_window.png)
+![Android Studio main window showing the Explorer window on the left (project files/resources) and the Code window on the right](images/Week1/04_studio_main_window.png)
 
 Like other IDEs, Android studio has the following windows:
 
@@ -44,11 +44,11 @@ In this course, we will introduce both XML and Compose so you can understand and
 
 Create a new Kotlin Activity by *Right-click on code package -> New -> Activity -> Empty Views Activity*
 
-![Android Studio context menu showing New -> Activity -> Empty Views Activity option](images/Week1/04_new_activity_menu.png)
+![Android Studio context menu showing New -> Activity -> Empty Views Activity option](images/Week1/05_new_activity_menu.png)
 
 Specify the properties of your newly created Activity. Choose Launcher Activity if you want this activity is the entry point of your Android app. Remember to choose the language as Kotlin.
 
-![New Android Activity dialog with Activity Name, Generate a Layout File, Layout Name, Launcher Activity, Package name and Source Language fields](images/Week1/05_new_activity_dialog.png)
+![New Android Activity dialog with Activity Name, Generate a Layout File, Layout Name, Launcher Activity, Package name and Source Language fields](images/Week1/06_new_activity_dialog.png)
 
 The activity and its layout will be defined in your project (Check `res -> layout -> activity_main.xml`). Also, the activity will be registered in `AndroidManifest.xml`
 
@@ -108,7 +108,7 @@ This emulator allows you to test your app's UI and functionality without needing
 
 You can see all these components on the designer view as well as under the Component Tree:
 
-![Component Tree panel showing button, textView, editTextText, LinearLayout (vertical) and LinearLayout (horizontal) nodes](images/Week1/06_component_tree.png)
+![Component Tree panel showing button, textView, editTextText, LinearLayout (vertical) and LinearLayout (horizontal) nodes](images/Week1/07_component_tree.png)
 
 The default layout is ConstraintLayout. To understand more about ConstraintLayout and its properties, watch this video: [https://www.youtube.com/watch?v=4N4bCdyGcUc](https://www.youtube.com/watch?v=4N4bCdyGcUc)
 
