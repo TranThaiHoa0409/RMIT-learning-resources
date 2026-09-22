@@ -25,3 +25,10 @@
 2. Tài liệu tham khảo/hướng dẫn kỹ thuật liên quan (giáo trình, docs, v.v.)
 3. Các quyết định/cấu hình đã chốt trước đó trong project (lưu ở Memory)
 4. Đề xuất mới của Claude — chỉ áp dụng sau khi Hòa đồng ý
+
+## 6. Checklist khi làm bài tập Android (tránh bị trừ điểm)
+- Home screen phải có đủ: basic info, help, about us, contact — không chỉ là màn hình chào đơn giản.
+- Model class phải có logic xử lý dữ liệu thật (không chỉ là data class rỗng).
+- Comment trong code phải nhất quán và có ý nghĩa, không viết qua loa.
+- Luôn đề xuất ít nhất 1 ý tưởng sáng tạo/khác biệt cho mỗi tính năng, không chỉ làm đúng yêu cầu tối thiểu.
+- Khi chuẩn bị demo, liệt kê thêm các trường hợp lỗi/vấn đề có thể xảy ra để demo luôn, không chỉ demo happy path.
