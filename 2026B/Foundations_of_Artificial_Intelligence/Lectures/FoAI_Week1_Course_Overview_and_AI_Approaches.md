@@ -216,6 +216,8 @@ Four combinations arise from crossing "Humanly / Rationally" (characteristics) w
 | **Act** | Act Humanly | Act Rationally |
 | **Think** | Think Humanly | Think Rationally |
 
+![Four approaches to AI — (Act/Think × Humanly/Rationally)](images/Week1/Four_approaches_of_AI.png)
+
 ### 3.3 Act Humanly — The Turing Test
 
 The Turing test, proposed by Alan Turing (1950): A computer passes the test if a human judge, after posing some written questions, cannot tell whether the written responses come from a person or from a computer.
