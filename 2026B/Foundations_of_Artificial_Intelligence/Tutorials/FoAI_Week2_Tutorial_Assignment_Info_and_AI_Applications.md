@@ -10,7 +10,7 @@
 | Human Biosciences | Healthcare | Engineering | Computer Sciences |
 | The Arts | Gaming | Biosciences & Food | Sustainability |
 
-### 1.2 Example: Self-Driving Cars
+### 1.2 Example Activity: Self-Driving Cars
 
 **Description of the application:** True self-driving cars (level 5) let the AI drive the car entirely on its own (no human assistance during the driving task at any time).
 
