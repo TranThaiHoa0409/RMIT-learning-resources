@@ -1,4 +1,4 @@
-# Introduction to Machine Learning & Deep Learning
+# FoAI Week 4 – Lecture: Introduction to Machine Learning & Deep Learning
 
 ## 1. Definitions of Machine Learning
 
