@@ -213,10 +213,8 @@ Four combinations arise from crossing "Humanly / Rationally" (characteristics) w
 
 | | Humanly | Rationally |
 | --- | --- | --- |
-| **Act** | Act Humanly | Act Rationally |
-| **Think** | Think Humanly | Think Rationally |
-
-![Four approaches to AI — (Act/Think × Humanly/Rationally)](images/Week1/Four_approaches_of_AI.png)
+| **Act** | **Act Humanly**: Behaves like a human (Turing Test, human-like interation) | **Act Rationally**: Choose actions that maximize expected outcomes |
+| **Think** | **Think Humanly**: Models human thought processes (cognitive science, psychology) | **Think Rationally**: Use logical reasoning to reach conclusions |
 
 ### 3.3 Act Humanly — The Turing Test
 
