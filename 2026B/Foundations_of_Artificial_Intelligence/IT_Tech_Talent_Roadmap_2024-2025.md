@@ -2,153 +2,54 @@
 
 ## Front-End Developer
 
-**Foundations:**
-- HTML, CSS, JavaScript
-- Responsive Design
-- Version Control (Git)
-
-**Core Skills:**
-- Frameworks (React, Angular, Vue.js)
-- State Management (Redux, Vuex)
-- Build Tools (Webpack, Babel)
-
-**Advanced:**
-- Testing (Jest, Cypress)
-- Performance Optimization
-- Progressive Web Apps (PWA)
+| Foundations | Core Skills | Advanced |
+|---|---|---|
+| - HTML, CSS, JavaScript<br>- Responsive Design<br>- Version Control (Git) | - Frameworks (React, Angular, Vue.js)<br>- State Management (Redux, Vuex)<br>- Build Tools (Webpack, Babel) | - Testing (Jest, Cypress)<br>- Performance Optimization<br>- Progressive Web Apps (PWA) |
 
 ## Backend Developer
 
-**Foundations:**
-- Programming Languages (Node.js, Java, Python, Ruby, PHP, C#/.Net, Go etc.)
-- Database Management (SQL, NoSQL)
-- RESTful APIs, GraphQL
-
-**Core Skills:**
-- Authentication & Authorization
-- ORM (Object-Relational Mapping)
-- Server Management (Linux, Nginx)
-
-**Advanced:**
-- Microservices Architecture
-- Caching Strategies (Redis, Memcached)
-- CI/CD Pipelines
+| Foundations | Core Skills | Advanced |
+|---|---|---|
+| - Programming Languages (Node.js, Java, Python, Ruby, PHP, C#/.Net, Go etc.)<br>- Database Management (SQL, NoSQL)<br>- RESTful APIs, GraphQL | - Authentication & Authorization<br>- ORM (Object-Relational Mapping)<br>- Server Management (Linux, Nginx) | - Microservices Architecture<br>- Caching Strategies (Redis, Memcached)<br>- CI/CD Pipelines |
 
 ## Data Scientist
 
-**Foundations:**
-- Mathematics & Statistics
-- Programming (Python, R)
-- Data Wrangling (Pandas, NumPy)
-
-**Core Skills:**
-- Data Visualization (Matplotlib, Seaborn)
-- Machine Learning (Scikit-learn, TensorFlow)
-- SQL & NoSQL Databases
-
-**Advanced:**
-- Deep Learning (Keras, PyTorch)
-- Big Data Tools (Hadoop, Spark)
-- Model Deployment
+| Foundations | Core Skills | Advanced |
+|---|---|---|
+| - Mathematics & Statistics<br>- Programming (Python, R)<br>- Data Wrangling (Pandas, NumPy) | - Data Visualization (Matplotlib, Seaborn)<br>- Machine Learning (Scikit-learn, TensorFlow)<br>- SQL & NoSQL Databases | - Deep Learning (Keras, PyTorch)<br>- Big Data Tools (Hadoop, Spark)<br>- Model Deployment |
 
 ## DevOps Engineer
 
-**Foundations:**
-- Operating Systems (Linux, Windows)
-- Networking Concepts
-- Scripting (Bash, Python)
-
-**Core Skills:**
-- CI/CD Tools (Jenkins, GitLab CI)
-- Containerization (Docker, Kubernetes)
-- Cloud Platforms (AWS, Azure, GCP)
-
-**Advanced:**
-- Infrastructure as Code (Terraform, Ansible)
-- Monitoring & Logging (Prometheus, ELK Stack)
-- Security Best Practices
+| Foundations | Core Skills | Advanced |
+|---|---|---|
+| - Operating Systems (Linux, Windows)<br>- Networking Concepts<br>- Scripting (Bash, Python) | - CI/CD Tools (Jenkins, GitLab CI)<br>- Containerization (Docker, Kubernetes)<br>- Cloud Platforms (AWS, Azure, GCP) | - Infrastructure as Code (Terraform, Ansible)<br>- Monitoring & Logging (Prometheus, ELK Stack)<br>- Security Best Practices |
 
 ## Mobile Developer
 
-**Foundations:**
-- Core Programming Languages (Swift, Kotlin, Java)
-- UI/UX Design Principles
-- Version Control (Git)
-
-**Core Skills:**
-- Cross-Platform Tools (React Native, Flutter)
-- API Integration
-- Performance Tuning
-
-**Advanced:**
-- AR/VR Development
-- Advanced Networking (WebSockets, Bluetooth)
-- Security & Encryption
+| Foundations | Core Skills | Advanced |
+|---|---|---|
+| - Core Programming Languages (Swift, Kotlin, Java)<br>- UI/UX Design Principles<br>- Version Control (Git) | - Cross-Platform Tools (React Native, Flutter)<br>- API Integration<br>- Performance Tuning | - AR/VR Development<br>- Advanced Networking (WebSockets, Bluetooth)<br>- Security & Encryption |
 
 ## Cybersecurity Analyst
 
-**Foundations:**
-- Networking (TCP/IP, VPN)
-- Operating Systems Security
-- Scripting (Python, PowerShell)
-
-**Core Skills:**
-- Threat Analysis
-- Penetration Testing (Metasploit, Burp Suite)
-- SIEM Tools (Splunk, ELK)
-
-**Advanced:**
-- Incident Response
-- Forensics & Malware Analysis
-- Security Architecture
+| Foundations | Core Skills | Advanced |
+|---|---|---|
+| - Networking (TCP/IP, VPN)<br>- Operating Systems Security<br>- Scripting (Python, PowerShell) | - Threat Analysis<br>- Penetration Testing (Metasploit, Burp Suite)<br>- SIEM Tools (Splunk, ELK) | - Incident Response<br>- Forensics & Malware Analysis<br>- Security Architecture |
 
 ## AI/ML Engineer
 
-**Foundations:**
-- Programming (Python, R)
-- Mathematics & Algorithms
-- Data Wrangling
-
-**Core Skills:**
-- Machine Learning Models (Supervised, Unsupervised)
-- Neural Networks & Deep Learning
-- NLP (Natural Language Processing)
-
-**Advanced:**
-- Reinforcement Learning
-- AI Ethics & Bias
-- Model Deployment & Monitoring
+| Foundations | Core Skills | Advanced |
+|---|---|---|
+| - Programming (Python, R)<br>- Mathematics & Algorithms<br>- Data Wrangling | - Machine Learning Models (Supervised, Unsupervised)<br>- Neural Networks & Deep Learning<br>- NLP (Natural Language Processing) | - Reinforcement Learning<br>- AI Ethics & Bias<br>- Model Deployment & Monitoring |
 
 ## Cloud Engineer
 
-**Foundations:**
-- Networking Basics
-- Scripting (Python, Bash)
-- Virtualization & Containers (Docker)
-
-**Core Skills:**
-- Cloud Services (AWS, Azure, GCP)
-- Infrastructure as Code (Terraform, CloudFormation)
-- Security & Compliance
-
-**Advanced:**
-- Serverless Architecture (Lambda, Azure Functions)
-- Multi-cloud Management
-- Cost Optimization
+| Foundations | Core Skills | Advanced |
+|---|---|---|
+| - Networking Basics<br>- Scripting (Python, Bash)<br>- Virtualization & Containers (Docker) | - Cloud Services (AWS, Azure, GCP)<br>- Infrastructure as Code (Terraform, CloudFormation)<br>- Security & Compliance | - Serverless Architecture (Lambda, Azure Functions)<br>- Multi-cloud Management<br>- Cost Optimization |
 
 ## Network Engineer
 
-**Foundations:**
-- Networking Basics (TCP/IP, DNS)
-- Routing & Switching (Cisco, Juniper)
-- Network Security
-
-**Core Skills:**
-- Wireless Networks
-- Network Monitoring Tools
-- VPNs & Firewalls
-
-**Advanced:**
-- Software-Defined Networking (SDN)
-- Cloud Networking
-- High Availability (HA) & Disaster Recovery
+| Foundations | Core Skills | Advanced |
+|---|---|---|
+| - Networking Basics (TCP/IP, DNS)<br>- Routing & Switching (Cisco, Juniper)<br>- Network Security | - Wireless Networks<br>- Network Monitoring Tools<br>- VPNs & Firewalls | - Software-Defined Networking (SDN)<br>- Cloud Networking<br>- High Availability (HA) & Disaster Recovery |
