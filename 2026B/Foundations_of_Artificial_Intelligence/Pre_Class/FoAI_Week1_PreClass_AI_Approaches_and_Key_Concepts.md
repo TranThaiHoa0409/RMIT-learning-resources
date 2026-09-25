@@ -55,3 +55,45 @@ A neural network is a collection of algorithms designed to take in data and find
 This section introduces AI, machine learning (ML), and deep learning (DL) at a high level; the Week 1 tutorial examines these concepts in more detail and introduces Large Language Models (LLMs), a specialised form of deep learning.
 
 These terms are significant because they underpin many AI systems used daily, such as ChatGPT, Netflix recommendations, and facial recognition, which rely on ML, DL, or LLMs.
+
+## 6. From Rule-Based Systems to Advanced AI Models
+
+The progression of AI from simple rule-based systems (traditional programming) to complex models is closely tied to the development of Machine Learning (ML), Deep Learning (DL), and Large Language Models (LLMs).
+
+| Stage | Description | Example |
+|---|---|---|
+| Rule-Based Systems (Traditional Programming / Early AI) | Relied on explicitly programmed rules (if-then statements); could not learn or adapt, only followed predefined logic | Expert systems, early chatbots like ELIZA |
+| Machine Learning (ML) | Learns patterns from data instead of relying on fixed rules; improves with experience but still requires structured input and human feature selection | Spam filters that learn to detect spam based on previous emails |
+| Deep Learning (DL) | A subset of ML that uses neural networks to process unstructured data (images, video, text, speech); automatically finds patterns without manual feature selection | Facial recognition, self-driving cars detecting objects |
+| Large Language Models (LLMs) | A specialised form of DL, trained on massive text datasets using transformer architectures (e.g., GPT); generates human-like responses, understands context, and performs complex language tasks | ChatGPT, Google Bard, AI-assisted coding tools like GitHub Copilot |
+
+## 7. Types of AI
+
+AI can be categorised under two broad groups, based on Capabilities and Functionalities (see [in-class video](https://youtu.be/XFZ-rQ8eeR8?feature=shared)).
+
+Based on Capabilities:
+
+1. Narrow AI (Weak AI) — the only type of AI that exists today; trained for specific tasks
+2. General AI (AGI / Strong AI) — a theoretical AI that can apply learning across different contexts
+3. Super AI — a hypothetical AI surpassing human intelligence, capable of independent reasoning and emotions
+
+Based on Functionalities:
+
+1. Reactive AI — performs specialised tasks based on data without learning from past experiences (e.g., IBM's Deep Blue)
+2. Limited Memory AI — can recall past data and improve performance over time (e.g., generative AI like ChatGPT)
+3. Theory of Mind AI (Emotion AI) — a developing AI concept that aims to understand and respond to human emotions
+4. Self-Aware AI — a hypothetical AI with its own emotions, beliefs, and self-awareness
+
+## 8. Module Learning Outcomes and Topic Checklist
+
+Module learning outcomes:
+
+- Recognise detailed information about the course, including Course Objectives, Course Load, and Assessments
+- Interpret and classify approaches to AI development
+
+Topic checklist:
+
+- Review the pre-class activities
+- Review the lecture on approaches to AI development (relevant to the Assignment 1 quiz)
+- Review and practice note-taking for this course
+- Complete the post-class activities
