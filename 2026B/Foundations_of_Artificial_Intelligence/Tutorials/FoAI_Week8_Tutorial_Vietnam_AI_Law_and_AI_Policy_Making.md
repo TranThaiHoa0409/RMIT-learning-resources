@@ -4,8 +4,8 @@
 
 Note: PDF file of the Vietnam AI Law (translated by Gemini) is available in the course's shared folder.
 
-- English version of the law can be found here: [Vietnam AI Law (English)](images/Week8/ENG_AI_Law_No_134_2025_QH15_679013.pdf)
-- Vietnamese version of the law can be found here: [Vietnam AI Law (Vietnamese)](images/Week8/VNE_AI_Law_No_134_2025_QH15_679013.pdf)
+- English version of the law can be found here: [Vietnam AI Law (English)](images/Week8/AI_Law_134_2025_QH15_EN.md)
+- Vietnamese version of the law can be found here: [Vietnam AI Law (Vietnamese)](images/Week8/AI_Law_134_2025_QH15_VN.md)
 
 ## 2. AI Policy Making: How-To
 
