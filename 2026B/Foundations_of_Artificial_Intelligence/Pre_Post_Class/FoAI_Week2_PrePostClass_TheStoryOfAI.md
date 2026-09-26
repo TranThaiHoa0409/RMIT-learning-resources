@@ -8,15 +8,11 @@ In the aftermath of World War II, rapid advancements in computing, cryptography,
 
 Though the workshop did not create intelligent machines, it set the foundation for AI research, defining the key challenges that would shape the field for decades to come.
 
-![Organisers and participants of the Dartmouth Summer Research Project on Artificial Intelligence (1956)](images/Week2/01_dartmouth_workshop_1956.png)
-
 Organisers and participants of the Dartmouth Summer Research Project on Artificial Intelligence (1956): Oliver Selfridge, Nathaniel Rochester, Ray Solomonoff, Marvin Minsky, an unidentified attendee, John McCarthy, and Claude Shannon. Source: [IEEE Spectrum](https://spectrum.ieee.org/dartmouth-ai-workshop).
 
 ## 2. AI's Waves and Winters
 
 AI's journey has been anything but smooth. Like shifting tides, AI has undergone rapid breakthroughs followed by harsh setbacks when reality failed to meet expectations. These cycles, often called AI's "waves and winters," have shaped its evolution, showing that progress in intelligence — human or artificial — is never a straight path forward.
-
-![Diagram of AI's historical "waves and winters," showing key milestones over time](images/Week2/02_ai_waves_and_winters_timeline.png)
 
 ## 3. The Story of AI Through Chess
 
@@ -44,15 +40,8 @@ This AI-powered tool improves accessibility by offering on-demand independence a
 
 *Video: demonstration of DUB AI reducing restaurant food waste.*
 
-## 6. Module Learning Outcomes and Topic Checklist
-
-Module learning outcomes:
+## 6. Module Learning Outcomes
 
 - Explore key terms and concepts in the AI field (AI Taxonomy)
 - Review the development of AI from its inception to the present (History of AI)
 - Discuss AI's breakthroughs in various fields (SOTA Applications of AI)
-
-Topic checklist:
-
-- Review the pre-class activities
-- Complete the post-class activities
