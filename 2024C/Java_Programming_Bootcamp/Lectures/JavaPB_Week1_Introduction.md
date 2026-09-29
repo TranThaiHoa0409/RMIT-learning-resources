@@ -71,8 +71,6 @@ Some other references for further self-study (see Further Reading): the W3School
 
 Solve some easy/medium problems on LeetCode if you want to prepare for job applications (link in Further Reading).
 
----
-
 ## Further Reading
 
 - [RMIT Vietnam Overview (video)](https://www.youtube.com/watch?v=N7UTS7en9uY)
