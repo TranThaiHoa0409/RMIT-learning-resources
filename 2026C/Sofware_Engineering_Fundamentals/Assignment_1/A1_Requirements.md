@@ -8,16 +8,6 @@
 - **Type:** Written Report
 - **Feedback mode:** Written Feedback
 
-## Late work
-
-If you require an Extension of Submittable Work (assignments, reports, project work, etc.) for 5 calendar days or less (from the original due date) and have valid reasons, you must complete and lodge an Application for an Extension of Submittable Work (5 Calendar Days or less) form and lodge it with the Senior Educator/Program Manager. The application must be lodged no later than one working day before the official due date. You will be notified within no more than 2 working days of the date of lodgment as to whether the extension has been granted.
-
-If you seek an Extension of Submittable Work for more than 5 calendar days (from the original due date), you must lodge an Application for Special Consideration form under the provisions of the Special Consideration Policy, preferably before, but no later than 2 working days after the official due date.
-
-A submittable work (assignments, projects, lab reports, etc.) that is submitted late without approval of an extension will not be accepted or marked.
-
-**Penalties for Late Submission:** A penalty of 10% per day will apply to late assignments up to a maximum of five days (weekends count for two days, not one). Note that for assignments up to five days late due to illness, a medical certificate may be presented to your teacher, and a late penalty will not apply.
-
 ## Learning Objectives Assessed
 
 - **CLO2:** Evaluate requirements for a software system
@@ -26,19 +16,7 @@ A submittable work (assignments, projects, lab reports, etc.) that is submitted 
 - **CLO5:** Communicate effectively with others, especially regarding the progress of the system development and the content of the design, by means of reports and presentations. Use appropriate design, version control, and collaboration tools to work effectively as a team.
 - **CLO6:** Recognize current trends in the area of software engineering.
 
-## Ready for Life and Work
-
-The following skills will be developed upon completing this course:
-
-- **Modeling and Visualization Skills** – Translating abstract requirements into visual or textual models that stakeholders can easily interpret using case diagrams and enhance understanding of the system scope and actor interactions.
-- **Communication and Collaboration Skills** include writing user stories in clear, concise, and user-centered language, as well as producing understandable requirement documents to bridge the gap between technical teams and non-technical stakeholders.
-- **Analytical and Critical Thinking Skills** are used to distinguish between essential functionality (functional requirements) and system qualities (non-functional requirements).
-- **Problem-Solving and Design Thinking Skills** are used to explore multiple ways to meet a user's need. Anticipating future scenarios and system scalability through non-functional requirements like performance, security, or usability.
-- **Teamwork:** Work as an effective and productive team member in a range of professional and social situations, in particular to: work effectively in different roles, to form, manage, and successfully produce outcomes from teams, whose members may have diverse cultural backgrounds and life circumstances and differing levels of technical expertise.
-
 ## Assessment Details
-
-You need to form consultant teams (composed of 4 members) and produce the initial report for the assigned project.
 
 ### Project Summary, Rationale, and Common Aspects
 
@@ -58,25 +36,7 @@ You will write a document of the software requirement specification (SRS) for yo
 
 > **Note:** As the Login and Logout functions will be frequent examples in the lectures and tutorials, team members are discouraged from using them as one of their identified use cases.
 
-### List of project titles
-
-#### 1. Personalized Clothing Store
-
-The goal of this project is to design personalized clothing that allows customers to choose clothing items with custom text, images, or patches. Customers can browse the catalog of available clothing items and choose which ones they want to customize. They can use interactive tools to enter text, upload images, select patch placements, and view the finished product before adding it to their cart. Using a live camera, the user can see in real time whether the customized clothing fits their body structure. Before making any purchases, the customer must create an account on the platform.
-
-#### 2. Cultural Heritage Information System using AR
-
-The goal of this project is to create a mobile application that uses Augmented Reality (AR) technology to enhance the cultural and historical exploration of specific churches in Vietnam. Using the mobile camera, the application will recognize architectural features within the selected churches. When viewed using a mobile device, the application will provide real-time contextual information about specific church features. The application can allow the user to save and share the captured image and information. Additionally, this application can serve as a digital tour guide and enhance the visitor experience.
-
-#### 3. At-Risk Students Prediction
-
-The goal of this project is to provide early detection of at-risk students and timely intervention to improve their retention. Users can upload student records such as student information, courses, course registrations, assessments, and LMS activities like assignments and quizzes using the Power BI system. The dashboard will use predictive analytics to monitor student performance and engagement, identify students who are struggling academically or behaviorally, and alert lecturers to potential disengagement before it becomes a crisis, allowing for timely intervention. Based on the data, the system will create a dashboard that displays the results in a user-friendly, interactive format, allowing users to visualize trends, drill down into specific student or class data, and sort information to identify common issues.
-
-#### 4. Hospital Emergency Response
-
-The goal of this project is to provide a mobile and web app for staff to instantly view and enter information as required. This app allows hospital administrators to add and manage system data required for the solution to work. The dashboard allows employees to view and analyze key data and metrics that will assist them in making more informed decisions. The system will use Power BI to display real-time data visualizations for critical metrics such as available beds, staffing levels, vital equipment, and discharge information. The system can customize the reports and dashboard to meet the user's specific requirements and integrate them with existing hospital applications and portals.
-
-#### 5. Business Analytics Application
+### Project titles: Business Analytics Application
 
 The goal of this project is to create mobile-enabled analytics platforms that combine mobile app analytics, business intelligence (BI) tools, and market intelligence systems with real-time dashboard and reporting capabilities. The system should include user authentication and authorization, as well as a customizable dashboard with charts displaying KPIs, trend analysis, and drill-down features. The system can also generate reports with scheduling and sharing options. A real-time notification for anomalies or performance updates. Users can collaborate by commenting, annotating, or sharing dashboards within user groups.
 
@@ -93,14 +53,6 @@ The assignment must be submitted in Canvas with the naming convention:
 - For SGS: `ISYS3416_A1_[GroupNumber]`
 
 The original UML diagram or a clear image file must be added as an additional file in Canvas (**DO NOT zip all the additional files**; submit it as an additional file). Other files are submitted separately by selecting "add another file".
-
-## Support Resources
-
-This assessment requires that you meet RMIT's expectations for academic integrity. More information and advice on how to avoid plagiarism are available in the Getting Started module (Academic integrity page).
-
-Additional library and learning resources are available to help with the assessment in this course (Assignment Support link).
-
----
 
 ## Rubric: ISYS3416 SRS - Hybrid Approach
 
