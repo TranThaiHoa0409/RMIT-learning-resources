@@ -1,5 +1,7 @@
 # BizBoard - SRS
 
+Google Docs or shared Microsoft Word from the same team is consider using for the SRS document. Instead of using Messanger as a communication tool, team can use Microsoft Teams for better collaboration and communication. The team can also use Google Drive or Microsoft OneDrive to share files and documents.
+
 ## Project purpose
 
 [ ] is a web-based business analytics application, accessible on both computers and mobile devices, that helps authorized users monitor business performance in one place. It brings together the company's internal data, such as sales, revenue, customer numbers, and app usage, and presents it through dashboards, KPIs, trend analysis, reports, and real-time alerts. Users can also share dashboards and collaborate within groups, so teams can make faster, better-informed decisions wherever they are.
@@ -19,7 +21,7 @@ BizBoard taglines:
 - Your business, at a glance.
 - Stay on top of performance, wherever you are.
 
-## Main capabilities
+## Main capabilities (totally agree)
 
 | Capability | Plain-English explanation |
 | --- | --- |
@@ -76,12 +78,22 @@ BizBoard taglines:
 
 These are from memory, so check each one's current terms and limits before using it.
 
-## Abbreviations
+## Member by menber Instrcution
 
-| Short | Full name |
-| --- | --- |
-| US | User story |
-| UC | Use case |
-| FR | Functional requirement |
-| NFR | Non-functional requirement |
-| AC | Acceptance criteria |
+### Member 1 – Dashboard & KPI Management
+
+1. **A widget catalogue**: This is a list or picker screen showing the available widgets, so the user can see what exists. 
+    - User can add or remove widgets from their dashboard by selecting them in the catalogue. The catalogue can be a separate screen or a pop-up modal, and it can show a preview of each widget.
+2. **Saved selection**: The app remembers what the user chose, so their dashboard looks the same next time they open it. 
+    - This usually means storing the selected widget IDs in a database or local storage.
+3. **Widget layout (Future scope)**: The user can arrange the widgets on their dashboard, for example by dragging and dropping them into different positions. 
+    - The app saves the layout so it is restored next time.
+4. **Time period.** The system displays the selected KPIs for an agreed time period. The supported periods are fixed and listed below, so the user picks one instead of typing dates.
+- The chosen period applies to all KPIs on the dashboard, and the dashboard reloads when the user changes it.
+    - Today
+    - Last 7 days
+    - Last 30 days
+    - This month
+    - Custom range (optional, only if time allows)
+
+### Member 2 – Business Analytics
