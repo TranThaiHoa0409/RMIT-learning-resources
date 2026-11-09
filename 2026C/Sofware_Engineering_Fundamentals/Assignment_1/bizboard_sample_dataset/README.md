@@ -15,7 +15,7 @@ Dataset **giả lập** để cả team hiểu business logic của BizBoard. Kh
 | `users.csv`, `groups.csv`, `group_members.csv` | 8 / 3 / 8 | Tài khoản BizBoard, nhóm, vai trò trong nhóm |
 | `alert_rules.csv` | 6 | Các rule ngưỡng mẫu |
 | `kpi_daily_answer_key.csv` | 160 | KPI tính sẵn theo ngày (đáp án để đối chiếu, **không phải nguồn** của app) |
-| `upload_examples/` | 7 file | File upload mẫu: 1 file hợp lệ và 6 file lỗi (xem mục 6) |
+| `upload_01_...csv` đến `upload_07_...csv` | 7 file | File upload mẫu: 1 file hợp lệ và 6 file lỗi (xem mục 6) |
 
 Hệ thống thật chỉ cần `orders`, `customers`, `app_sessions` (đúng quyết định "sample datasets + uploaded files").
 
@@ -125,19 +125,19 @@ Rule `R03` (Conversion Rate below 20%) không bao giờ kích hoạt (thấp nh�
 - Mai rời Sales Team → mất quyền xem report và note qua nhóm đó.
 - Alert cho Bao chỉ hiện in-app vì không có email.
 
-## 6. File upload mẫu (`upload_examples/`)
+## 6. File upload mẫu (các file `upload_*.csv`)
 
 Dùng để viết alternative flow cho việc **upload file** (nguồn dữ liệu thứ hai ngoài sample dataset). Hành vi mong đợi chỉ là gợi ý, team quyết định thông báo lỗi cụ thể.
 
 | File | Có gì | Hệ thống nên làm gì |
 | --- | --- | --- |
-| `01_valid_orders.csv` | 40 đơn ngày 5 Nov, đúng cột, đúng định dạng | Nhận file, dữ liệu refresh ngay, dashboard cập nhật |
-| `02_missing_column_order_value.csv` | Thiếu cột `order_value` | Từ chối, nêu rõ cột còn thiếu |
-| `03_bad_dates.csv` | 3 dòng ngày sai (`05/11/2026 14:20`, `not a date`, để trống) | Từ chối hoặc bỏ dòng lỗi và báo rõ dòng nào |
-| `04_duplicate_order_ids.csv` | 5 `order_id` bị lặp | Báo trùng, không tính đôi doanh thu |
-| `05_empty_header_only.csv` | Chỉ có dòng tiêu đề | Báo file không có dữ liệu |
-| `06_negative_blank_and_text_values.csv` | `order_value` âm / chữ / trống, `customer_id` trống, `quantity` là chữ | Báo từng loại lỗi và dòng lỗi |
-| `07_dates_in_the_future.csv` | Ngày năm 2027 | Cảnh báo ngày ở tương lai |
+| `upload_01_valid_orders.csv` | 40 đơn ngày 5 Nov, đúng cột, đúng định dạng | Nhận file, dữ liệu refresh ngay, dashboard cập nhật |
+| `upload_02_missing_column_order_value.csv` | Thiếu cột `order_value` | Từ chối, nêu rõ cột còn thiếu |
+| `upload_03_bad_dates.csv` | 3 dòng ngày sai (`05/11/2026 14:20`, `not a date`, để trống) | Từ chối hoặc bỏ dòng lỗi và báo rõ dòng nào |
+| `upload_04_duplicate_order_ids.csv` | 5 `order_id` bị lặp | Báo trùng, không tính đôi doanh thu |
+| `upload_05_empty_header_only.csv` | Chỉ có dòng tiêu đề | Báo file không có dữ liệu |
+| `upload_06_negative_blank_and_text_values.csv` | `order_value` âm / chữ / trống, `customer_id` trống, `quantity` là chữ | Báo từng loại lỗi và dòng lỗi |
+| `upload_07_dates_in_the_future.csv` | Ngày năm 2027 | Cảnh báo ngày ở tương lai |
 
 ## 7. Giới hạn của dataset
 
