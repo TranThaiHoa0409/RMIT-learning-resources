@@ -46,10 +46,17 @@ Questions:
 - When determining **cardinality** (number of instances in a relationship, e.g., one to many or many to many) over-estimate rather than underestimate
 
 ```mermaid
+%%{init: {"themeVariables": {"lineColor": "#888"}}}%%
 classDiagram
     direction LR
+    class Bank
+    class Customer
+    class Account
     Bank "1" -- "1..M" Customer : stores
     Customer "1" o-- "1..M" Account : owns
+    style Bank fill:none,stroke:#888
+    style Customer fill:none,stroke:#888
+    style Account fill:none,stroke:#888
 ```
 
 ## Discovering Attributes
@@ -63,12 +70,14 @@ To discover attributes, ask questions such as: "I am an account. What should I k
 
 For each attribute, you need to decide on its name, data type, visibility (public, protected, private or default (package)), also any modifiers i.e., should it be a constant (final) or variable, and have instance or class scope (static).
 
-```mermaid
-classDiagram
-    class Account {
-        acctNumber : int
-        balance : float
-    }
+```text
+┌──────────────────┐
+│     Account      │
+├──────────────────┤
+│ acctNumber : int │
+│ balance : float  │
+├──────────────────┤
+└──────────────────┘
 ```
 
 ## System Behaviour - Discovering Methods and Relationships
@@ -584,42 +593,26 @@ Java has two groups of data types:
 - **Object** (or **reference**) data types: Boolean, Byte, Short, Integer, Long, Float, Double, Character, String, etc.
   - Like pointers in C but dereference operator is not needed
 
-```mermaid
----
-config:
-  flowchart:
-    curve: linear
----
-
-flowchart TB
-    P["Primitive Data Type"]
-    bo["boolean"]
-    N["Numeric Type"]
-    I["Integral Type"]
-    F["Floating-Point Type"]
-    by["byte"]
-    sh["short"]
-    in["int"]
-    lo["long"]
-    ch["char"]
-    fl["float"]
-    db["double"]
-    P --- bo
-    P --- N
-    N --- I
-    N --- F
-    I --- by
-    I --- sh
-    I --- in
-    I --- lo
-    I --- ch
-    F --- fl
-    F --- db
-    classDef box fill:none,stroke:#888,stroke-width:2px
-    classDef leaf fill:none,stroke:none
-    class P,N,I,F box
-    class bo,by,sh,in,lo,ch,fl,db leaf
-    linkStyle default stroke:#888
+```text
+                    ┌─────────────────────┐
+                    │ Primitive Data Type │
+                    └──────────┬──────────┘
+                               │
+               ┌───────────────┴───────────────┐
+               │                               │
+               │                       ┌───────┴───────┐
+            boolean                    │ Numeric Type  │
+                                       └───────┬───────┘
+                                               │
+                         ┌─────────────────────┴─────────────────────┐
+                         │                                           │
+                 ┌───────┴───────┐                        ┌──────────┴──────────┐
+                 │ Integral Type │                        │ Floating-Point Type │
+                 └───────┬───────┘                        └──────────┬──────────┘
+                         │                                           │
+   ┌──────────┬──────────┼──────────┬──────────┐              ┌──────┴───────┐
+   │          │          │          │          │              │              │
+ byte       short       int       long       char           float         double
 ```
 
 | Type | Size (bits) | Min | Max | Description |
@@ -943,9 +936,6 @@ System.out.println(txt.indexOf("Hello"));
 | String toUpperCase() | Returns a new string with all letters in uppercase |
 | String toLowerCase() | Returns a new string with all letters in lowercase |
 | String substring(int beginIndex, int endIndex) | Returns a new string that is a substring of this string |
-
-| Method | Description |
-|---|---|
 | boolean startsWith(String str) | Returns true if this string starts with str |
 | boolean endsWith(String str) | Returns true if this string ends with str |
 | boolean contains(String str) | Returns true if this string contains str |
