@@ -93,16 +93,7 @@ Business User is the everyday role. Business Users no longer create or own group
 | Sharing model | Reports and dashboard snapshots are shared with whole groups the user belongs to, not with individual users. Everyone who receives an item through a group can open it, and for reports, read and write notes. |
 | Scope boundaries | Excluded from the first version: live data connections through APIs, automatic anomaly detection using AI, market intelligence (optional), a dedicated mobile app, and an organization hierarchy tree (company, departments, teams) that would decide who can access which information. The Data Manager handles sample datasets and uploaded files only. |
 
-## 7. Member work allocation
-
-| Member | Work package | Scope |
-| --- | --- | --- |
-| 1 – Hòa | Dashboard and KPI management | Widget catalogue, saved selection, widget layout, time period. |
-| 2 – Len | Business analytics | KPI trend view, period comparison, filtering, drill-down, no-data rule. |
-| 3 – Phu | Reporting and notifications | Report generation, report list, report sharing, alert rules, alert checking and delivery, notification settings. |
-| 4 – Yuki | Collaboration and access management | Groups, group roles and permissions, report sharing boundaries, report notes, System Administrator. |
-
-## 8. Traceability matrix
+## 7. Traceability matrix
 
 ### How the team fills it in
 
@@ -130,6 +121,15 @@ Business User is the everyday role. Business Users no longer create or own group
 - [ ] Every NFR listed is tied to the feature it affects, where one applies.
 - [ ] No ID appears twice in the master list, and no ID is used in the report that is missing from it.
 - [ ] Names of KPIs, roles, and features are spelled the same in the matrix as in the report.
+
+## 8. Member work allocation
+
+| Member | Work package | Scope |
+| --- | --- | --- |
+| 1 – Hòa | Dashboard and KPI management | Widget catalogue, saved selection, widget layout, time period. |
+| 2 – Len | Business analytics | KPI trend view, period comparison, filtering, drill-down, no-data rule. |
+| 3 – Phu | Reporting and notifications | Report generation, report list, report sharing, alert rules, alert checking and delivery, notification settings. |
+| 4 – Yuki | Collaboration and access management | Groups, group roles and permissions, report sharing boundaries, report notes, System Administrator. |
 
 ## 9. Member-by-member instructions
 

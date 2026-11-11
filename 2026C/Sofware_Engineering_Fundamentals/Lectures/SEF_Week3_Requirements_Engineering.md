@@ -1,22 +1,20 @@
-# Week 03 - Requirements
-
-ISYS3416/32 – Software Engineering Fundamentals for IT
-
-## Overview
-
-The aim of the week is to:
-
-- Explain the principles of requirements engineering and distinguish between functional and non-functional requirements.
-- Apply modeling techniques by creating and interpreting use case diagrams and writing effective user stories.
-- Evaluate and integrate requirements engineering approaches, including use case diagrams and use stories, to develop a comprehensive requirements specification.
+# Week 03 - Engineering Requirements
 
 ## Software Lifecycle Activities
 
 ![Software lifecycle activities](images/Week3/03_software_lifecycle_activities.png)
 
-## What does the Customer say?
+### What does the Customer say?
 
-![A bird in the bush](images/Week3/04_bird_in_the_bush.png)
+A sign says: "A bird in the the bush".
+
+Look at the sign again: The word “THE” is there twice, but most people read it as “A bird in the bush” and never notice.
+
+The reason is that your brain doesn’t read every word. It guesses what a familiar phrase should say and skips the rest.
+
+The same thing happens with customers. When a customer tells you what they want, you hear what you expect to hear. The customer also assumes you understand, so small mistakes and missing details go unnoticed. Two people can read the same requirement and each see something different.
+
+> Don’t just accept the first thing the customer says. Ask questions, check with them, and review the requirements carefully before you build anything.
 
 ## What is Requirements Engineering?
 
@@ -24,13 +22,41 @@ The aim of the week is to:
 - Why does it matter?: To ensure software meets stakeholders' needs.
 - Establish a bridge between the user's expression of needs and the developer's blueprint for development.
 
-![Stakeholders - Requirements - System Design](images/Week3/05_requirements_stakeholders_system_design.png)
+```text
+┌────────────────┐        ┌────────────────┐        ┌────────────────┐
+│  Stakeholders  │  ───>  │  Requirements  │  ───>  │  System Design │
+└────────────────┘        └────────────────┘        └────────────────┘
+```
 
-## Requirements process
+### Requirements process
 
-![Requirements process](images/Week3/06_requirements_process.png)
+```mermaid
+---
+config:
+  flowchart:
+    nodeSpacing: 20
+    rankSpacing: 25
+---
+flowchart LR
+    PS["Problem<br/>Statement"]
+    E(["Requirements<br/>Elicitation"])
+    S["<b>Requirements specification:</b><br/>functional and<br/>non-functional<br/>requirements"]
+    A(["Requirements<br/>Analysis"])
+    M["<b>Analysis Model:</b><br/>dynamic model<br/>object model"]
 
-## What are the activities in the requirements process?
+    PS -.-> E
+    E -.-> S
+    S -.-> A
+    A -.-> M
+    E --> A
+    A --> E
+
+    classDef yellow fill:#ffff99,stroke:#888,color:#000
+    class PS,E,S,A,M yellow
+    linkStyle default stroke:#888
+```
+
+### What are the activities in the requirements process?
 
 - Problem Statements
   - Define what is required by & for the user.
@@ -40,14 +66,14 @@ The aim of the week is to:
   - e.g. "Query results will display within 3 seconds
 - Validate, review, and approve by all before moving on to design.
 
-## Requirements engineering process
+### Requirements engineering process
 
 - The process of establishing the **services** that a customer requires from a system and the **constraints/limitations** on the services.
   - One of the important steps during software development
   - If we do not collect the right requirements, we are not going to build the right system.
 - The system requirements are the descriptions of the system **services** and **constraints** that are generated during the requirements engineering process.
 
-## Types of requirements
+### Types of requirements
 
 - User requirements
   - Statements in natural language plus diagrams of the services the system provides and its operational constraints.
@@ -56,9 +82,19 @@ The aim of the week is to:
 
 Is it true to say a "user requirement" can lead to several system requirements?
 
-## User and system requirements in Mentcare system
+### User and system requirements in Mentcare system
 
-![User and system requirements in Mentcare system](images/Week3/10_user_system_requirements_mentcare.png)
+**Step 1: User requirements definition**
+
+1. The Mentcare system shall generate monthly management reports showing the cost of drugs prescribed by each clinic during that month.
+
+**Step 2: System requirements specification**
+
+1. On the last working day of each month, a summary of the drugs prescribed, their cost and the prescribing clinics shall be generated.
+2. The system shall generate the report for printing after 17.30 on the last working day of the month.
+3. A report shall be created for each clinic and shall list the individual drug names, the total number of prescriptions, the number of doses prescribed and the total cost of the prescribed drugs.
+4. If drugs are available in different dose units (e.g. 10mg, 20mg, etc) separate reports shall be created for each dose unit.
+5. Access to drug cost reports shall be restricted to authorized users as listed on a management access control list.
 
 ## Functional and non-functional Requirements
 
@@ -69,31 +105,34 @@ Is it true to say a "user requirement" can lead to several system requirements?
   - Constraints on the services or functions offered by the system such as timing constraints, constraints on the development process, standards, etc.
   - Often apply to the system as a whole rather than individual features or services.
 
-## Functional Requirements – ATM Examples
+### Functional Requirements – ATM Examples
 
 1. The ATM system shall check the validity of the inserted ATM card.
 2. The ATM system shall validate the PIN number entered by the customer.
 3. The ATM system shall allow the customer to transfer money from one account to another account.
 4. The ATM system should not allow the customer to withdraw more than $2000 per 24 hours.
 
-## Non-Functional Requirements – ATM Examples
+### Non-Functional Requirements – ATM Examples
 
 1. The ATM system shall be written in C++.
 2. The ATM system should use MySQL as the main database.
 3. The ATM system shall validate an ATM card in less than three seconds.
 4. The ATM system shall validate a PIN in less than five seconds.
 
-## Which one is more important/critical?
-
-Functional or Non-functional Requirements? Why?
+> Which one is more important/critical?<br>Functional or Non-functional Requirements? Why?
 
 ## Requirements elicitation and analysis process
 
-## The requirements elicitation and analysis process
+### The requirements elicitation and analysis process
 
-![The requirements elicitation and analysis process](images/Week3/16_elicitation_analysis_process.png)
+The process is iterative:
 
-## Requirements elicitation
+1. Requirements discovery
+2. Requirements classification and organization
+3. Requirements prioritization and negotiation
+4. Requirements specification
+
+### Requirements elicitation
 
 - How do we find out what the systems should do?
   - Guess, Experience, Prototype
@@ -105,7 +144,7 @@ Functional or Non-functional Requirements? Why?
   - Survey, where you gain input from a large number of people.
   - Brainstorming, users or stakeholders come up with ideas or requirements that they have seen or experienced elsewhere
 
-## Techniques to elicit requirements
+### Techniques to elicit requirements
 
 Bridging the gap between end user and developer:
 
@@ -119,9 +158,16 @@ Bridging the gap between end user and developer:
   - Client Acceptance Test: Evaluation scenario
   - System Deployment: Training scenario
 
-![Scenario-based design: designing with / designing for](images/Week3/19_scenario_based_design.png)
+```text
+Designing can range between two approaches:
 
-## Scenarios - Example
+- **Designing with:** designers work together with users and stakeholders, who help make decisions.
+- **Designing for:** designers decide on behalf of users, based on what they think users need.
+
+These are two ends of one scale, not separate choices. In Scenario-Based Design, scenarios help the team work with users to find requirements instead of guessing.
+```
+
+### Scenarios - Example
 
 - User Says: A customer comes to the counter with the product. I look for the barcode on the product and scan it. The price shows up on the register along with the total price for all the items I've scanned.
 - Questions you could ask to find other Scenarios:
@@ -129,15 +175,13 @@ Bridging the gap between end user and developer:
   - What happens if the bar code doesn't work?
   - What happens if your customer brings multiple items of the same product?
 
-## Scenarios - Example Feedback to Answers
+### Scenarios - Example Feedback to Answers
 
 - Answer (No barcode): When the product doesn't have a bar code, I lookup the product on this sheet and type in a special number using the keypad (keyboard).
 - Answer (Barcode broken): I type the barcode in by hand using the keypad (keyboard).
 - Answer ((Multiple): I count the quantity of the same product, type the quantity in the keypad and then scan the barcode for one.
 
-## Do you think requirements elicitation is a difficult or easy task?
-
-Justify your answer!
+> Do you think requirements elicitation is a difficult or easy task?
 
 ## UML – Unified Modeling Language
 
@@ -145,11 +189,11 @@ The Unified Modeling Language (UML) is a standard language for specifying, visua
 
 The UML represents a collection of best modeling practices that have proven successful in the modeling of large and complex systems.
 
-## Classification of UML
+### Classification of UML
 
 ![Classification of UML](images/Week3/24_uml_classification.png)
 
-## Classification of UML 2.2 Diagrams
+### UML Diagrams
 
 - Structure diagrams show the static structure of the system and its parts on different abstraction and implementation levels and how they are related to each other.
   - The elements in a structure diagram represent the meaningful concepts of a system and may include abstract, real-world, and implementation concepts.
@@ -163,7 +207,7 @@ Key Elements: Actor, Use Case, System Boundary
 
 ![Use case diagram - ATM System](images/Week3/26_use_case_diagram_atm.png)
 
-## Use Case Model
+### Use Case Model
 
 Four components:
 
@@ -172,13 +216,7 @@ Four components:
 - Use cases: things that the actors can do with the system.
 - Relationship: meaningful relationships between actors and use cases.
 
-## Use Case Diagram: Fill in the blanks
-
-![Use case diagram: Student Enrolment System - fill in the blanks](images/Week3/28_fill_in_blanks_use_case_diagram.png)
-
-Should I show the order in which these use cases are carried out?
-
-## Use Case Specification - Template
+### Use Case Specification - Template
 
 | Field | Description |
 |---|---|
@@ -192,11 +230,23 @@ Should I show the order in which these use cases are carried out?
 | Postconditions | Things that must be true at the end of the use case; |
 | Alternative flows | A list of alternatives to the main flow. |
 
-## Write a Use Case Specification for this diagram
+### Write a Use Case Specification for this diagram
 
-![Customer - Create New Customer Account](images/Week3/30_create_account_use_case_diagram.png)
+```mermaid
+flowchart LR
+    C["Customer"]
+    UC(["Create New Customer<br/>Account"])
 
-## Use Case Specification: Example
+    C --- UC
+
+    classDef actor fill:none,stroke:#888
+    classDef usecase fill:#5bc8f5,stroke:#888,color:#000
+    class C actor
+    class UC usecase
+    linkStyle default stroke:#888
+```
+
+#### Use Case Specification: Example
 
 **Use Case: Create New Customer Account**
 
@@ -247,13 +297,13 @@ Should I show the order in which these use cases are carried out?
 
 "As a [user role], I want to [goal], so I can [reason]."
 
-## What is acceptance criteria?
+### What is acceptance criteria?
 
 - Are the conditions that a product, user story, or increment of work must satisfy to be completed.
 - They are a set of clear, concise, and testable statements that focus on providing positive customer results.
 - Acceptance criteria don't focus on how you reach a solution but rather on the final desired outcome of the task.
 
-Example:
+**Example**:
 
 User story: As a registered user, I want to be able to log in to the website using my email address and password so that I can access my account and manage my purchases.
 
@@ -264,7 +314,7 @@ Acceptance Criteria:
 - Upon successful login, users should be redirected to their account dashboard.
 - The system should display an error message with clear instructions for invalid login attempts (e.g., incorrect email address and password).
 
-## Comparing Use Cases & User Stories
+### Comparing Use Cases & User Stories
 
 | Aspect | Use Case Diagrams | User Stories |
 |---|---|---|
@@ -273,36 +323,17 @@ Acceptance Criteria:
 | Weaknesses | Requires UML knowledge, less agile | Can be vague, lacks big-picture structure |
 | Best For | Large, formal projects | Agile, iterative development |
 
-## Activity
+# Pre-class
 
-Breakout room:
+## Requirements Engineering
 
-Task:
+You may think understanding what the client wants is simple — just ask the client themselves! 
 
-Provide a set of requirements for both use case diagrams and user stories for the "Online Learning Platform (Canvas)"
-
-- Draw the use case diagram
-- Write two (2) user stories, including two (2) acceptance criteria for each user story.
-- Discuss: How do they complement each other?
-
-## Requirements Topic Summary
-
-- The requirements engineering process is an iterative process that includes requirements elicitation, specification, and validation.
-- Functional vs Non-Functional -> different perspectives of requirements.
-- Use case diagrams & user stories -> complementary techniques.
-- Integration leads to better specifications and designs.
-
-## Pre-class
-
-### Pre-class > 3.1 Requirements Engineering
-
-You may think understanding what the client wants is simple — just ask the client themselves! But before you do so, consider this scenario:
-
-Imagine you are building an appointment booking system for a real estate agent.
+But before you do so, consider this scenario: Imagine you are building an appointment booking system for a real estate agent.
 
 Rely entirely on the client to write the requirements themselves, and the software development team will end up with a list that runs up to hundreds of pages, written in the most reader-unfriendly language — and that still doesn't guarantee the list is complete. To be able to proceed with a sensible and comprehensible Software Requirement Specifications (SRS) document, you will need to do some requirements engineering.
 
-#### Requirements Engineering Activities
+### Requirements Engineering Activities
 
 Requirements engineering helps identify precisely the problem that the client need solved, their criteria and constraints for the solution. Many times, the project has direct and non-direct users that are not the client themselves, so you will have to involve other stakeholders in the requirements engineering process as well. Depends on the project type and the organisation's practice, requirements engineering activies may include:
 
@@ -313,25 +344,19 @@ Requirements engineering helps identify precisely the problem that the client ne
 
 Since "a sensible and comprehensible SRS document" is the desired outcome of requirements engineering, you need to involve documentation throughout the whole process.
 
-#### Functional and Non-Functional Requirements
+### Functional and Non-Functional Requirements
 
-Functional Requirements
+| | Functional Requirements | Non-Functional Requirements |
+|---|---|---|
+| Definition | Statements of services the system should provide, how the system should react to particular inputs and how the system should behave in specific situations. | Constraints on the services or functions offered by the system, such as timing constraints, constraints on the development process, standards, etc. |
+| Scope | May state what the system should not do. | Apply to the system as a whole rather than individual features or services inside it. |
+| Examples | User authentication, admin function, reporting capabilities | Response speed (e.g. sending real-time notifications), security, reliability |
 
-- Statements of services the system should provide, how the system should react to particular inputs and how the system should behave in specific situations.
-- May state what the system should not do.
-- Examples: user authentication, admin function, reporting capabilities
-
-Non-Functional Requirements
-
-- Constraints on the services or functions offered by the system, such as timing constraints, constraints on the development process, standards, etc.
-- Apply to the system as a whole rather than individual features or services inside it.
-- Examples: response speed (e.g. sending real-time notifications), security, reliability
-
-### Pre-class > 3.2 User Story vs Use Case
+## User Story vs Use Case
 
 As you elicit and negotiate the requirements with the client, sometimes a visualisation of what you will develop for the system or an attempt to frame the problem from their perspective may make the process easier.
 
-#### User Story
+### User Story
 
 Used for Agile projects
 
@@ -357,7 +382,7 @@ Include acceptance criteria for each user story.
 
 "As a Shop Owner, I want to provide net shopping to customers, so that they can perform various transactions."
 
-#### Use Case
+### Use Case
 
 Used for non-Agile projects
 
@@ -373,7 +398,7 @@ A Use-Case model consists of a number of model elements. The most important mode
 
 Structure of Use case model, including Actor, Use Case name. It comes with a table that details the use case description, pre-condition, post-condition, basic path, alternative paths and exception paths.
 
-### Pre-class > 3.3 Requirement Engineering in Action
+## Requirement Engineering in Action
 
 University Library System
 
