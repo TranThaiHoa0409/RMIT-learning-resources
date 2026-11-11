@@ -129,7 +129,10 @@ Business User is the everyday role. Business Users no longer create or own group
 | 1 – Hòa | Dashboard and KPI management | Widget catalogue, saved selection, widget layout, time period. |
 | 2 – Len | Business analytics | KPI trend view, period comparison, filtering, drill-down, no-data rule. |
 | 3 – Phu | Reporting and notifications | Report generation, report list, report sharing, alert rules, alert checking and delivery, notification settings. |
-| 4 – Yuki | Collaboration and access management | Groups, group roles and permissions, report sharing boundaries, report notes, System Administrator. |
+| 4 – Yuki | Collaboration and access management | Groups managed by the User Administrator, the Member role inside a group, whole-group sharing boundaries, report notes, User Administrator. |
+| Unassigned | Data Manager | File upload control, upload history, removing or rejecting a file with the announcement to all users, action log (view, filter by member name, open the exported item, 30-day copy rule). |
+
+The Data Manager package has no owner yet. The team decides who writes its user stories, use cases and functional requirements, and reserves their IDs in the master list.
 
 ## 9. Member-by-member instructions
 
