@@ -18,7 +18,8 @@ We describe the proposed system clearly enough that a reader can understand what
 | Analytics | Users examine performance over time, compare periods or categories, and open more detailed data (drill-down). |
 | Reporting | Users create reports for a selected period or topic, schedule recurring reports, and share them with permitted people. |
 | Notifications | The system alerts relevant users when a configured unusual condition or important performance update occurs. |
-| Collaboration and access | Users share reports with individuals and groups, share a dashboard as a captured screenshot using a button on the main screen, add comments, and access only information they are permitted to see. |
+| Collaboration and access | Users share reports and dashboard snapshots with whole groups they belong to, capture a dashboard as a screenshot using a button on the main screen, add notes to shared reports, and access only information they are permitted to see. |
+| Data and activity control | The Data Manager controls which files enter the system, keeps the upload history, removes or rejects files (with an announcement to all users), and reviews an action log of PDF exports and dashboard captures. |
 
 ### Project purpose
 
@@ -74,9 +75,11 @@ Market intelligence is optional and not compulsory for this assignment. The grou
 
 | Role | What they do |
 | --- | --- |
-| System Administrator | Manages all groups and permissions across the whole system, manages user accounts including deactivating a user, and can delete any note. |
-| Group Owner | Any user who creates a group. Adds and removes members, renames or deletes the group, for that group only. |
-| Business User | Monitors KPIs, compares performance, explores data, analyzes trends, generates reports, shares reports and dashboards, opens items shared with them, and writes notes on reports shared through their group. |
+| Business User | Monitors KPIs, compares performance, explores data, analyzes trends, generates reports, shares reports and dashboard snapshots with whole groups they belong to (not with individual users), opens items shared with them, and writes notes on reports shared through their group. |
+| User Administrator | Manages people and groups across the whole system. Creates groups, adds and removes members, renames or deletes any group, manages user accounts including deactivating a user, and views the activity log of who added or removed members. |
+| Data Manager | Controls the flow of data in and out of the system. Decides which files are uploaded and what information enters the system, keeps a list of all uploaded files with their history, can remove or reject a file, and sends an announcement to all users when a file is removed or rejected. Views an activity log of member actions, including when a PDF report is exported and when a dashboard is captured. |
+
+Business User is the everyday role. Business Users no longer create or own groups, because groups are managed by the User Administrator. There is no Group Owner role. Inside a group there is one role, Member. Role names must be spelled exactly as above everywhere in the report.
 
 ## 6. Decisions the group made before detailed writing
 
@@ -87,9 +90,8 @@ Market intelligence is optional and not compulsory for this assignment. The grou
 | Data sources | A limited combination of sample datasets and uploaded files. Numbers do not update by themselves: they refresh on a set schedule or when a new file is uploaded. Live connections through APIs are left for a later version. |
 | Meaning of real-time | Periodic, not continuous. Dashboard data refreshes every 5 minutes, or right away when a new file is uploaded. After a refresh, the notification reaches the user within 1 minute if there is an alert condition. |
 | Anomaly detection | User-defined thresholds. The user sets a rule for a KPI, and an alert is created when the value crosses it. Possible improvement: automatic detection using AI. |
-| Sharing model | Reports and dashboard snapshots can be shared with individuals and with groups inside the app. |
-| Scope boundaries | Excluded from the first version: live data connections through APIs, automatic anomaly detection using AI, market intelligence (optional), and a dedicated mobile app. |
-| ID and document control | IDs (US-01, UC-01, FR-01) are reserved in one shared Google Sheets master list. One team member owns the list and assigns the IDs. Members reserve their IDs there before writing. One team member puts the final report together. |
+| Sharing model | Reports and dashboard snapshots are shared with whole groups the user belongs to, not with individual users. Everyone who receives an item through a group can open it, and for reports, read and write notes. |
+| Scope boundaries | Excluded from the first version: live data connections through APIs, automatic anomaly detection using AI, market intelligence (optional), a dedicated mobile app, and an organization hierarchy tree (company, departments, teams) that would decide who can access which information. The Data Manager handles sample datasets and uploaded files only. |
 
 ## 7. Member work allocation
 
@@ -104,18 +106,20 @@ Market intelligence is optional and not compulsory for this assignment. The grou
 
 ### How the team fills it in
 
-1. Add your row as soon as you write a user story. Do not wait until the end.
-2. Fill the columns left to right: user story, use case, functional requirements, acceptance criteria, and NFR if one is related.
-3. If one story has several use cases or requirements, write them all in the same cell, separated by commas.
-4. Each person fills only their own rows. The person who owns the master list checks the whole table.
-5. When a requirement changes, update its story, use case, diagram, and row in the same sitting.
+1. Fill the columns left to right: user story, use case, functional requirements, acceptance criteria.
+2. Each person fills only their own rows.
+3. When a requirement changes, update its story, use case, diagram, and row in the same sitting.
 
-| User story | Use case | Functional requirements | Acceptance criteria | NFR (if related) |
-| --- | --- | --- | --- | --- |
-| US-01 | UC-01 | FR-01, FR-02 | AC-01, AC-02 | NFR-01 |
-| US-02 | UC-02 | FR-03 | AC-03 | |
-| US-03 | UC-03 | FR-04, FR-05 | AC-04, AC-05 | NFR-02 |
-| US-04 | UC-04 | FR-06 | AC-06 | NFR-05 |
+> One US can have several UCs, one UC can have several FRs, and one FR can have several ACs. The matrix shows the many-to-many relationships.
+
+**Example matix:**
+
+| User story | Use case | Functional requirements | Acceptance criteria |
+| --- | --- | --- | --- |
+| US-01 | UC-01 | FR-01, FR-02 | AC-01, AC-02 |
+| US-02 | UC-02 | FR-03 | AC-03 |
+| US-03 | UC-03 | FR-04, FR-05 | AC-04, AC-05 |
+| US-04 | UC-04 | FR-06 | AC-06 |
 
 ### Checks before submitting
 
