@@ -493,13 +493,14 @@ NFRs describe how well the system must operate. Everyone proposes and reviews th
 
 - Keep names consistent with the written use cases.
 - Do not make login or logout the main use cases.
+- The actors are Business User, User Administrator and Data Manager. Member is not a separate actor.
 
 **Activity diagram (8 marks).** The rubric rewards a complete workflow that matches the use cases and uses correct UML notation. We draw one overall activity diagram that combines the major workflows, not a separate diagram for each member.
 
 - Use a clear initial node and final node.
 - Use action nodes for activities, and decision and merge nodes for branches.
-- Use swimlanes to show responsibility, for example User, BizBoard system, and Email service.
-- Show meaningful alternative paths, such as insufficient permission, missing data, report failure, or an alert condition not being met.
+- Use swimlanes to show responsibility, for example User, Data Manager, BizBoard system, and Email service. The Data Manager lane holds file upload, removing or rejecting a file, and the announcement to all users.
+- Show meaningful alternative paths, such as insufficient permission, missing data, report failure, an alert condition not being met, or an uploaded file being removed or rejected.
 - Do not add a workflow that is not in the agreed requirements.
 
 One member assembles the diagram, but every member supplies their workflow and reviews the final diagram against their use cases.
@@ -508,7 +509,7 @@ One member assembles the diagram, but every member supplies their workflow and r
 
 - Purpose: state why the SRS is being written and who will use it.
 - Scope: state what BizBoard includes and excludes. Do not promise a full enterprise BI replacement.
-- Definitions: explain terms such as KPI, BI, dashboard, widget, drill-down, snapshot and SRS.
+- Definitions: explain terms such as KPI, BI, dashboard, widget, drill-down, snapshot, action log and SRS.
 - Product perspective: explain how BizBoard relates to its data sources and users at a high level.
 - Product functions: summarise the main capabilities without repeating every detailed requirement.
 - User classes and characteristics: describe each role, its goals and expected technical familiarity.
@@ -548,8 +549,12 @@ One member assembles the diagram, but every member supplies their workflow and r
 - [ ] Every use case has an ID, title, actors, preconditions, main flow, alternative flows and postconditions.
 - [ ] Functional requirements are unique, precise, testable and use consistent "The system shall..." wording.
 - [ ] NFRs cover relevant quality attributes and use realistic measurable targets.
-- [ ] Use case diagram actors and use cases match the written requirements.
-- [ ] The activity diagram uses correct UML notation and covers the key workflows and decision paths.
+- [ ] Role names are spelled the same everywhere: Business User, User Administrator, Data Manager.
+- [ ] Every story, use case and requirement describes sharing with whole groups only, never with individual users.
+- [ ] The Data Manager has user stories, use cases and functional requirements for file upload control, upload history, removing or rejecting a file with the announcement, and the action log, with IDs reserved in the master list.
+- [ ] PDF exports (manual and scheduled) and dashboard captures write an entry to the action log in the stories, use cases and requirements.
+- [ ] Use case diagram actors and use cases match the written requirements, including the Data Manager.
+- [ ] The activity diagram uses correct UML notation, covers the key workflows and decision paths, and includes the Data Manager lane.
 - [ ] The traceability matrix links stories, use cases, functional requirements and acceptance criteria without gaps.
 - [ ] Methodology and project timeframe are included.
 - [ ] References are complete and in IEEE style.
