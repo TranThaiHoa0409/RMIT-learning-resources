@@ -199,7 +199,8 @@ The Data Manager package has no owner yet. The team decides who writes its user 
 - The snapshot shows the selected widgets, the period and its exact dates, and the date and time it was captured.
 - Each user has a personal dashboard list of the snapshots they captured, plus a separate "Shared with me" section.
 - Each item shows the name, the period, and the date and time captured.
-- The owner can share a snapshot with individual users and with groups the owner belongs to.
+- The owner can share a snapshot only with whole groups the owner belongs to, not with individual users.
+- The system records each dashboard capture in the action log (see the Data Manager package).
 - Recipients can only view it. They cannot edit, delete or re-share it, and there are no comments on dashboards.
 - The owner can stop sharing at any time, and the recipient loses access.
 - The owner can delete a snapshot, which also removes access for everyone it was shared with.
@@ -269,6 +270,7 @@ The Data Manager package has no owner yet. The team decides who writes its user 
 - The report is a PDF. Other formats, such as CSV, are future scope.
 - Every user can select any KPI from the shared list.
 - Each report has a name, typed by the user or a default such as "Total Revenue, Last 7 days".
+- The system records each PDF export in the action log (see the Data Manager package).
 
 **2. Report list.** Every generated report is saved in a list so the user can open it again.
 
@@ -278,16 +280,15 @@ The Data Manager package has no owner yet. The team decides who writes its user 
 - Deleting a report also removes access for everyone it was shared with.
 - A saved report does not change when data refreshes. For newer numbers, the user generates a new report.
 
-**3. Report sharing.** The owner can share a report with other users. It stays view-only for them.
+**3. Report sharing.** The owner can share a report with whole groups they belong to. It stays view-only for the recipients, apart from notes (see Member 4).
 
 - Only the owner can share a report.
-- The owner can share with a whole group, but only a group the owner belongs to.
-- The owner can also share with individual users, including users who share no group with the owner.
+- The owner can share only with a whole group, and only a group the owner belongs to. Sharing with individual users is not available.
 - Recipients can open and download the report. They cannot edit, delete or re-share it.
 - The report appears in the recipient's "Shared with me" section.
 - Each recipient gets a notification in the app and by email, using the same delivery and retry rules as alerts.
 - The owner can stop sharing at any time, and the recipient loses access.
-- If a recipient leaves the group the report was shared with, they lose access.
+- If a recipient is removed from the group the report was shared with, they lose access.
 
 **4. Rules for missing or invalid input.** When input is wrong or there is nothing to show, the system explains why instead of failing silently.
 
@@ -296,12 +297,13 @@ The Data Manager package has no owner yet. The team decides who writes its user 
 - If none of the selected KPIs have data, the system shows a no-data message and creates no report.
 - If only some KPIs have data, the system shows a confirmation box listing the KPIs with no data. "Generate without them" creates the PDF with only the KPIs that have data. "Cancel" creates nothing and returns to the selection screen. The PDF does not mention the skipped KPIs.
 - If building the PDF fails, the system shows an error message, creates no report, and lets the user try again.
-- If the owner is in no group, group sharing is unavailable, but sharing with individuals still works.
+- If the owner is in no group, sharing is unavailable.
 
 **5. Scheduled reports.** The user sets a report to be generated automatically on a repeating schedule, such as every Monday at 8 AM.
 
 - The user picks the KPIs, the period, and the frequency, for example weekly or monthly.
 - The system generates the PDF on schedule, adds it to the report list, and notifies the user.
+- The system records each scheduled PDF export in the action log, in the same way as a report exported manually.
 - The user can edit or cancel a schedule.
 - If a scheduled run fails, the system notifies the user.
 
@@ -350,55 +352,70 @@ The Data Manager package has no owner yet. The team decides who writes its user 
 
 ### Member 4 – Collaboration and access management (Yuki)
 
-**1. Groups.** A group is a set of users who work together and share reports. Any user can create a group and automatically becomes its Group Owner.
+**1. Groups.** A group is a set of users who work together and share reports. Only the User Administrator creates and manages groups.
 
-- The user creates a group by giving it a name. The Group Owner can rename it later.
-- A user can belong to several groups and own several groups.
-- The Group Owner adds members directly by searching for a user by name or email. The person is added right away, with no invitation step.
-- The Group Owner can remove a member at any time. A removed member loses access to anything shared with that group and can no longer write notes on those reports.
-- A member can leave a group at any time.
-- A group must always have one Group Owner. To leave, the owner must first hand the group to another member, or delete the group.
-- The Group Owner can delete the group. Reports are not deleted. They are no longer shared with that group.
+- The User Administrator creates a group by giving it a name, and can rename it later.
+- A user can belong to several groups.
+- The User Administrator adds members directly by searching for a user by name or email. The person is added right away, with no invitation step.
+- The User Administrator can remove a member at any time. A removed member loses access to anything shared with that group and can no longer write notes on those reports.
+- The User Administrator can delete a group. Reports are not deleted. They are no longer shared with that group.
 - Future scope: invitations that the person must accept before joining. This needs extra states, such as pending, accepted, declined and expired, plus notifications for each, so it is left out to keep the first version small.
 
-**2. Group roles and permissions.** Inside a group there are two roles. Permissions apply to that group only.
+**2. Group roles and permissions.** Inside a group there is one role, Member. Permissions apply to that group only.
 
 - Member: can open reports shared with the group, write notes on them, and share their own reports with the group.
-- Group Owner: can do everything a member can, and can also add or remove members and rename or delete the group.
-- The System Administrator sits above all groups (see item 5).
+- Managing groups (creating, renaming, deleting, adding and removing members) is done by the User Administrator, not by a role inside the group (see item 5).
 - A user who is not in a group cannot see the group, its members, or what was shared with it.
 - If a user without permission tries to open a report or group, the system shows a clear no-access message and nothing else.
 
 **3. Report sharing boundaries.** This sets how Member 3's report sharing connects to groups.
 
-- Any user who creates a report can share it with any individual user in the system.
-- The same user can share it with any group they belong to, but not a group they are not in.
-- Dashboard snapshots follow the same sharing boundaries: individuals, and groups the owner belongs to. They are view-only, with no notes.
-- A recipient who gets a report through a group can read and write notes.
-- A recipient who gets a report only as an individual can open it and read the notes, but cannot write notes.
-- The owner can stop sharing at any time, and the recipient loses access.
+- Any user who creates a report can share it with any group they belong to, but not a group they are not in.
+- Sharing with individual users is not available.
+- Dashboard snapshots follow the same sharing boundaries: whole groups the owner belongs to. They are view-only, with no notes.
+- Everyone who gets a report through a group can open it, read the notes and write notes.
+- The owner can stop sharing at any time, and the group loses access.
 
 **4. Report notes.** A note is a short text message under a report, working like a small comment thread. The PDF itself never changes.
 
 - Each note shows the author's name and the date and time it was written.
 - The report owner can always write notes on their own report.
 - Members of a group the report is shared with can write notes on it.
-- A person who has the report only as an individual can read notes but cannot write them.
 - The author can edit or delete their own notes.
 - The report owner can delete any note on their report.
-- The System Administrator can delete any note.
-- If a user loses access to the report, for example by leaving the group, they can no longer see or write notes on it. Their old notes stay.
+- The User Administrator does not delete notes.
+- If a user loses access to the report, for example by being removed from the group, they can no longer see or write notes on it. Their old notes stay.
 - Future scope: annotations pinned to a specific KPI or point inside a report.
 
-**5. System Administrator.** Manages all groups and permissions across the whole system.
+**5. User Administrator.** Manages people and groups across the whole system. This is not a role inside a group.
 
 - View all groups and their members.
+- Create, rename and delete any group.
 - Add or remove members in any group.
-- Change the Group Owner of any group, for example when the owner has left the company.
-- Delete any group.
-- Delete any note.
 - Manage user accounts, including deactivating a user.
 - View an activity log of who added or removed members.
+
+### Data Manager – not yet assigned
+
+The Data Manager controls the flow of data in and out of the system. Nobody owns this package yet. The team decides who writes its user stories, use cases and functional requirements, and reserves their IDs in the master list. The Data Manager handles sample datasets and uploaded files only.
+
+**1. File upload control.** The Data Manager decides which files are uploaded and which information enters the system.
+
+**2. Upload history.** The Data Manager views the list of all uploaded files and looks back through the upload history.
+
+**3. Removing or rejecting a file.** The Data Manager removes or rejects an uploaded file.
+
+- The file stays in the upload history, but its data no longer counts in dashboards and analytics.
+- Reports already generated do not change.
+- The system sends an announcement to all users when a file is removed or rejected.
+
+**4. Action log.** A read-only log of member actions, including when a PDF report is exported and when a dashboard is captured.
+
+- The Data Manager can open the log whenever needed.
+- The Data Manager can filter the log by member name.
+- The Data Manager can open the exported PDF report or captured dashboard snapshot that a log entry refers to.
+- The log keeps its record after the owner deletes an item from their own list. The Data Manager can still open a copy of the item for 30 days after the deletion. After that, only the log entry remains.
+- PDF exports (Member 3) and dashboard captures (Member 1) must each write an entry to the log.
 
 ## 10. Non-functional requirements
 
