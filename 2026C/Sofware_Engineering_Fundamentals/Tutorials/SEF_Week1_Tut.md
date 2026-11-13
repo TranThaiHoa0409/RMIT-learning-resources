@@ -1,12 +1,4 @@
-# Week 1 – Tut/Lab: Project Attributes, SDLC and Common Processes
-
-ISYS3416/ISYS3432 Software Engineering Fundamentals for IT
-
-## Tute/Lab Week 1 Objectives
-
-- Introduction to Software Engineering
-- Software Development Lifecycle
-- Common Processes
+# Week 1 – Tut: Project Attributes, SDLC and Common Processes
 
 ## I. Project Attributes
 
