@@ -8,7 +8,7 @@
   2. data structures that enable the programs to adequately manipulate information; and
   3. documentation that describes the operation and use of the programs.
 
-## Software Products
+### Software Products
 
 | | Generic products | Customized products |
 |---|---|---|
@@ -16,7 +16,7 @@
 | **Examples** | Apps for mobile devices; PC software such as graphics programs, project management tools; CAD software; software for specific markets such as appointment systems for dentists. | Embedded control systems, air traffic control software, traffic monitoring systems. |
 | **Product specification** | The specification of what the software should do is owned by the software developer, and decisions on software change are made by the developer. | The specification of what the software should do is owned by the customer for the software, and they make decisions on software changes that are required. |
 
-## What are the Attributes of Good Software?
+### What are the Attributes of Good Software?
 
 Good software should deliver the required functionality and performance to the user and should be **maintainable, dependable, efficient, and usable**.
 
