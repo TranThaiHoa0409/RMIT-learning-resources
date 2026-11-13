@@ -2,7 +2,7 @@
 
 ## Part A: Discuss the following questions.
 
-### **1.** What is the most important difference between generic software products? development and custom software development? What might this mean in practice for users of generic software products?
+### 1. What is the most important difference between generic software products? development and custom software development? What might this mean in practice for users of generic software products?
 
 **Possible Answer:**
 
@@ -14,7 +14,7 @@ A customized software product is commissioned by a specific customer to meet the
 
 Examples – embedded control systems, air traffic control software, and traffic monitoring systems. The specification of what the software should do is owned by the customer for the software and they make decisions on software changes that are required.
 
-### **2.** What are the fundamental activities in software engineering?
+### 2. What are the fundamental activities in software engineering?
 
 **Possible Answer**
 
@@ -41,7 +41,7 @@ Examples – embedded control systems, air traffic control software, and traffic
 - **Software validation:** Tester, Developer/Programmer
 - **Software evolution:** System Admin, End-user, and all above-mentioned roles
 
-### **3.** What factors should be considered when selecting tools and techniques for developing software systems?
+### 3. What factors should be considered when selecting tools and techniques for developing software systems?
 
 **Possible Answer**
 
@@ -55,7 +55,7 @@ Other factors:
 
 - Available Time and Budget.
 
-### **4.** Discuss the testing cost and effort in the following software systems. In which system the testing cost and effort are more? Why?
+### 4. Discuss the testing cost and effort in the following software systems. In which system the testing cost and effort are more? Why?
 
 - **a.** Real-time software in an aircraft
 - **b.** Video editing software
@@ -69,9 +69,9 @@ Ordered based on the testing cost and effort:
 - **b. Video editing software:** failure in such a system has less damage compared to the above-mentioned systems.
 - **c. Mobile banking apps:** failure in such a system may lead to financial disaster.
 
-### **5.** Provide a few examples (both positive and negative) that indicate the impact of software on our society.
+### 5, Provide a few examples (both positive and negative) that indicate the impact of software on our society.
 
-### **6.** Briefly discuss why it is usually cheaper, in the long run, to use software engineering methods and techniques for software systems.
+### 6. Briefly discuss why it is usually cheaper, in the long run, to use software engineering methods and techniques for software systems.
 
 **Possible Answer**
 
@@ -81,7 +81,7 @@ No one can understand all activities and issues during software development. Fur
 
 ## Part B: Let us review your programming! Implement a Simple Method in Java or C
 
-### **Tasks**
+### Tasks
 
 1. Create a Class and name it `SearchClass`
 2. Create a method and name it `FindMax`
