@@ -68,7 +68,7 @@ User sẽ nói rõ đang gửi loại nào; nếu không rõ thì hỏi lại tr
 
 ## D. VẼ LẠI HÌNH (TEXT HOẶC MERMAID)
 
-Chỉ áp dụng khi user yêu cầu vẽ lại một hình (user gửi ảnh và nói "vẽ"). Không tự thay ảnh trong file `.md` bằng hình vẽ khi user chưa yêu cầu.
+Chỉ áp dụng khi user yêu cầu vẽ lại một hình (user gửi ảnh và nói "vẽ"). Không tự thay ảnh trong file `.md` bằng hình vẽ khi user chưa yêu cầu. Nếu user nói rõ "vẽ bằng svg" thì KHÔNG dùng mục này mà làm theo mục E.
 
 0. ƯU TIÊN VẼ BẰNG TEXT: nếu hình vẽ được bằng ký tự văn bản (hộp, mũi tên, nhãn, đường nối đơn giản) thì KHÔNG dùng Mermaid, vẽ bằng text trong code block ```` ```text ````.
    - Dùng ký tự khung (`┌ ─ ┐ │ └ ┘`) hoặc `+ - |` cho hộp, `──▶` / `───>` cho mũi tên, `▲` `▼` cho mũi tên dọc. Nhãn viết ở bên cạnh hộp, mũi tên chỉ vào đúng vị trí cần chú thích.
@@ -104,6 +104,34 @@ Chỉ áp dụng khi user yêu cầu vẽ lại một hình (user gửi ảnh v�
    - Dấu `|` trong bảng markdown: viết `\|`.
 
 9. HÌNH KHÔNG HỢP MERMAID: sơ đồ minh họa có nhiều chú thích đồ họa (chấm đỏ, mũi tên khối, hiệu ứng 3D, vị trí hộp có ý nghĩa) thì nói thẳng là nên giữ ảnh crop, rồi vẫn đưa bản Mermaid gần đúng nếu user vẫn muốn.
+
+## E. VẼ BẰNG SVG
+
+Chỉ áp dụng khi user gửi ảnh và nói "vẽ bằng svg" (không cần nói thêm về nền hay kiểu). Nếu user chỉ nói "vẽ" thì làm theo mục D. Không tự thay ảnh trong file `.md` bằng hình SVG khi user chưa yêu cầu.
+
+1. MỤC TIÊU: vẽ lại hình giống ảnh gốc nhất có thể, trên nền xám đậm, xuất ra file ảnh để user dùng trực tiếp.
+
+2. ĐỘ GIỐNG VỚI ẢNH GỐC:
+   - Giữ đúng mọi nhãn, ký hiệu, mũi tên, hướng, quan hệ giữa các phần và vị trí chú thích. Nhãn đặt ở đâu trong ảnh gốc thì đặt ở đó (vd nhãn bán kính `r2` nằm bên trong đường tròn, cạnh mũi tên bán kính, không dời ra ngoài).
+   - Nét đứt, cung bị che, mũi tên hai đầu, chấm tâm... vẽ đúng như ảnh gốc (nét đứt dùng `stroke-dasharray`; cung giao nhau tính điểm giao rồi vẽ bằng `path` với lệnh `A`, không dùng lớp phủ để che).
+   - Ưu tiên đúng quan hệ và vị trí chú thích hơn đúng từng pixel. Nếu ảnh mờ khiến chỗ nào đọc không chắc thì nói rõ để user kiểm tra lại.
+   - Trước khi vẽ, nói ngắn gọn phần nào của hình gốc không vẽ được hoặc phải thay thế (bóng đổ, hiệu ứng 3D, font chữ gốc...).
+
+3. NỀN VÀ MÀU (mặc định cho mọi hình SVG):
+   - Nền xám đậm `#2B2B2B` phủ kín toàn bộ ảnh bằng một `<rect>` kích thước bằng đúng `viewBox`. KHÔNG bo góc, KHÔNG viền, KHÔNG khung đen bên ngoài.
+   - Nét vẽ, mũi tên, chấm và chữ dùng màu trắng ngà `#ECE9E1`, `stroke-width="1.2"`, chấm tâm bán kính 3.
+   - Chữ dùng `font-family="Arial, Helvetica, sans-serif"`, `font-size="14"`. Nhãn nhỏ thì chỉnh cho khớp với ảnh gốc nhưng không dưới 11.
+   - Mũi tên dùng `<marker>` với màu nét ghi thẳng (`stroke="#ECE9E1"`), KHÔNG dùng `context-stroke` vì trình chuyển PNG không hỗ trợ.
+   - Hình gốc có màu đặc trưng (đỏ, xanh, nâu...) thì giữ màu đó, chỉ đổi nền sang xám đậm. Màu đặt cố định bằng hex, không dùng biến theme của giao diện.
+
+4. CÁCH XUẤT:
+   - KHÔNG vẽ trực tiếp trong khung chat (khung chat có viền đen bao ngoài, không bỏ được). Luôn tạo file `.svg` (và `.png`) rồi gửi cho user bằng công cụ gửi file.
+   - Viết `.svg` với `viewBox` rộng 680 và `width`/`height` gấp đôi để PNG đủ nét (vd `viewBox="0 0 680 330"`, `width="1360" height="660"`). Tạo `.png` bằng `rsvg-convert`.
+   - Tên file theo quy tắc đặt tên ảnh của loại tài liệu đang làm (Lecture: `[số_trang_slide]_[tên_ngắn_gọn]`, Tut: `[thứ_tự]_[tên_ngắn_gọn]`). Nếu chưa biết tên hoặc tuần, hỏi user. Không tự ghi file vào `images/Week{N}/` khi user chưa yêu cầu.
+
+5. KIỂM TRA TRƯỚC KHI GỬI: mở file PNG vừa tạo và xem lại. Phải chắc nhãn không bị mũi tên, nét vẽ hay nhãn khác che hoặc chồng lên, không có phần nào tràn ra ngoài lề, và nền xám phủ kín không lộ góc. Nếu có lỗi thì sửa rồi kiểm tra lại, sau đó mới gửi.
+
+6. SỬA SAU KHI GỬI: khi user nhờ chỉnh (dời nhãn, đổi vị trí...), chỉ sửa đúng chỗ đó trong file SVG hiện có, tạo lại PNG, kiểm tra rồi gửi lại cả hai file. Không vẽ lại từ đầu.
 
 ## CẤU TRÚC THƯ MỤC
 

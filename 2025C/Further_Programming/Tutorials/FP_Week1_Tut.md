@@ -237,14 +237,23 @@ Use Javadoc for the comments.
 
 5. Write a program that prompts the user to enter an integer from 1 to 15 and displays a pyramid, as shown in the following sample run:
 
-   ![Pyramid sample run](images/Week1/01_pyramid_sample_run.png)
+   ```text
+    Enter the number of lines: 7 [Enter]
+                        1
+                     2  1  2
+                  3  2  1  2  3
+               4  3  2  1  2  3  4
+            5  4  3  2  1  2  3  4  5
+         6  5  4  3  2  1  2  3  4  5  6
+      7  6  5  4  3  2  1  2  3  4  5  6  7
+    ```
 
 6. Write a program that prompts the user to enter the center coordinates and radiuses of two circles and determines whether the second circle is inside the first or overlaps with the first, as shown in the below Figure.
 
    *Hint: circle2 is **inside** circle1 if the distance between the two centers <= |r1 - r2| and circle2 **overlaps** circle1 if the distance between the two centers <= r1 + r2*
    *Test your program to cover all cases.*
 
-   ![Circle inside and overlapping another circle](images/Week1/02_circle_inside_overlap.png)
+   ![Circle inside and overlapping another circle](images/Week1/1_circle_inside_overlap.png)
 
    (a) A circle is inside another circle. (b) A circle overlaps another circle.
 

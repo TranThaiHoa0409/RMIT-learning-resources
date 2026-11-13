@@ -1,4 +1,4 @@
-# COSC2731 - Week 1 Code
+# Week 1 Code
 
 ## Question 2 – Solution (UML class diagram)
 
