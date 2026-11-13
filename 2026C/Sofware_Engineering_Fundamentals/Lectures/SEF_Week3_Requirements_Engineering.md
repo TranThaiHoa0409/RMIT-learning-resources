@@ -22,11 +22,7 @@ The same thing happens with customers. When a customer tells you what they want,
 - Why does it matter?: To ensure software meets stakeholders' needs.
 - Establish a bridge between the user's expression of needs and the developer's blueprint for development.
 
-```text
-┌────────────────┐        ┌────────────────┐        ┌────────────────┐
-│  Stakeholders  │  ───>  │  Requirements  │  ───>  │  System Design │
-└────────────────┘        └────────────────┘        └────────────────┘
-```
+**Stakeholders** → **Requirements** → **System Design**
 
 ### Requirements process
 
