@@ -112,7 +112,7 @@ Chỉ áp dụng khi user gửi ảnh và nói "vẽ bằng svg" (không cần n
 1. MỤC TIÊU: vẽ lại hình giống ảnh gốc nhất có thể, trên nền xám đậm, xuất ra file ảnh để user dùng trực tiếp.
 
 2. ĐỘ GIỐNG VỚI ẢNH GỐC:
-   - Giữ đúng mọi nhãn, ký hiệu, mũi tên, hướng, quan hệ giữa các phần và vị trí chú thích. Nhãn đặt ở đâu trong ảnh gốc thì đặt ở đó (vd nhãn bán kính `r2` nằm bên trong đường tròn, cạnh mũi tên bán kính, không dời ra ngoài).
+   - Giữ đúng mọi nhãn, ký hiệu, mũi tên, hướng, quan hệ giữa các phần và vị trí chú thích. Nhãn đặt ở đâu trong ảnh gốc thì đặt ở đó.
    - Nét đứt, cung bị che, mũi tên hai đầu, chấm tâm... vẽ đúng như ảnh gốc (nét đứt dùng `stroke-dasharray`; cung giao nhau tính điểm giao rồi vẽ bằng `path` với lệnh `A`, không dùng lớp phủ để che).
    - Ưu tiên đúng quan hệ và vị trí chú thích hơn đúng từng pixel. Nếu ảnh mờ khiến chỗ nào đọc không chắc thì nói rõ để user kiểm tra lại.
    - Trước khi vẽ, nói ngắn gọn phần nào của hình gốc không vẽ được hoặc phải thay thế (bóng đổ, hiệu ứng 3D, font chữ gốc...).
